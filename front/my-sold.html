@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- title -->
+    <title>My Sold</title>
+
+
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+
+    <!-- FONT CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans
+             :wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-expand-md navbar-light ">
+
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Search Notes </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sell Your Notes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Nuyar Requests </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">FAQ </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">img </a>
+                    </li>
+                </ul>
+                <button type="button" class="btn btn-primary" id="user-profile-logout">Logout</button>
+            </div>
+        </div>
+
+    </nav>
+    <div class="container">
+        <div class="sold-notes">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 id="sold-heading">My Sold Notes</h4>
+                </div>
+                <div class="col-md-6">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="search-tab">
+                                                <img src="img/Dashboard/search-icon.svg">
+                                                <input type="search" class="form-control" id="book-search" placeholder="      Search">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="form-group">
+                                            <div class="search-tab">
+                                                <button type="button" class="btn btn-primary" id="search-tab-button">Search</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="my-sold-table">
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <th scope="col">SR NO.</th>
+                        <th scope="col">NOTE TITTLE</th>
+                        <th scope="col">CATEGORY</th>
+                        <th scope="col">BUYER</th>
+                        <th scope="col">SELL TYPE</th>
+                        <th scope="col">PRICE</th>
+                        <th scope="col">DOWNLOAD DATE/TIME</th>
+                        <th scope="col">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Data Science</td>
+                        <td>Science</td>
+                        <td>testing123@gmail.com</td>
+                        <td>Paid</td>
+                        <td>&#36;250</td>
+                        <td>27 Nov 2020,11:24:34</td>
+                        <td>
+                            <div>
+                                <img src="img/Dashboard/eye.png">
+                                <div class="dropdown">
+                                    <button class="dropbtn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                        </svg>
+                                    </button>
+
+                                    <div class="dropdown-content">
+                                        <a href="#">Download Note</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Data Science</td>
+                        <td>Science</td>
+                        <td>testing123@gmail.com</td>
+                        <td>Paid</td>
+                        <td>&#36;250</td>
+                        <td>27 Nov 2020,11:24:34</td>
+                        <td>
+                            <div>
+                                <img src="img/Dashboard/eye.png">
+                                <div class="dropdown">
+                                    <button class="dropbtn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                        </svg>
+                                    </button>
+
+                                    <div class="dropdown-content">
+                                        <a href="#">Download Note</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Data Science</td>
+                        <td>Science</td>
+                        <td>testing123@gmail.com</td>
+                        <td>Paid</td>
+                        <td>&#36;250</td>
+                        <td>27 Nov 2020,11:24:34</td>
+                        <td>
+                            <div>
+                                <img src="img/Dashboard/eye.png">
+                                <div class="dropdown">
+                                    <button class="dropbtn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                        </svg>
+                                    </button>
+
+                                    <div class="dropdown-content">
+                                        <a href="#">Download Note</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Data Science</td>
+                        <td>Science</td>
+                        <td>testing123@gmail.com</td>
+                        <td>Paid</td>
+                        <td>&#36;250</td>
+                        <td>27 Nov 2020,11:24:34</td>
+                        <td>
+                            <div>
+                                <img src="img/Dashboard/eye.png">
+                                <div class="dropdown">
+                                    <button class="dropbtn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                        </svg>
+                                    </button>
+
+                                    <div class="dropdown-content">
+                                        <a href="#">Download Note</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>Data Science</td>
+                        <td>Science</td>
+                        <td>testing123@gmail.com</td>
+                        <td>Paid</td>
+                        <td>&#36;250</td>
+                        <td>27 Nov 2020,11:24:34</td>
+                        <td>
+                            <div>
+                                <img src="img/Dashboard/eye.png">
+                                <div class="dropdown">
+                                    <button class="dropbtn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                        </svg>
+                                    </button>
+
+                                    <div class="dropdown-content">
+                                        <a href="#">Download Note</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">8</th>
+                        <td>Data Science</td>
+                        <td>Science</td>
+                        <td>testing123@gmail.com</td>
+                        <td>Paid</td>
+                        <td>&#36;250</td>
+                        <td>27 Nov 2020,11:24:34</td>
+                        <td>
+                            <div>
+                                <img src="img/Dashboard/eye.png">
+                                <div class="dropdown">
+                                    <button class="dropbtn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                        </svg>
+                                    </button>
+
+                                    <div class="dropdown-content">
+                                        <a href="#">Download Note</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">9</th>
+                        <td>Data Science</td>
+                        <td>Science</td>
+                        <td>testing123@gmail.com</td>
+                        <td>Paid</td>
+                        <td>&#36;250</td>
+                        <td>27 Nov 2020,11:24:34</td>
+                        <td>
+                            <div>
+                                <img src="img/Dashboard/eye.png">
+                                <div class="dropdown">
+                                    <button class="dropbtn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                        </svg>
+                                    </button>
+
+                                    <div class="dropdown-content">
+                                        <a href="#">Download Note</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">10</th>
+                        <td>Data Science</td>
+                        <td>Science</td>
+                        <td>testing123@gmail.com</td>
+                        <td>Paid</td>
+                        <td>&#36;250</td>
+                        <td>27 Nov 2020,11:24:34</td>
+                        <td>
+                            <div>
+                                <img src="img/Dashboard/eye.png">
+                                <div class="dropdown">
+                                    <button class="dropbtn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                        </svg>
+                                    </button>
+
+                                    <div class="dropdown-content">
+                                        <a href="#">Download Note</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="in-progress-nav">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link active" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <hr>
+    <!-- footer -->
+    <div class="card-footer row m-0">
+        <p id="copyright"> copyright &copy; TatvaSoft All rights reserverd</p>
+        <div>
+            <p> <label class="footer-right">
+                    <i class="fa fa-facebook circle-icon"></i>
+                    <i class="fa fa-twitter circle-icon"></i>
+                    <i class="fa fa-linkedin circle-icon"></i>
+
+                </label> </p>
+        </div>
+    </div>
+
+
+
+
+    <!-- JQuery -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="js/bootstrap/bootstrap.js"></script>
+</body>
+
+</html>

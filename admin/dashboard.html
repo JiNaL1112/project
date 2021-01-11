@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- title -->
+    <title>Dashboard</title>
+
+
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+
+    <!-- FONT CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans
+             :wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/adminstyle.css">
+
+</head>
+
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-expand-md navbar-light ">
+
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#anavbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="anavbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        
+                        <div>
+                                <div class="adropdown">
+                                    <button class="dropbtn" id="deshboard-btn">
+                                       Deshboard
+                                    </button>
+
+                                    <div class="adropdown-content">
+                                        <a href="#">Notes Under Review</a>
+                                        <a href="#">Published Notes</a>
+                                        <a href="#">Downloaded Notes</a>
+                                        <a href="#">Rejected Notes</a>
+                                    </div>
+                                </div>    
+                            </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sell Your Notes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Nuyar Requests </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">FAQ </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us </a>
+                    </li>
+                    <li class="nav-item">
+                        
+                        <div>
+                                <div class="adropdown">
+                                    <button class="dropbtn">
+                                        <img id="admin-dashbord-user" src="img/reviewer-1.png">
+                                    </button>
+
+                                    <div class="adropdown-content">
+                                        <a href="#">Update Profile</a>
+                                        <a href="#">Change Password</a>
+                                        <a href="#">Logout</a>
+                                    </div>
+                                </div>    
+                            </div>
+                    </li>
+                    <li><button type="button" class="btn btn-primary" id="admin-dashboard-logout">Logout</button></li>
+                </ul>
+                
+            </div>
+        </div>
+
+    </nav>
+    <div class="dashboard-title-wrapper">
+        <div class="container">
+            <div class="dashboard-title-section">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1>Dashboard</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="adashboard-block">
+                        <div class="anumber-detail  text-center">
+                            <p>20</p>
+                            <h4>Number of Notes in Review for Publish</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="adashboard-block">
+                        <div class="anumber-detail  text-center">
+                            <p>103</p>
+                            <h4>Number of New Notes Donloaded<br>(Last 7 days)</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="adashboard-block">
+                        <div class="anumber-detail  text-center">
+                            <p>223</p>
+                            <h4>Number of New Registration<br>(Last 7 days)</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="in-progress">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 id="progress-heading">Published Notes</h4>
+                </div>
+                <div class="col-md-6">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="asearch-tab">
+                                                <input type="search" class="form-control" id="abook-search" placeholder="   Search">
+                                                <img src="img/search-icon.svg">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 ">
+                                        <div class="form-group">
+                                            <div class="asearch-tab">
+                                                <button type="button" class="btn btn-primary" id="asearch-tab-button">SEARCH</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="asearch-tab">
+                                                <select class="form-control">
+                                                    <option>Select Month</option>
+                                                    <option>Jan</option>
+                                                    <option>Fab</option>
+                                                    <option>...</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="admin-dashboard">
+            <table class="table" id="admin-table">
+                <thead>
+                    <tr>
+                        <th scope="col">SR NO.</th>
+                        <th scope="col">TITTLE</th>
+                        <th scope="col">CATEGORY</th>
+                        <th scope="col">ATTACHMENT SIZE</th>
+                        <th scope="col">SELL TYPE</th>
+                        <th scope="col">PRICE</th>
+                        <th scope="col">PUBLISHER</th>
+                        <th scope="col">PUBLISHED DATE</th>
+                        <th colspan="2">NUMBER OF DOWNLOADS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Data Science</td>
+                        <td>Science</td>
+                        <td>10KB</td>
+                        <td>Free</td>
+                        <td>&#36;0</td>
+                        <td>Pritesh Patel</td>
+                        <td>27-10-2020,11:24</td>
+                        <td>10</td>
+                        <td>
+                            <div>
+                                <div class="dropdown">
+                                    <button class="dropbtn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                        </svg>
+                                    </button>
+
+                                    <div class="dropdown-content">
+                                        <a href="#">Download Notes</a>
+                                        <a href="#">View More Details</a>
+                                        <a href="#">Unpublish</a>
+                                    </div>
+                                </div>    
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>
+                            <p><font color="#6255a5">Data Science</font></p>
+                        </td>
+                        <td>Science</td>
+                        <td>10KB</td>
+                        <td>Free</td>
+                        <td>&#36;0</td>
+                        <td>Pritesh Patel</td>
+                        <td>27-10-2020,11:24</td>
+                        <td>10</td>
+                        <td>
+                            <div>
+                                <div class="dropdown">
+                                    <button class="dropbtn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                        </svg>
+                                    </button>
+
+                                    <div class="dropdown-content">
+                                        <a href="#">Download Notes</a>
+                                        <a href="#">View More Details</a>
+                                        <a href="#">Unpublish</a>
+                                    </div>
+                                </div>    
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>
+                            <p><font color="#6255a5">Data Science</font></p>
+                        </td>
+                        <td>Science</td>
+                        <td>10KB</td>
+                        <td>Free</td>
+                        <td>&#36;0</td>
+                        <td>Pritesh Patel</td>
+                        <td>27-10-2020,11:24</td>
+                        <td>10</td>
+                        <td>
+                            <div>
+                                <div class="dropdown">
+                                    <button class="dropbtn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                        </svg>
+                                    </button>
+
+                                    <div class="dropdown-content">
+                                        <a href="#">Download Notes</a>
+                                        <a href="#">View More Details</a>
+                                        <a href="#">Unpublish</a>
+                                    </div>
+                                </div>    
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>
+                            <p><font color="#6255a5">Data Science</font></p>
+                        </td>
+                        <td>Science</td>
+                        <td>10KB</td>
+                        <td>Free</td>
+                        <td>&#36;0</td>
+                        <td>Pritesh Patel</td>
+                        <td>27-10-2020,11:24</td>
+                        <td>10</td>
+                        <td>
+                            <div>
+                                <div class="dropdown">
+                                    <button class="dropbtn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                        </svg>
+                                    </button>
+
+                                    <div class="dropdown-content">
+                                        <a href="#">Download Notes</a>
+                                        <a href="#">View More Details</a>
+                                        <a href="#">Unpublish</a>
+                                    </div>
+                                </div>    
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                </tbody>
+            </table>
+        </div>
+        <div class="in-progress-nav">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link active" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <hr>
+    <!-- footer -->
+    <div class="admin-footer row m-0 ">
+        <div id="admin-version">
+            <p>Version:1.1.24</p>
+        </div>
+        <div id="admin-copy">
+            <p> copyright &copy; TatvaSoft All rights reserverd</p>
+        </div>
+        
+    </div>
+
+
+
+
+    <!-- JQuery -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="js/bootstrap/bootstrap.js"></script>
+</body>
+
+</html>

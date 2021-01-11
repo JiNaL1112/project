@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- title -->
+    <title>User Profile</title>
+
+
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+
+    <!-- FONT CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans
+             :wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-expand-md navbar-light ">
+
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="img/logo.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Search Notes </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sell Your Notes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Nuyar Requests </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">FAQ </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">img </a>
+                    </li>
+                </ul>
+                <button type="button" class="btn btn-primary" id="user-profile-logout">Logout</button>
+            </div>
+        </div>
+
+    </nav>
+
+    <!-- Heading -->
+
+    <div id="User-Profile-Heading">
+        <img src="img/User-Profile/banner-with-overlay.jpg" alt="profile" style="width:100%;">
+        <div id="centered">User Profile</div>
+    </div>
+
+    <!-- Basic Profile Details -->
+    <form class="user-profile">
+        <div class="container-fluid">
+            <div class="row">
+                <h1 id="heading">Basic Profile Details</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="contact-right">
+
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label class="user-profile-lable">First Name*</label>
+                                    <input type="text" class="form-control" id="Fname" placeholder="Enter your first name">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label class="user-profile-lable">Last Name*</label>
+                                    <input type="text" class="form-control" id="Lname" placeholder="Enter your last name">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label class="user-profile-lable">Email*</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Enter your email address">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label class="user-profile-lable">Email address</label>
+                                    <input type="date" class="form-control" id="subject" placeholder="Enter your date of birth">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label class="user-profile-lable">Gender</label>
+                                    <select class="form-control">
+                                        <option>Select your gender</option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label class="user-profile-lable">Phone Number</label>
+                                    <input type="phone" class="form-control" id="Pnumber" placeholder="Enter your phone number">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="profile">
+                                    <label class="user-profile-lable">Profile Picture</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                    <img src="img/User-Profile/upload.png">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h1 id="heading">Address Details</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="contact-right">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="user-profile-lable">Address line 1*</label>
+                                        <input type="text" class="form-control" id="ad1" placeholder="Enter your address">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="user-profile-lable">Address line 2*</label>
+                                        <input type="text" class="form-control" id="ad2" placeholder="Enter your address">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="user-profile-lable">City*</label>
+                                        <input type="text" class="form-control" id="city" placeholder="Enter your city">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="user-profile-lable">State *</label>
+                                        <input type="text" class="form-control" id="state" placeholder="Enter your state">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="user-profile-lable">ZipCode *</label>
+                                        <input type="number" class="form-control" id="zipCode" placeholder="Enter your Zip Code">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="user-profile-lable">Country *</label>
+                                        <select class="form-control">
+                                            <option>Select your country</option>
+                                            <option>...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h1 id="heading">University and College Information</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="contact-right">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="user-profile-lable">University</label>
+                                        <input type="text" class="form-control" id="university" placeholder="Enter your university">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="user-profile-lable">College</label>
+                                        <input type="text" class="form-control" id="College" placeholder="Enter your college">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button type="button" class="btn btn-primary" id="user-profile-submit">Submit</button>
+            </div>
+        </div>
+        <hr>
+        <!-- footer -->
+        <div class="card-footer row m-0">
+            <p id="copyright"> copyright &copy; TatvaSoft All rights reserverd</p>
+            <div>
+                <p> <label class="footer-right">
+                        <i class="fa fa-facebook circle-icon"></i>
+                        <i class="fa fa-twitter circle-icon"></i>
+                        <i class="fa fa-linkedin circle-icon"></i>
+
+                    </label> </p>
+            </div>
+        </div>
+
+
+    </form>
+
+
+
+    <!-- End Header -->
+    <!-- JQuery -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="js/bootstrap/bootstrap.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- title -->
+    <title>Dashboard</title>
+
+
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+
+    <!-- FONT CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans
+             :wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/adminstyle.css">
+
+</head>
+
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-expand-md navbar-light ">
+
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#anavbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="anavbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Search Notes </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sell Your Notes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Nuyar Requests </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">FAQ </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us </a>
+                    </li>
+                    <li class="nav-item">
+
+                        <div>
+                            <div class="adropdown">
+                                <button class="dropbtn">
+                                    <img id="admin-dashbord-user" src="img/reviewer-1.png">
+                                </button>
+
+                                <div class="adropdown-content">
+                                    <a href="#">Update Profile</a>
+                                    <a href="#">Change Password</a>
+                                    <a href="#">Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><button type="button" class="btn btn-primary" id="admin-dashboard-logout">Logout</button></li>
+                </ul>
+
+            </div>
+        </div>
+
+    </nav>
+
+    <form class="user-profile">
+        <div class="container">
+            <div class="row">
+                <h1 id="heading">Basic Profile Details</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group">
+                        <label class="user-profile-lable">First Name*</label>
+                        <input type="text" class="form-control" id="Fname" placeholder="Enter your first name">
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group">
+                        <label class="user-profile-lable">Last Name*</label>
+                        <input type="text" class="form-control" id="Lname" placeholder="Enter your last name">
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group">
+                        <label class="user-profile-lable">Email*</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email address">
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group">
+                        <label class="user-profile-lable">Second Email</label>
+                        <input type="email" class="form-control" id="email-2" placeholder="Enter your email addres">
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group">
+                        <label class="user-profile-lable">Phone Number</label>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <select class="form-control">
+                                    <option>+91</option>
+                                    <option>..</option>
+                                </select>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="Pnumber" placeholder="Enter your phone number">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="profile">
+                        <label class="user-profile-lable">Profile Picture</label>
+                        <textarea class="form-control text-center" id="profileFormControlTextarea" rows="4" placeholder="upload a picture"></textarea>
+                        <img src="img/User-Profile/upload.png">
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" class="btn btn-primary" id="my-profile-submit">Submit</button>
+            </div>
+        </div>
+    </form>
+    
+    <!-- footer -->
+    <div class="admin-footer row m-0 ">
+        <div id="admin-version">
+            <p>Version:1.1.24</p>
+        </div>
+        <div id="admin-copy">
+            <p> copyright &copy; TatvaSoft All rights reserverd</p>
+        </div>
+
+    </div>
+
+
+
+
+    <!-- JQuery -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="js/bootstrap/bootstrap.js"></script>
+</body>
+
+</html>

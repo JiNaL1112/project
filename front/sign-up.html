@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- title -->
+    <title>sign up</title>
+
+
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+
+    <!-- FONT CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans
+             :wght@300;400;600;700&display=swap" rel="stylesheet">
+             
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <!-- login form-->
+    <section id="sign-up">
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                    <div class="signup-logo">
+                        <img src="img/top-logo.png" class="rounded mx-auto d-block">
+                    </div> 
+                    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="form-content">
+                           <form>
+                                <div id="header">
+                                   <div id="header-content-inner">
+                                      <h1 id="header-1" class="text-center" >Create an Account</h1>
+                                      <h1 id="header-2" class="header text-center">Enter your details to signup</h1>
+                                    </div>
+                                </div>
+                                <div id="signup_succes">
+                                    <p class="text-center">Your Account hs been successfully created.</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputFirstName" class="form-lable">First Name*</label>
+                                    <input type="text" class="form-control" id="exampleInputFirstName" placeholder="Enter your first name">    
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputLastName" class="form-lable">Last Name*</label>
+                                    <input type="text" class="form-control" id="exampleInputLasttName" placeholder="Enter your last name">    
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="form-lable">Email*</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email address">    
+                                </div>
+                                <div class="form-group" id="pswhelp">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="exampleInputPassword1"  class="form-lable">Password</label>
+                                        </div>
+                                        <div class="col-md-6" id="psw">  
+                                        </div>
+                                    </div>
+                                     <div class="password">
+                                        <input type="password" class="form-control" id="exampleInputPassword1" aria-describedby="passwordHelp" placeholder="Enter your password">
+                                    <img src="img/eye.png">
+                                    </div>
+                                </div>
+                                <div class="form-group" id="pswhelp">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="exampleInputPassword1"  class="form-lable">Confirm Password</label>
+                                        </div>
+                                        <div class="col-md-6" id="psw">  
+                                        </div>
+                                    </div>
+                                     <div class="password">
+                                        <input type="password" class="form-control" id="exampleInputPassword1" aria-describedby="passwordHelp" placeholder="Re-Enter your password">
+                                    <img src="img/eye.png">
+                                    </div>
+                                </div>
+                                <button type="submit" id="button" class="btn btn-primary btn-lg btn-block">SIGN UP</button>
+                                <div class="form-group" >
+                                    <p class="form-group text-center">Already have an account?<a href="#">Login</a></p>
+                                </div> 
+                           </form>  
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+    </section>
+    <!-- LOGIN END -->
+
+
+    <!-- JQuery -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="js/bootstrap/bootstrap.js"></script>
+</body>
+
+</html>
