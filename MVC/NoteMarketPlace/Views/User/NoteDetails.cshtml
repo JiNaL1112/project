@@ -1,0 +1,293 @@
+﻿@model NoteMarketPlace.Models.NoteDetailsViewModel
+@{
+    if (@Session["UserMailID"] != null)
+    {
+        Layout = "~/Views/Shared/_RegisteredUser.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_NonRegisteredUser.cshtml";
+    }
+
+}  
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- title -->
+    <title>Notes Details</title>
+
+
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap/bootstrap.css">
+
+    <!-- FONT CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans
+             :wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+
+</head>
+
+<body>
+    <!--Notes Details Page-->
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-expand-md navbar-light ">
+
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="img/logo.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Search Notes </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sell Your Notes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Nuyar Requests </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">FAQ </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">img </a>
+                    </li>
+                </ul>
+                <button type="button" class="btn btn-primary" id="user-profile-logout">Logout</button>
+            </div>
+        </div>
+
+    </nav>
+    <hr>
+    <div class="container">
+        <div class="note-detailse-book">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <h4>Notes Details</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="@Url.Content(Model.note.DisplayPic)" alt="note-details" class="img-responsive" style="width:100%; height: 100%">
+                        </div>
+                        <div class="col-md-8">
+                            <h3>
+                                @Model.note.NoteID
+                                @Model.country.Name
+                                @Session["NoteID"]
+                                @ViewBag.noteID
+                                @Model.user.FirstName
+                            </h3>
+
+                            <h3>@Model.note.Title</h3>
+
+                            <h5>@Model.note.Course</h5>
+                            <p>@Model.note.Description</p>
+
+
+
+                            @using (Html.BeginForm("DownloadNoteFollow", "User", FormMethod.Post, new { }))
+                            {
+                                if (@Model.note.SellFor == 5)
+                                {
+                                    <button type="submit" id="notes-downloaded">
+                                        <a href="/User/DownloadNoteFollow?sellerEmail=@Model.user.EmailID&bookid=@Model.note.NoteID">Download</a>
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" id="notes-downloaded" onclick="return confirm('Are you Sure You Want to Buy this Note ?')">
+
+                                        <a href="/User/DownloadNoteFollow?sellerEmail=@Model.user.EmailID&bookid=@Model.note.NoteID">Download/@Model.note.SellingPrice</a>
+                                    </button>
+                                }
+                            }
+
+                            @ViewBag.paidbookmessage
+                            <!-- Button trigger modal -->
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <img src="img/Notes%2520Details/SUCCESS.png">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Thank you for purchasing!</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container">
+                                                <form>
+                                                    <div class="row">
+
+                                                        <h4>@ViewBag.BuyerName </h4>
+                                                        <p>As this is paid notes-you need to pay to seller Rahil Shah offline. We will send him an email that you want to download this note . He may contact you further for payment process completion</p>
+                                                        <p>In case,you have urgency,<br />Please contact us on +9195377345959.<br />Once he receives the payment and acknowledge us -selected notes you can see over my downloads tab for download.<br /><br />Have a good day</p>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row nd02">
+                        <div class="col-md-12">
+                            <ul class="nd03">
+                                <li><span>Institution:</span><span class="text-right nd05">@Model.note.University</span></li>
+                                <li><span>Country:</span><span class="text-right nd05">@Model.country.Name</span></li>
+                                <li><span>Course Name:</span><span class="text-right nd05">@Model.note.Course</span></li>
+                                <li><span>Course Code:</span><span class="text-right nd05">@Model.note.CourseCode</span></li>
+                                <li><span>Professor:</span><span class="text-right nd05">@Model.note.Professor</span></li>
+                                <li><span>Number of Pages:</span><span class="text-right nd05">@Model.note.NumberOfPage</span></li>
+                                <li><span>Approved Date:</span><span class="text-right nd05">@Model.note.ApprovedDate</span></li>
+                                <li>
+                                    <span>Rating:</span><span class="text-right nd05">
+                                        <i class="fa fa-star star0"></i>
+                                        <i class="fa fa-star star0"></i>
+                                        <i class="fa fa-star star0"></i>
+                                        <i class="fa fa-star star0"></i>
+                                        <i class="fa fa-star-o"></i>100 reviews
+                                    </span>
+                                </li>
+                                <li><span style="color: red" class="nd04">5 Users marked this note as inappropriate</span> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 pdf-01">
+                <h4 id="note-review-title">Notes preview</h4>
+                <div id="Iframe-Cicis-Menu-To-Go" class="set-margin-cicis-menu-to-go set-padding-cicis-menu-to-go set-border-cicis-menu-to-go set-box-shadow-cicis-menu-to-go center-block-horiz">
+                    <div class="responsive-wrapper
+     responsive-wrapper-padding-bottom-90pct" style="-webkit-overflow-scrolling: touch; overflow: auto;">
+                        <iframe src="@Url.Content(Model.note.NotesAttachment)">
+                            <p style="font-size: 110%;">
+                                <em>
+                                    <strong>ERROR: </strong>
+                                    An &#105;frame should be displayed here but your browser version does not support &#105;frames.
+                                </em> Please update your browser to its most recent version and try again, or access the file <a href="@Url.Content(Model.note.NotesAttachment)">with this link.</a>
+                            </p>
+                        </iframe>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-7">
+                <h4 id="note-review-title">Customer Reviews</h4>
+                <div class="container-nd">
+                    <div class="row notes-review">
+                        <div class="col-md-2">
+                            <img src="~/Content/images/reviewer-1.png" class=" img-circle img-responsive">
+                        </div>
+                        <div class="col-md-10">
+                            <h5 class="nd-heading">Richard Brown</h5>
+                            <div class="stars ">
+                                <i class="fa fa-star star0"></i>
+                                <i class="fa fa-star star0"></i>
+                                <i class="fa fa-star star0"></i>
+                                <i class="fa fa-star star0 "></i>
+                                <i class="fa fa-star-o "></i>
+
+                            </div>
+                            <p class="nd-para">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut culpa, odio, veniam tempora rerum ducimus esse ipsam eos, quae, cupiditate fugiat?.</p>
+                        </div>
+                    </div>
+                    <div class="row ndimg">
+                        <div class="col-md-2">
+                            <img src="~/Content/images/reviewer-2.png" class="  img-circle img-responsive">
+                        </div>
+                        <div class="col-md-10">
+                            <h5 class="nd-heading">Alice Ortiaz</h5>
+                            <div class="stars ">
+                                <i class="fa fa-star star0"></i>
+                                <i class="fa fa-star star0"></i>
+                                <i class="fa fa-star star0"></i>
+                                <i class="fa fa-star star0 "></i>
+                                <i class="fa fa-star-o "></i>
+
+                            </div>
+                            <p class="nd-para">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut culpa, odio, veniam tempora rerum ducimus esse ipsam eos, quae, cupiditate fugiat?.</p>
+                        </div>
+                    </div>
+                    <div class="row ndimg">
+                        <div class="col-md-2">
+                            <img src="~/Content/images/reviewer-3.png" class="  img-circle img-responsive">
+                        </div>
+                        <div class="col-md-10">
+                            <h5 class="nd-heading">Sara Passmore</h5>
+                            <div class="stars ">
+                                <i class="fa fa-star star0"></i>
+                                <i class="fa fa-star star0"></i>
+                                <i class="fa fa-star star0"></i>
+                                <i class="fa fa-star star0 "></i>
+                                <i class="fa fa-star-o "></i>
+
+                            </div>
+                            <p class="nd-para">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut culpa, odio.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <hr>
+    <!-- footer -->
+    <div class="card-footer row m-0">
+        <p id="copyright"> copyright &copy; TatvaSoft All rights reserverd</p>
+        <div>
+            <p>
+                <label class="footer-right">
+                    <i class="fa fa-facebook circle-icon"></i>
+                    <i class="fa fa-twitter circle-icon"></i>
+                    <i class="fa fa-linkedin circle-icon"></i>
+
+                </label>
+            </p>
+        </div>
+    </div>
+
+
+
+
+    <!--Note Ends-->
+    <!--JQuery-->
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <!--Bootstrap JS-->
+    <script src="~/Scripts/js/bootstrap/bootstrap.js"></script>
+    <!--Custom JS-->
+    <script src="~/Script/js/script.js"></script>
+</body>
+
+</html>
+
+

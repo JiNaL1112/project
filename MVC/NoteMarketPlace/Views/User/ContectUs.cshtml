@@ -1,0 +1,75 @@
+﻿
+@{
+    if (@Session["UserMailID"] != null)
+    {
+        Layout = "~/Views/Shared/_RegisteredUser.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_NonRegisteredUser.cshtml";
+    }
+}
+
+
+
+    <!-- Heading -->
+
+    <div id="User-Profile-Heading">
+        <img src="~/Content/images/user-profile-banner-with-overlay.jpg" alt="profile" style="width:100%;">
+        <div id="centered">Contact Us</div>
+    </div>
+
+    <!-- Basic Profile Details -->
+    <form class="user-profile" method="post">
+        <div class="container-fluid">
+
+            <div class="row">
+                <h1 id="heading">Get in Touch</h1>
+            </div>
+            <div class="row">
+                <p>Let us know how to get back to you</p>
+               @ViewBag.erroeMsg
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="contact-right">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="user-profile-lable">First Name*</label>
+                                            <input type="text" class="form-control" id="Fname" placeholder="Enter your first name" name="name" oninvalid="this.setCustomValidity('Enter First Name')" oninput="this.setCustomValidity('')" required>   
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="user-profile-lable">Email Address*</label>
+                                               <input type="email" class="form-control" id="email" placeholder="Enter your email address" name="emailid"  oninvalid="this.setCustomValidity('Enter Email Id')" oninput="this.setCustomValidity('')" required>        
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="user-profile-lable">Subject*</label>
+                                               <input type="text" class="form-control" id="subject" placeholder="Enter your subject" name="sub"  oninvalid="this.setCustomValidity('Enter Subject Name')" oninput="this.setCustomValidity('')" required >        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="comment">
+                                    <label class="user-profile-lable">Comments/Question*</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="8" name="details"  oninvalid="this.setCustomValidity('Enter Subject Name')" oninput="this.setCustomValidity('')" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary" id="user-profile-submit">SUBMIT</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    

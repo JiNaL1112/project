@@ -1,0 +1,157 @@
+﻿@model IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>
+
+@{
+    Layout = null;
+
+}
+
+<div class="container">
+    <!-- search feild-->
+    <div class="in-progress">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 id="progress-heading">In Progress Notes</h4>
+            </div>
+            <div class="col-md-6">
+                
+                <form>
+                
+                    <div class="row">
+                        <div class="col-md-6" id="search-box">
+                            <img src="~/Content/images/search-icon.png" id="search-img">
+                            <input type="search" class="form-control" id="book-search" placeholder="Search" value="@ViewData["GetProgress"]" name="searchprogress">
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary" id="search-tab-button">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="in-progress-table">
+        <table class="table border">
+
+            <!-- table head-->
+            <thead>
+                <tr>
+                    <th scope="col">
+                        ADDED DATE
+
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("TITLE", "dashboard", new { SortOrder1 = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy1 = "TITLE" })
+
+                    </th>
+                    <th scope="col">
+
+                        @Html.ActionLink("CATEGORY", "dashboard", new { SortOrder1 = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy1 = "CATEGORY" })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("STATUS", "dashboard", new { SortOrder1 = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy1 = "STATUS" })
+
+                    </th>
+                    <th scope="col">ACTIONS</th>
+                </tr>
+            </thead>
+            <!-- table body-->
+            <tbody>
+                @foreach (NoteMarketPlace.Models.NoteDetailsViewModel item in (IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>)Model)
+                {
+                    <tr>
+                        <th scope="row">09-10-2020</th>
+                        <td>@item.note.Title</td>
+                        <td>@item.notecategory.Name</td>
+                        <td>@item.referenceData.Value</td>
+                        @if (@item.note.Status == 7)
+                        {
+                            <td>
+                                <div>
+                                    <img src="~/Content/images/edit.png">
+                                    <img src="~/Content/images/delete.png">
+                                </div>
+                            </td>
+                        }
+                        else
+                        {
+
+                            <td>
+                                <div>
+                                    <img src="~/Content/images/eye.png">
+
+                                </div>
+                            </td>
+
+
+                        }
+
+                    </tr>
+
+                }
+            </tbody>
+
+
+        </table>
+    </div>
+
+    <!-- Pagination-->
+    <div class="in-progress-nav">
+        <nav aria-label="Page navigation example">
+            @{
+                Double totalPages = ViewBag.TotalPages;
+                <ul class="pagination justify-content-center">
+                    @if (ViewBag.PageNumber == 1)
+                    {
+                        <li class="page-item ">
+                            @Html.ActionLink("<", "dashboard", new { SortOrder1 = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy1 = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber1 = ViewBag.PageNumber }, new { @class = "page-link" })
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink("<", "_InProgressDashboard", new { SortOrder1 = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy1 = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber1 = ViewBag.PageNumber - 1 }, new { @class = "page-link" })
+
+                        </li>
+                    }
+
+                    @for (int j = 1; j <= totalPages; j++)
+                    {
+
+                        if (j == ViewBag.PageNumber)
+                        {
+                            <li class="active page-item">
+                                @Html.ActionLink(j.ToString(), "dashboard", new { SortOrder1 = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy1 = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber1 = j }, new { @class = "page-link" })
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(j.ToString(), "dashboard", new { SortOrder1 = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy1 = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber1 = j }, new { @class = "page-link" })
+                            </li>
+                        }
+
+
+
+
+                    }
+                    @if (ViewBag.PageNumber == totalPages)
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(">", "dashboard", new { SortOrder1 = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy1 = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber1 = ViewBag.PageNumber }, new { @class = "page-link" })
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(">", "dashboard", new { SortOrder1 = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy1 = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber1 = ViewBag.PageNumber + 1 }, new { @class = "page-link" })
+
+                        </li>
+                    }
+
+                </ul>
+            }
+        </nav>
+    </div>
+</div>

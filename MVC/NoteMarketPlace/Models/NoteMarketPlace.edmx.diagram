@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="32db361868dc4468879ab9624b165e33" Name="Diagram1">
+        <EntityTypeShape EntityType="NoteMarketModel.Country" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NoteMarketModel.Download" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NoteMarketModel.MangeSystemConfugration" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NoteMarketModel.NoteCategory" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NoteMarketModel.Note" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NoteMarketModel.NotesReview" Width="1.5" PointX="7.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NoteMarketModel.NoteType" Width="1.5" PointX="3" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NoteMarketModel.Profile" Width="1.5" PointX="10.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NoteMarketModel.ReferenceData" Width="1.5" PointX="3" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NoteMarketModel.RejectedNote" Width="1.5" PointX="5.25" PointY="29.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NoteMarketModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NoteMarketModel.UserRole" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NoteMarketModel.User" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <AssociationConnector Association="NoteMarketModel.FK_Notes_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="NoteMarketModel.FK_Downloads_Users2" ManuallyRouted="false" />
+        <AssociationConnector Association="NoteMarketModel.FK_Downloads_Users3" ManuallyRouted="false" />
+        <AssociationConnector Association="NoteMarketModel.FK_NotesReviews_AgainestDownload" ManuallyRouted="false" />
+        <AssociationConnector Association="NoteMarketModel.FK_Notes_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="NoteMarketModel.FK_Notes_ActionBy" ManuallyRouted="false" />
+        <AssociationConnector Association="NoteMarketModel.FK_Notes_NoteTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="NoteMarketModel.FK_Notes_ReferenceData1" ManuallyRouted="false" />
+        <AssociationConnector Association="NoteMarketModel.FK_Notes_SellerID" ManuallyRouted="false" />
+        <AssociationConnector Association="NoteMarketModel.FK_NotesReviews_NoteID" ManuallyRouted="false" />
+        <AssociationConnector Association="NoteMarketModel.FK_NotesReviews_BuyerID" ManuallyRouted="false" />
+        <AssociationConnector Association="NoteMarketModel.FK_Profile_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="NoteMarketModel.FK_Profile_SellerID" ManuallyRouted="false" />
+        <AssociationConnector Association="NoteMarketModel.FK_RejectedNotes_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="NoteMarketModel.FK_Users_UserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

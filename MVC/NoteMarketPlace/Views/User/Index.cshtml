@@ -1,0 +1,114 @@
+﻿@model NoteMarketPlace.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- title -->
+    <title>login page</title>
+
+
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap/bootstrap.css">
+
+    <!-- FONT CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans
+             :wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+
+</head>
+
+<body>
+    <!-- login form-->
+    <section id="login">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="login-logo">
+                        <img src="~/Content/images/top-logo.png" class="rounded mx-auto d-block">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="form-content">
+
+                        <form method="post">
+                            <div id="header">
+                                <div id="header-content-inner">
+                                    <h1 id="header-1" class="text-center">Login</h1>
+                                    <h1 id="header-2" class="header text-center">Enter your email address and password to login</h1>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.HiddenFor(m => m.ID)
+
+                                <label for="exampleInputEmail1" class="form-lable">Email</label>
+                                
+                                <!--<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">-->
+                                @Html.TextBoxFor(m => m.EmailID, new { @class = "form-control", @id = "UserEmail", @placeholder = "Enter email", @Value = ViewBag.email })
+                                @Html.ValidationMessageFor(m => m.EmailID)
+
+                            </div>
+                            <div class="form-group" id="pswhelp">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="exampleInputPassword1" class="form-lable">Password</label>
+                                    </div>
+                                    <div class="col-md-6" id="psw">
+                                        <p><a href="/User/ForgotPassword">Forgot password?</a></p>
+                                    </div>
+                                </div>
+                                <div class="password">
+
+                                    <!--<input type="password" class="form-control" id="exampleInputPassword1" aria-describedby="passwordHelp" placeholder="Password">-->
+                                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @id = "Userpsw", @placeholder = "Enter your your", @type = "password", @name = "Password", @Value = ViewBag.password } )
+                                 
+                                    <img src="~/Content/images/eye.png">
+                                </div>
+                            </div>
+                            <p>@Html.DisplayFor( m => m.LoginErrorMessage)</p>
+                            <!--<p id="passwordHelp">The passowrd that you've entered is incorrct</p> -->
+                            <div class="form-group form-check">
+                                <!--          <input type="checkbox" class="form-check-input" id="ChekMe">       -->
+                                @Html.CheckBoxFor( m => m.RememberMe , new { @class = "form-check-input", @id = "RememberMe" } )
+
+
+                                <label class="form-check-label" for="exampleCheck1"> Remember Me</label>
+                            </div>
+                            <button type="submit" id="button" class="btn btn-primary btn-lg btn-block" value="Login" >LOGIN</button>
+                            <div class="form-group">
+                                <p class="form-group text-center">Don't have an account?<a href="/User/SignUp">Sign Up</a></p>   
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </section>
+    <!-- LOGIN END -->
+    <!-- JQuery -->
+    <script src="~/Script/js/jquery.min.js"></script>
+
+    <script src="~/bundles/jqueryval"></script>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/Scripts/js/bootstrap/bootstrap.js"></script>
+</body>
+
+</html>

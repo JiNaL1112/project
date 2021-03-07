@@ -77,7 +77,38 @@
                             <h3>Computer Science</h3>
                             <h5>Sciences</h5>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, Maiores, dolores, reiciendis. Voluptatum fugiat a repellendus aperiam, eum id repudiandae qui laudantium, iure inventore?</p>
-                            <button type="button" class="btn btn-primary" id="notes-downloaded">DOWNLOAD/ &#36;</button>
+                        <!--    <button type="button" class="btn btn-primary" id="notes-downloaded">DOWNLOAD/ &#36;</button>   -->
+                               <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"  id="notes-downloaded">
+                                            DOWNLOAD/ &#36;
+                                        </button>
+                                <!-- Button trigger modal -->
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                               <img src="img/Notes%2520Details/SUCCESS.png">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Thank you for purchasing!</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="container">
+                                                    <form>
+                                                        <div class="row">
+                                                           <h4>Dear Smith</h4> 
+                                                           <p>As this is paid notes-you need to pay to seller Rahil Shah offline. We will send him an email that you want to download this note . He may contact you further for payment process completion</p>
+                                                            <p>In case,you have urgency,<br/>Please contact us on +9195377345959.<br/>Once he receives the payment and acknowledge us -selected notes you can see over my downloads tab for download.<br/><br/>Have a good day</p>
+                                                        </div>
+                                                        
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -200,9 +231,10 @@
 
     <!--Note Ends-->
     <!--JQuery-->
-    <script src="js/jquery-min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <!--Bootstrap JS-->
-    <script src="js/bootstrap/bootstrap.min.js"></script>
+  
+    <script src="js/bootstrap/bootstrap.js"></script>
     <!--Custom JS-->
     <script src="js/script.js"></script>
 </body>

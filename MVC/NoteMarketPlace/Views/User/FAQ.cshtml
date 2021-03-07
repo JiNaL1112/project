@@ -1,0 +1,150 @@
+﻿
+@{
+    if (@Session["UserMailID"] != null)
+    {
+        Layout = "~/Views/Shared/_RegisteredUser.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_NonRegisteredUser.cshtml";
+    }
+}
+
+
+
+    <!-- Heading -->
+
+    <div id="User-Profile-Heading">
+        <img src="~/Content/images/user-profile-banner-with-overlay.jpg" alt="profile" style="width:100%;">
+        <div id="centered">Frequently Asked Questions</div>
+    </div>
+
+    <!-- Basic Profile Details -->
+    <div class="container">
+        <div class="row">
+            <h1 id="heading">General Question</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mx-auto">
+                <!-- Accordion -->
+                <div id="accordionExample">
+
+                    <!-- Accordion item 1 -->
+                    <div class="card">
+                        <div id="headingOne" class="card-header   border-0">
+                            <h6 class="mb-0 font-weight-bold"><a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="d-block position-relative text-dark text-uppercase collapsible-link py-2">What is Marketplace-Notes?</a></h6>
+                        </div>
+                        <div id="collapseOne" aria-labelledby="headingOne" data-parent="#accordionExample" class="collapse show">
+                            <div class="card-body p-3">
+                                <p class="font-weight-light m-0">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion item 2 -->
+                    <div class="card">
+                        <div id="headingTwo" class="card-header  border-0">
+                            <h6 class="mb-0 font-weight-bold"><a href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="d-block position-relative collapsed text-dark text-uppercase collapsible-link py-2">What do the University say?</a></h6>
+                        </div>
+                        <div id="collapseTwo" aria-labelledby="headingTwo" data-parent="#accordionExample" class="collapse">
+                            <div class="card-body p-3">
+                                <p class="font-weight-light m-0">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion item 3 -->
+                    <div class="card">
+                        <div id="headingThree" class="card-header   border-0">
+                            <h6 class="mb-0 font-weight-bold"><a href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class="d-block position-relative collapsed text-dark text-uppercase collapsible-link py-2">Is this lehgal?</a></h6>
+                        </div>
+                        <div id="collapseThree" aria-labelledby="headingThree" data-parent="#accordionExample" class="collapse">
+                            <div class="card-body p-3">
+                                <p class="font-weight-light m-0">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <h1 id="heading">Uploaders</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mx-auto">
+                <!-- Accordion -->
+                <div id="accordionExample">
+
+                    <!-- Accordion item 1 -->
+                    <div class="card">
+                        <div id="headingOne" class="card-header   border-0">
+                            <h6 class="mb-0 font-weight-bold"><a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="d-block position-relative text-dark text-uppercase collapsible-link py-2">What can't I sell?</a></h6>
+                        </div>
+                        <div id="collapseOne" aria-labelledby="headingOne" data-parent="#accordionExample" class="collapse show">
+                            <div class="card-body p-3">
+                                <p class="font-weight-light m-0">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion item 2 -->
+                    <div class="card">
+                        <div id="headingTwo" class="card-header  border-0">
+                            <h6 class="mb-0 font-weight-bold"><a href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="d-block position-relative collapsed text-dark text-uppercase collapsible-link py-2">What notes can I sell?</a></h6>
+                        </div>
+                        <div id="collapseTwo" aria-labelledby="headingTwo" data-parent="#accordionExample" class="collapse">
+                            <div class="card-body p-3">
+                                <p class="font-weight-light m-0">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <h1 id="heading">Downloaders</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mx-auto">
+                <!-- Accordion -->
+                <div id="accordionExample">
+
+                    <!-- Accordion item 1 -->
+                    <div class="card">
+                        <div id="headingOne" class="card-header   border-0">
+                            <h6 class="mb-0 font-weight-bold"><a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="d-block position-relative text-dark text-uppercase collapsible-link py-2">How do I buy notes? </a></h6>
+                        </div>
+                        <div id="collapseOne" aria-labelledby="headingOne" data-parent="#accordionExample" class="collapse show">
+                            <div class="card-body p-3">
+                                <p class="font-weight-light m-0">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion item 2 -->
+                    <div class="card">
+                        <div id="headingTwo" class="card-header  border-0">
+                            <h6 class="mb-0 font-weight-bold"><a href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="d-block position-relative collapsed text-dark text-uppercase collapsible-link py-2">Can I edit the notes I purchased?</a></h6>
+                        </div>
+                        <div id="collapseTwo" aria-labelledby="headingTwo" data-parent="#accordionExample" class="collapse">
+                            <div class="card-body p-3">
+                                <p class="font-weight-light m-0">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+    

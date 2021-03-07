@@ -1,0 +1,197 @@
+﻿@model IEnumerable<NoteMarketPlace.Models.noteCountryContex>
+@{
+    if(@Session["UserMailID"] != null)
+    {
+        Layout = "~/Views/Shared/_RegisteredUser.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_NonRegisteredUser.cshtml";
+    }
+
+    var i = new NoteMarketPlace.Models.noteCountryContex();
+}
+
+
+    <!-- Heading -->
+
+    <div id="User-Profile-Heading">
+        <img src="~/Content/images/user-profile-banner-with-overlay.jpg" alt="profile" style="width:100%;">
+        <div id="centered">Search Notes</div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="container">
+               @using (Html.BeginForm("SearchNotes","User", FormMethod.Post , new { @Id = "noteshow"}))
+               {
+                    <div id="search-title">
+                        <p>Search and Filter notes</p>
+                    </div>
+                    <div id="search-filter" class="bg-light">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="search" class="form-control" placeholder="Search notes here..." name="textbox">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    
+                                        @Html.DropDownListFor(m => i.notetypeDetails.Name, ViewBag.noteTypeList as SelectList, "Select Type", new { @class = "form-control" })
+ 
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                   
+
+                                        @Html.DropDownListFor(m => i.categoryDetails.Name, ViewBag.categoryList as SelectList, "Select Category", new { @class = "form-control" })
+
+                                   
+                                </div>
+                            </div>
+                            <!-- University-->
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                     
+                                   @Html.DropDownListFor(m => i.noteDetails.University, ViewBag.universityList as SelectList, "Select University", new { @class = "form-control" })
+                                   
+                                </div>
+                            </div>
+                            <!-- course -->
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                     
+                                    @Html.DropDownListFor(m => i.noteDetails.Course, ViewBag.couresList as SelectList, "Select course", new { @class = "form-control" })
+
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    
+                                        @Html.DropDownListFor(m => i.countryDetails.Name, ViewBag.countryList as SelectList, "Select country", new { @class = "form-control" , @id ="ddlcountry" ,@name = "ddlcountry" })
+                                    
+
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    
+                                        @Html.DropDownListFor(m => i.ratingDetails.Ratings, ViewBag.ratingList as SelectList, "Select Retings", new { @class = "form-control" })
+
+                                </div>
+                            </div>
+
+
+                            
+                        </div>
+                    </div>
+                }
+
+                    <!-- BOOK -->
+            <div class="row">
+
+                @{
+                    if (Model.Count() == 0)
+                    {
+                        <p>No Record Found</p>
+                    }
+                    else
+                    {
+                        <p id="total-book">Total @Model.Count() notes </p>
+                    }
+                }
+            </div>
+
+
+
+                    <div class="container-book">
+                        <div class="row">
+
+
+                            @foreach (NoteMarketPlace.Models.noteCountryContex item in (IEnumerable<NoteMarketPlace.Models.noteCountryContex>)ViewData.Model)
+                            {
+                                <div class="col-md-4">
+                                    <div class="card">
+
+                                        <img src="@Url.Content(item.noteDetails.DisplayPic)" alt="search1">
+                                        <div class="card-body">
+                                            <h3>@item.noteDetails.NoteID</h3>
+                                            <h3 class="title"><a href="/User/NoteDetails?noteTitle=@item.noteDetails.Title">@item.noteDetails.Title</a></h3>
+                                            
+                                            <div class="card-text">
+                                                <ul class="sn-book list-group list-group-flush">
+                                                    <li><i class="fa fa-university"></i><span>@item.noteDetails.University , @item.countryDetails.Name</span></li>
+                                                    <li><i class="fa fa-book"></i><span>@item.noteDetails.NumberOfPage</span></li>
+                                                    <li><i class="fa fa-calendar"></i><span>@item.noteDetails.PublishedDate</span></li>
+                                                    <li><i class="fa fa-flag"></i><span style="color: red">5 Users marked this note as inappropriate</span></li>
+
+                                                    <li>
+                                                        <div class="rate-book">
+                                                            <input type="radio" id="star5" name="rate" value="5" />
+                                                            <label for="star5" title="text">5 stars</label>
+                                                            <input type="radio" id="star4" name="rate" value="4" />
+                                                            <label for="star4" title="text">4 stars</label>
+                                                            <input type="radio" id="star3" name="rate" value="3" />
+                                                            <label for="star3" title="text">3 stars</label>
+                                                            <input type="radio" id="star2" name="rate" value="2" />
+                                                            <label for="star2" title="text">2 stars</label>
+                                                            <inputtype="radio" id="star1" name="rate" value="1" />
+                                                            <label for="star1" title="text">1 star</label>
+                                                        </div><span>100 reviews</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                            
+                                    </div>
+                                </div>
+                            } 
+
+                           
+        
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="in-progress-nav">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                        <i class="fa fa-angle-left"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link active" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    
+                    
+                   
+                </div>
+            
+        </div>
+
+    </div>
+    
+
+
+
+    

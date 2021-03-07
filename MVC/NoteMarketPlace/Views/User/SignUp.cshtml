@@ -1,0 +1,131 @@
+﻿@model NoteMarketPlace.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- title -->
+    <title>sign up</title>
+
+
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap/bootstrap.css">
+
+    <!-- FONT CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans
+             :wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+
+</head>
+
+<body>
+    <!-- login form-->
+    <section id="sign-up">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="signup-logo">
+                        <img src="~/Content/images/top-logo.png" class="rounded mx-auto d-block">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="form-content">
+
+                        <form method="post">
+                            <div id="header">
+                                <div id="header-content-inner">
+                                    <h1 id="header-1" class="text-center">Create an Account</h1>
+                                    <h1 id="header-2" class="header text-center">Enter your details to signup</h1>
+                                </div>
+                            </div>
+                            <div id="signup_succes">
+                                <p class="text-center"> @ViewBag.InsertMessage</p>
+                            </div>
+                            <div class="form-group">
+                               
+                                <label for="exampleInputFirstName" class="form-lable">First Name*</label>
+                                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @id = "firstName", @placeholder = "Enter your first name" })
+                                <!--  <input type="text" class="form-control" id="exampleInputFirstName" name="FirstName" placeholder="Enter your first name"> -->
+                                @Html.ValidationMessageFor(m => m.FirstName)
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputLastName" class="form-lable">Last Name*</label>
+                                <!--  <input type="text" class="form-control" id="exampleInputLasttName" name="LastName" placeholder="Enter your last name"> -->
+                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @id = "exampleInputLastName", @placeholder = "Enter your last name" })
+                                @Html.ValidationMessageFor(m => m.LastName)
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="form-lable">Email*</label>
+                                @Html.TextBoxFor(m => m.EmailID, new { @class = "form-control", @id = "exampleInputEmail1", @placeholder = "Enter your email address" })
+                                @Html.ValidationMessageFor(m => m.EmailID)
+                                <!-- <input type="email" class="form-control" id="exampleInputEmail1" name="EmailID" aria-describedby="emailHelp" placeholder="Enter your email address"> -->
+
+                            </div>
+                            <div class="form-group" id="pswhelp">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="exampleInputPassword1" class="form-lable">Password</label>
+                                    </div>
+                                    <div class="col-md-6" id="psw">
+                                    </div>
+                                </div>
+                                <div class="password">
+                                    <!--<input type="password" class="form-control" id="exampleInputPassword1"  name="Password" aria-describedby="passwordHelp" placeholder="Enter your password">-->
+                                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @id = "exampleInputPassword", @placeholder = "Enter your your", @type = "password" })
+                                    @Html.ValidationMessageFor(m => m.Password)
+                                    <img src="~/Content/images/eye.png">
+                                </div>
+                            </div>
+                            <div class="form-group" id="pswhelp">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="exampleInputPassword1" class="form-lable">Confirm Password</label>
+                                    </div>
+                                    <div class="col-md-6" id="psw">
+                                    </div>
+                                </div>
+                                <div class="password">
+                                 <!--   <input type="password" class="form-control" id="exampleInputPassword1" aria-describedby="passwordHelp" placeholder="Re-Enter your password">  -->
+                                      @Html.TextBoxFor(m => m.confirm_password, new { @class = "form-control", @id = "exampleInputPassword", @placeholder = "Enter your your", @type = "password" })
+        @Html.ValidationMessageFor(m => m.confirm_password)   
+                                    <img src="~/Content/images/eye.png">
+                                </div>
+                            </div>
+                            <button type="submit" id="button" class="btn btn-primary btn-lg btn-block">SIGN UP</button>
+                            <div class="form-group">
+                                <p class="form-group text-center">Already have an account?<a href="/User/Index">Login</a></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- LOGIN END -->
+    <!-- JQuery -->
+    <script src="~/Scripts/js/jquery.min.js"></script>
+
+    <script src="~/bundles/jqueryval"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/Scripts/js/bootstrap/bootstrap.js"></script>
+</body>
+
+</html>

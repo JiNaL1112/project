@@ -1,0 +1,1528 @@
+/* =======================
+login
+===========================*/
+
+body , html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: "Open Sans",sans-serif;
+    
+}
+
+#login {
+    background-image: url("../images/banner-with-overlay.jpg");
+    /*background-image: url("~/Content/imgages/banner-with-overlay.jpg");*/
+    /* Full height */
+    height: 100%;
+    width: 100%;
+}
+.login-logo{
+    transform: translate(50%,0%);
+}
+
+#form-content{
+    /*padding*/
+    background-color:white;
+    font-family:"Open Sans";
+    font-size: 16px;
+    font-weight:400;
+    line-height: 20px;
+    color: #333333;
+    border-radius: 3px;
+    padding: 5% 5%;
+    height: 100%;
+    width: 100%;
+    transform: translate(50%,0%);
+}
+#header{
+    font-family:"Open Sans",sans-serif;   
+}
+#header-content-inner {   
+}
+
+#header-1{
+    font-size: 34px;
+    font-weight:600;
+    line-height: 38px;
+    color: #6255a5;
+    padding-bottom:0px;
+}
+#header-2{
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 19px;
+    color: #333333;
+    margin-bottom:0px;
+    padding-bottom:40px;
+}
+
+#form-content form .form-control{
+    font-family:"Open Sans",sans-serif;
+    font-size:16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #000;
+}
+
+.form-lable {
+    font-family:"Open Sans",sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333333
+}
+
+#passwordHelp  {
+    font-family:"Open Sans",sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 20px;
+    color: #ff3636;
+    margin-bottom: 20px;
+    padding: 0;
+    margin-top:0;
+}
+input[type=email]{
+    font-family:"Open Sans",sans-serif;
+    font-size: 16px;
+    font-weight:400;
+    line-height: 20px;
+    color: #000;
+    
+}
+
+input[type=password]{
+    font-family:"Open Sans",sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+}
+input[type=checkbox]{
+    transform: translateY(-5px);
+   
+}
+
+input[type=text]{
+    font-family: "Open Sans",sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+}
+#exampleCheck1{
+    border: 1px solid #d1d1d1;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;   
+}
+
+.form-check-label{
+    font-family: "Open Sans",sans-serif;
+    font-size: 16px;
+    font-weight:400;
+    line-height: 20px;
+    color: #333333;
+    margin-left: 10px;
+}
+
+#button{
+    background:#6255a5;
+    width:100%;
+    height:100%;
+    border-radius: 3px;
+    font-style:"Open Sans";
+    line-height: 30px;
+    padding: 0;
+    margin-bottom: 10px;
+    
+}
+.btn{
+   
+}
+.form-group  p {
+    font-family:"Open Sans",sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333333;
+   
+}
+.form-group a {
+    
+    color: #6255a5;
+}
+
+#exampleInputEmail1 {
+   border: 1px solid #6255a5;
+    width:100%;
+    height:100%;
+    border-radius: 3px;
+    border-color:  #6255a5; 
+   
+}
+#exampleInputPassword1{
+    border: 1px solid #6255a5;
+    width:100%;
+    height:100%;
+    border-radius: 3px;
+    border-color:  #6255a5;
+    
+    
+}
+
+#psw p{
+    text-align: justify; /* For Edge */
+  -moz-text-align-last: right; /* For Firefox prior 58.0 */
+  text-align-last: right;
+}
+
+div.password{
+    position: relative
+}
+div.password img{
+    position: absolute;
+    top: 10px;
+    left: 90%;
+    
+}
+
+
+/*===============================
+forgot password
+===============================*/
+#forgotpassword {
+   background-image: url("../img/banner-with-overlay.jpg");
+    /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover
+}
+.forgot-logo{
+    padding-bottom: 2%;
+    transform: translate(50%,0%);
+}
+
+/*===============================
+change password
+===============================*/
+#changepassword {
+   background-image: url("../img/banner-with-overlay.jpg");
+    /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover
+}
+
+.changepsw-logo {
+    transform: translate(50%,0%);
+    padding-bottom: 2%;
+}
+
+
+/*===============================
+sign-up
+===============================*/
+#sign-up {
+   background-image: url("../img/banner-with-overlay.jpg");
+    /* Full height */
+  height: 100%;
+    width: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.signup-logo {
+    transform: translate(50%,0%);
+    padding: 2%;
+}
+
+#signup_succes{
+    margin:none;
+    padding:none;
+    color:green;
+    padding: 0%;
+    margin: 0%;
+}
+#exampleInputFirstName{
+    border: 1px solid #6255a5;
+    width:100%;
+    height:100%;
+    border-radius: 3px;
+    border-color:  #6255a5; 
+}
+
+#exampleInputLasttName{
+    border: 1px solid #6255a5;
+    width:100%;
+    height:100%;
+    border-radius: 3px;
+    border-color:  #6255a5;    
+}
+/*======================
+user profile
+*=========================*/
+
+#navbarResponsive{
+    font-family:"Open Sans",sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px
+    color:#333333;
+}
+
+/* LOGOUT BUTTON */
+#user-profile-logout{
+    
+    background:#6255a5;
+    width:89px;
+    height:30PX;
+    border-radius: 3px;
+    font-style:"Open Sans";
+    line-height: 30px;
+    padding: 0;
+    
+}
+
+
+
+#User-Profile-Heading {
+  position: relative;
+  text-align: center;
+  color: white;
+
+  
+}
+#centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 200%;
+}
+
+#heading{
+    font-family: "Open Sans",sans-serif;
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin-top: 2%;
+    
+}
+
+.user-profile-lable{
+    
+    font-family: "Open Sans",sans-serif;
+    font-size: 16px;
+    font-weight:400;
+    line-height: 20px;
+    color: #333333;
+}
+/* form content */
+.user-profile {
+   /* background-color: pink;*/
+    padding-bottom:40px;
+    padding-top: 60px;
+    padding-left: 10%;
+    padding-right: 10%;
+    
+}
+div.profile img{
+    position: absolute;
+    top:50%;
+    left:45%;  
+}
+#user-profile-submit{
+     background:#6255a5;
+    width:150px;
+    height:40px;
+    text-decoration-color: #fff;
+    border-radius: 3px;
+    font-style:"Open Sans";
+    line-height: 22px;
+    font-size: 22px;
+}
+.card-footer {
+    justify-content: space-between;
+    border: none;
+    background: none;
+    border-bottom: 0.5px solid #9E9E9E
+}
+#copyright {
+    transform: translate(50%,15%)
+}
+
+.footer-right>i {
+    transform: translate(-500%,-5%);
+    margin-left: 10px;
+}
+.circle-icon {
+    background:#6255a5;
+    padding:10px;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    color: #fff;
+}
+
+
+/* =========================
+email verification 
+===============================*/
+#email-verification{
+    background: black;
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+#email-verification-inner{
+    background: table-cell;
+    vertical-align: middle;
+    background:white;
+    width: 35%;
+    transform: translate(90%,70%);
+    padding: 30px;
+}
+
+#email-logo img{
+    width: 100%;
+    height: 100%;
+}
+
+#email-heading h1 {
+    font-family: "Open Sans";
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 30px;
+    color: #6255a5;
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+#email-heading h4{
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 22px;
+    color: #333333;
+    padding-bottom:5px;
+    
+}
+#email-text p {
+    font-family: "Open sans",sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333333;
+    margin: 5px;
+}
+#email-button{
+    background:#6255a5;
+    width:100%;
+    height:100%;
+    border-radius: 3px;
+    font-style:"Open Sans";
+    line-height: 30px;
+    padding: 0;
+    margin-top:30px;
+    
+    
+}
+
+/*========================
+home 
+=========================*/
+ .logo-wrapper
+{
+    transform: translate(40%,0%)
+}
+#home-login{
+     background:#6255a5;
+    width:150px;
+    height:40px;
+    text-decoration-color: #fff !important ;
+    border-radius: 3px;
+    font-style:"Open Sans";
+    line-height: 22px;
+    font-size: 22px;
+}
+    #home-login a:hover{
+        text-decoration:none;
+    }
+    .site-header {
+        padding: 18px 0;
+        background-color: transparent;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        transition: all .3s;
+        -webkit-transition: all .3s;
+    }
+.sticky-header .site-header {
+    box-shadow: 0 0 3px rgba(0,0,0,.11);
+    transition: all .3s;
+    -o-transition: all .3s;
+    -ms-transition: all .3s;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    padding: 5px 0;
+    box-shadow: 0 0 3px rgba(0,0,0,.11);
+  background: black;
+}
+.site-header .header-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    padding: 0 40px;
+    transition: .3s;
+    -o-transition: .3s;
+    -ms-transition: .3s;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+}
+.site-header .header-wrapper .logo-wrapper a{
+  color:#fff;
+  text-decoration:none;
+  font-size:50px;
+}
+.site-header .header-wrapper .logo-wrapper {
+    position: relative;
+    z-index: 9;
+}
+.site-header .header-wrapper .navigation-wrapper .main-nav .menu-navigation {
+    margin: 0;
+    display: flex;
+    align-items: center;
+  list-style:none;
+}
+.site-header .header-wrapper .navigation-wrapper .main-nav .menu-navigation>li {
+    margin: 0 20px;
+}
+.site-header .header-wrapper .navigation-wrapper .main-nav .menu-navigation>li a {
+    font-size: 20px;
+    display: inline-block;
+    line-height: 1.25;
+    font-weight: 400;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 0 7px rgba(0,0,0,.6);
+  text-decoration:none;
+}
+
+section{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+/* first section heading */
+.first-section {
+    background-image: url("../images/user-profile-banner-with-overlay.jpg");
+    height: 60%;
+    width: 100%;
+    background-size:100% 100%;
+    display: table;
+    background-repeat:no-repeat;
+}
+#home-first-heading{
+    background: table-cell;
+    vertical-align: left;
+    width: 35%;
+    transform: translate(-65%,60%)
+    
+}
+
+.first-section h2 {
+    color: #ffff;
+    
+    font-family: "Open Sans",sans-serif;
+    font-size:auto;
+    line-height: 40px;
+}
+.first-section p {
+    color: #ffff;
+    
+    font-family: "Open Sans",sans-serif;
+    font-size:auto;
+    line-height: 40px;
+}
+#home-learn-more{
+  display: inline-block;
+  width: 200px;
+  padding: 8px;
+  color: #fff;
+  border: 1px solid #fff;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+}
+/* second section about */
+.second-section{
+    
+    padding: 3% 10%;
+}
+.second-section h1 {
+    font-family: "Open Sans",sans-serif;
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+}
+.second-section p{
+    font-family: "Open Sans",sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #333333;
+}
+
+/* third section */
+.third-section{
+   height: 60%;
+}
+.third-section h1{
+   font-family: "Open Sans",sans-serif;
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    transform: translate(300%,50%);
+}
+
+#home-left{
+    padding-top:3%;
+    padding-left:30% ;
+    
+}
+#home-left img{
+    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.08);
+    padding: 10%; 
+    
+}
+#home-left h3{
+    font-family: "Open Sans",sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #6255a5;
+    width:110%;
+   transform: translate(-35%,0%);
+    margin:2%;
+}
+#home-left p{
+    font-family: "Open Sans",sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #333333;
+    
+    width: 70%;
+    transform: translate(-20%,0%);
+}
+#home-download{
+    background:#6255a5;
+    width:50%;
+    height: 30%;
+    text-decoration-color: #fff;
+    border-radius: 3px;
+    font-style:"Open Sans";
+    line-height: 2;
+    font-size: 18px;
+    
+}
+#home-right{
+   
+    padding-top: 3%;
+    padding-left: 5%;
+}
+    #home-right img {
+        box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.08);
+        padding: 4%;
+        transform: translate(150%,0);
+        
+    }
+#home-right h3{
+    font-family: "Open Sans",sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #6255a5;
+    transform: translate(-16%,0);
+    margin: 0.5%;
+}
+#home-right p {
+    font-family: "Open Sans",sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #333333;
+   
+    width: 70%;
+    transform: translate(0%,0%);
+}
+#home-sell-book{
+   background:#6255a5;
+    width:25%;
+    height:30%;
+    text-decoration-color: #fff;
+    border-radius: 3px;
+    font-style:"Open Sans";
+    line-height: 2;
+    font-size: 18px;
+    transform: translate(95%,0%);
+}
+
+/*==================================
+
+
+============================================*/
+.fourth-customers-reviwe{
+    padding: 2%
+}
+
+.customer-reviwe{
+    
+     box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.08);
+     padding: 5%
+    
+}
+
+.author .author-name-des {
+    
+    width: 50%;
+    margin-top:5%;
+    text-align: left;
+}
+
+.author .author-name-des p {
+    margin: 0;
+}
+
+
+/*========================================
+search page 
+===========================================*/
+
+/* LOGin BUTTON */
+#search-page-login{
+    
+    background:#6255a5;
+    width:89px;
+    height:30PX;
+    border-radius: 3px;
+    font-style:"Open Sans";
+    line-height: 30px;
+    padding: 0;
+    
+}
+
+#search-title{
+    font-family:"Open Sans",sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #6255a5;
+    margin-top:5%;
+}
+
+#search-filter{
+    padding: 2%;
+}
+
+
+#search-title{
+}
+#total-book{
+    font-family:"Open Sans",sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #6255a5;
+    margin-top:5%;
+    transform: translate(10%,0%);
+}
+    
+
+/* book */
+.container-book img{
+    border: 1px solid #d1d1d1;
+    width: 100%;
+}
+.container-book h3{
+    font-family: "Open Sans",sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 26px;
+    color: #6255a5;
+    margin-bottom: 5%;
+}
+
+.container-book .sn-book span{
+    color: #333333;
+    font-family: "Open Sans",sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    
+}
+ul.sn-book li{
+    margin-right: 20px;
+    font-size: 18px;   
+}
+ul.sn-book li span {
+    color: #333333;
+    font-family: "Open Sans",sans-serif;
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 400;
+    
+}
+ul.sn-book li i {
+    padding-right:2%;
+}
+ul.sn-book li{
+    display: flex;
+    margin-bottom: 15px;
+}
+.card{
+    
+}
+.card-body{
+    width: 100%;
+    border: 1px solid #d1d1d1;
+    height: 300px;
+    margin-bottom:5%;
+}
+/* rate css */
+.rate-book {
+    float: left;
+    transform: translate(0%,-30%);
+}
+.rate-book:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    
+}
+.rate-book:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+    
+}
+
+.rate-book:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate-book > input:checked ~ label {
+    color: #ffc107;    
+}
+.rate-book:not(:checked) > label:hover,
+.rate-book:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate-book > input:checked + label:hover,
+.rate-book > input:checked + label:hover ~ label,
+.rate-book > input:checked ~ label:hover,
+.rate-book > input:checked ~ label:hover ~ label,
+.rate-book > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+.fa-star-o {
+    font-size:18px;
+}
+.sn-03{
+    height: 80px;
+}
+
+
+/*==================================
+
+dashboard
+======================================*/
+
+.dashboard-title-wrapper{
+    padding-bottom:5%;
+}
+
+#add-note{
+    
+    background:#6255a5;
+    width:25%;
+    height:100%;
+    border-radius: 3px;
+    color: #fff;
+    font-style:"Open Sans";
+    line-height: 30px;
+    padding: 0;
+    font-size: 100%;
+    font-weight: 700;
+    transform: translate(10%,0%)
+    
+}
+.dashboard-title-section {
+    margin:1%;
+}
+.dashboard-title-section h1{
+    font-family: "Open Sans",sans-serif;
+    font-size: 200%;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+}
+
+
+.dashboard-block{
+   
+}
+.left{
+     border:2px solid #d1d1d1;
+    
+}
+
+.earning-detail{
+    border-right:2px solid #d1d1d1;
+    padding:10%;
+    color: #6255a6;
+}
+
+.number-detail{
+    padding: 5%;
+    
+}
+
+.number-sold p,.money-earned p,.download-detail p,.rejected-detail p,.buyer-detail p{
+    padding: 0;
+    margin: 0;
+    color:#6255a6;
+    font-family: "Open Sans",sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 34px;
+    
+}
+.number-sold h4,.money-earned h4,.download-detail h4,.rejected-detail h4,.buyer-detail h4{
+    font-family:"Open Sans",sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #333333;
+    margin: 0;
+    
+}
+
+.download-detail,.rejected-detail,.buyer-detail{
+     border:2px solid #d1d1d1; 
+     padding: 13%;
+}
+
+
+#book-search {
+    background: none;
+    transform: translate(55%,0%);
+}
+
+#search-img {
+    position: absolute;
+    top: 10px;
+    left: 56%;
+}
+
+
+
+
+
+#search-tab-button {
+    background: #6255a5;
+    width: 50%;
+    height: 100%;
+    border-radius: 3px;
+    color: #fff;
+    font-style: "Open Sans";
+    line-height: 30px;
+    padding: 1%;
+    font-size: 100%;
+    font-weight: 700;
+    transform: translate(100%,0%);
+}
+
+#progress-heading{
+    font-family: "Open Sans",sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #6255a5;
+}
+
+
+/*
+.pagination a {
+    border: none !important;
+    padding: 15px 20px !important;
+}
+
+.page-item.active .page-link {
+    background-color: #6255a5 !important;
+    border-radius: 50% !important;
+}
+
+.pagination a:hover:(.active) {
+    background-color: #6255a5 !important;
+    border-radius: 50% !important;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd !important;
+    border-radius: 50% !important;
+}*/
+.pagination a {
+    border: none;
+    padding: 15px 20px;
+}
+.page-item.active .page-link {
+    background-color: #6255a5 !important;
+    border-radius: 50% !important;
+}
+    .pagination a.active {
+        background-color: #6255a5;
+        color: white;
+        border-radius: 50%;
+    }
+
+    .pagination a:hover:not(.active) {
+        background-color: #ddd;
+        border-radius: 50%;
+    }
+
+
+/*=================================
+add note
+=======================================*/
+#add-note-save{
+     background:#6255a5;
+    width:150px;
+    height:40px;
+    text-decoration-color: #fff;
+    border-radius: 3px;
+    font-style:"Open Sans";
+    line-height: 22px;
+    font-size: 22px;
+}
+#add-note-publish{
+    margin: 10%;
+     background:#6255a5;
+    width:150px;
+    height:40px;
+    text-decoration-color: #fff;
+    border-radius: 3px;
+    font-style:"Open Sans";
+    line-height: 22px;
+    font-size: 22px;
+}
+
+/*==============================
+my download
+===========================*/
+.dropbtn {
+  
+  padding:50%;
+  font-size: 16px;
+  border: none;
+  background-color: white;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color:white;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index:1;
+  font-size: 15px;
+transform: translate(-100%,-10%);
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content button{
+    background-color: white;
+    color: black;
+    border: none;
+    width: 100%;
+    height: 50px;
+    text-align: left;
+    border-radius: 0px;
+}
+.dropdown-content button:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: ;}
+
+
+/* rate css */
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+    
+}
+
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc107;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+#review-submit-button{
+    background:#6255a5;
+    width:150px;
+    height:40px;
+    text-decoration-color: #fff;
+    border-radius: 3px;
+    font-style:"Open Sans";
+    line-height: 22px;
+    font-size: 22px;
+    transform: translate(-200%,0%);
+
+}
+.modal-header{
+    border: none;
+}
+
+.modal-footer{
+    border: none;
+}
+
+#exampleModalLongTitle{
+    font-family: "Open Sans",sans-serif;
+    font-size:24px;
+    font-weight: 600;
+    line-height: 28px;
+    color:#6255a5;
+    background: pink;
+    float: left;
+    height: 40px;
+    padding: 0 20px;
+}
+
+/*=====================
+sold notes
+========================*/
+#sold-heading{
+    font-family: "Open Sans",sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #6255a5;
+}
+
+/*=========================
+rejected notes
+=========================*/
+#rejected-heading{
+   font-family: "Open Sans",sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #6255a5; 
+}
+
+/*=========================
+Buyer Request
+=========================*/
+#buyer-req{
+   font-family: "Open Sans",sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #6255a5; 
+}
+
+/*=====================
+FAQ
+====================*/
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+/* Horizontal line */
+
+.collapsible-link::before {
+  content: '';
+  width: 14px;
+  height: 2px;
+  background: #333;
+  position: absolute;
+  top: calc(50% - 1px);
+  right: 1rem;
+  display: block;
+  transition: all 0.3s;
+}
+
+/* Vertical line */
+.collapsible-link::after {
+  content:'';
+  width: 2px;
+  height: 14px;
+  background: #333;
+  position: absolute;
+  top: calc(50% - 7px);
+  right: calc(1rem + 6px);
+  display: block;
+  transition: all 0.3s;
+}
+
+.collapsible-link[aria-expanded='true']::after {
+  transform: rotate(90deg) translateX(-1px);
+}
+
+.collapsible-link[aria-expanded='true']::before {
+  transform: rotate(180deg);
+}
+.card{
+    margin-bottom:20px;
+    border: none;
+    box-shadow: none;
+}
+.card-header h6{
+    font-family: "Open Sans",sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 22px;
+    color: #333333;
+}
+#collapseOne{
+    
+}
+.card-body p{
+   font-family: "Open Sans",sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #333333;
+}
+.card-header:hover{
+    
+}
+
+/* =================
+
+=============================*/
+#notes-downloaded{
+    background-color:#6255a5;
+    width:50%;
+    height: 15%;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    font-style:"Open Sans";
+    line-height: 22px;
+}
+.note-detailse-book h4{
+    color : #6255a5;
+    font-family: "Open Sans",sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    
+}
+.note-detailse-book h3{
+    color : #6255a5;
+    font-family: "Open Sans",sans-serif;
+    font-weight: 600;
+    line-height: 30px;
+}
+.note-detailse-book h5{
+    font-family: "Open Sans",sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 26px;
+    color:#333333;
+}
+
+.note-detailse-book p{
+    font-family: "Open Sans",sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #333333;
+}
+
+ul.nd03 li span {
+    font-family: "Open Sans",sans-serif;
+    font-size: 15px;
+    line-height: 36px;
+    font-weight: 400;
+}
+
+ul.nd03 {
+    float: right;
+    width: 100%;
+}
+ul.nd03 li {
+    float: right;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nd04{
+    float: right;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+.star0{
+    color: #f4c613;
+    font-size: 18px;
+}
+
+#note-review-title{
+    font-family: "Open Sans",sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #6255a5;
+    margin-bottom: 20px;
+}
+
+
+.notes-review img {
+    width: 50px;
+    height: 50px;
+   flex: none;
+    position: relative;
+    bottom: -30px;
+    left: 30px;
+    
+}
+
+.container-nd {
+   width:100%;
+    height: 90%;
+    border: 1px solid #d1d1d1;
+    border-radius: 3px;
+    padding: 20px;
+    
+}
+.container-nd h5 {
+    font-family: "Open Sans";
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 36px;
+    color: #333333;
+    margin-bottom: 0;
+}
+.container-nd p {
+     font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #333333;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+/*
+   general styles
+*/
+.center-block-horiz {
+   margin-left: auto !important;
+   margin-right: auto !important;
+ }
+.set-margin-cicis-menu-to-go {
+  margin: 20px;
+}
+.set-padding-cicis-menu-to-go {
+  padding: 20px;
+}
+.set-border-cicis-menu-to-go {
+   border: 1px inset #d1d1d1;
+    height: 90%;
+}
+set-box-shadow-cicis-menu-to-go {
+  -webkit-box-shadow: 4px 4px 14px #4f4f4f;
+     -moz-box-shadow: 4px 4px 14px #4f4f4f;
+          box-shadow: 4px 4px 14px #4f4f4f;
+}
+
+/*
+** Style the iframe
+** =========================
+*/
+/*
+    css commmon to all iframes
+*/
+.responsive-wrapper {
+  position: relative;
+  height: 0;    /* gets height from padding-bottom */
+  overflow: hidden;
+  /* put following styles (necessary for overflow and 
+     scrolling handling) inline in .embed-responsive-element-wrapper around iframe because not stable in CSS
+    -webkit-overflow-scrolling: touch; 
+                      overflow: auto; */
+    height: 100%;
+}
+.responsive-wrapper img,
+.responsive-wrapper object,
+.responsive-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+   
+  border-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/*
+    css particular to this iframe
+*/
+
+#Iframe-Cicis-Menu-To-Go {
+  max-width: 666.67px;
+  max-height: 600px;
+  overflow: hidden;
+}
+/*
+   padding-bottom = h/w as %
+*/
+.responsive-wrapper-padding-bottom-90pct {
+  padding-bottom: 90%;
+}
+
+
+
+
+
+
+
+
+
+/*  table*/
+.table th a {
+    color:#333333;
+}
+.table th a:hover{
+    text-decoration:none;
+}
+
+
+/* Common*/
+.common {
+    min-height:80%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,479 @@
+﻿@model IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>
+
+@{
+    Layout = null;
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- title -->
+    <title>Dashboard</title>
+
+
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap/bootstrap.css">
+
+    <!-- FONT CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans
+             :wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+
+</head>
+
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-expand-md navbar-light ">
+
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="~/Content/images/logo.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/User/SearchNotes">Search Notes </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sell Your Notes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/User/BuyerRequest">Buyar Requests </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/User/FAQ">FAQ </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/User/ContectUs">Contact Us </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><img src="~/Content/images/user-img.png"> </a>
+                    </li>
+                </ul>
+                <button type="button" class="btn btn-primary" id="user-profile-logout"><a href="/User/Index">LOGOUT</a></button>
+            </div>
+        </div>
+
+    </nav>
+
+
+    <!-- dashboard Heading -->
+
+    <div class="dashboard-title-wrapper">
+        <div class="container">
+            <div class="dashboard-title-section">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1>Dashboard</h1>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button type="button" class="btn btn-primary" id="add-note"><a href="/User/AddNotes">ADD NOTE</a></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="left">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="dashboard-block">
+                                    <div class="earning-detail text-center">
+                                        <div class="earning-img">
+                                            <img src="~/Content/images/earning-icon.svg">
+                                        </div>
+                                        <h4>
+                                            My Earning
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="dashboard-block">
+                                    <div class="number-detail  text-center">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="number-sold">
+                                                    <p>100</p>
+                                                    <h4>Number of Notes Sold</h4>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="money-earned">
+                                                    <p>&#36;10,00,000</p>
+                                                    <h4>Money Earned</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="dashboard-block">
+                                <div class="download-detail text-center">
+                                    <div class="number-downloads">
+                                        <p>38</p>
+                                        <h4>My Downloads</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="dashboard-block">
+                                <div class="rejected-detail text-center">
+                                    <div class="number-rejected">
+                                        <p>12</p>
+                                        <h4>My Rejected Notes</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="dashboard-block">
+                                <div class="buyer-detail text-center">
+                                    <div class="number-buyer">
+                                        <p>102</p>
+                                        <h4>Buyer Request</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- in Progress-->
+    <div class="container">
+        <!-- search feild-->
+        <div class="in-progress">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 id="progress-heading">In Progress Notes</h4>
+                </div>
+                <div class="col-md-6">
+                    @ViewBag.error
+                    @using (Html.BeginForm("Published", "User", FormMethod.Post))
+                    {
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <img src="~/Content/images/search-icon.png">
+                                        <input type="search" class="form-control" id="book-search" placeholder="Search" value="@ViewData["GetProgress"]" name="searchprogress">
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <button type="submit" class="btn btn-primary" id="search-tab-button">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="in-progress-table">
+            <table class="table border">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            ADDED DATE
+
+                        </th>
+                        <th scope="col">
+                            @Html.ActionLink("TITLE", "Dashboard", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "TITLE" })
+
+                        </th>
+                        <th scope="col">
+
+                            @Html.ActionLink("CATEGORY", "Dashboard", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "CATEGORY" })
+                        </th>
+                        <th scope="col">
+                            @Html.ActionLink("STATUS", "Dashboard", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "STATUS" })
+
+                        </th>
+                        <th scope="col">ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (NoteMarketPlace.Models.NoteDetailsViewModel item in (IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>)Model)
+                    {
+                        <tr>
+                            <th scope="row">09-10-2020</th>
+                            <td>@item.note.Title</td>
+                            <td>@item.notecategory.Name</td>
+                            <td>@item.referenceData.Value</td>
+                            @if (@item.note.Status == 7)
+                            {
+                                <td>
+                                    <div>
+                                        <img src="~/Content/images/edit.png">
+                                        <img src="~/Content/images/delete.png">
+                                    </div>
+                                </td>
+                            }
+                            else
+                            {
+
+                                <td>
+                                    <div>
+                                        <img src="~/Content/images/eye.png">
+
+                                    </div>
+                                </td>
+
+
+                            }
+
+                        </tr>
+
+                    }
+                </tbody>
+
+
+            </table>
+        </div>
+
+        <!-- Pagination-->
+        <div class="in-progress-nav">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link active" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- in published-->
+    <div class="container">
+        <div class="in-progress">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 id="progress-heading">Published Notes</h4>
+                </div>
+                <div class="col-md-6">
+
+                    <div class="row">
+                        <!--
+                        using (Html.BeginForm("Dashboard", "User", FormMethod.Post))
+                        {
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <img src="~/Content/images/search-icon.png">
+                                            <input type="search" class="form-control" id="book-search" placeholder="Search" value="@ViewData["GetPublished"]" name="searchpublished">
+                                        </div>
+                                        <div class="col-md-6 ">
+                                            <button type="submit" class="btn btn-primary" id="search-tab-button">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6"></div>
+
+                            </div>
+                        }-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="in-progress-table">
+            <table class="table border">
+                <thead>
+                    <tr>
+                        <th scope="col">ADDED DATE</th>
+                        <th scope="col">
+                            @Html.ActionLink("TITLE", "Dashboard", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "TITLE" })
+                        </th>
+                        <th scope="col">
+
+                            @Html.ActionLink("CATEGORY", "Dashboard", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "CATEGORY" })
+                        </th>
+                        <th scope="col">
+                            @Html.ActionLink("SELL TYPE", "Dashboard", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "SELL TYPE" })
+
+                        </th>
+                        <th scope="col">
+                            @Html.ActionLink("PRICE", "Dashboard", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "PRICE" })
+
+                        </th>
+                        <th scope="col">ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (NoteMarketPlace.Models.NoteDetailsViewModel item in (IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>)Model)
+                    {
+                        <tr>
+                            <th scope="row">09-10-2020</th>
+                            <td> @item.note.Title</td>
+                            <td> @item.note.Course</td>
+                            @if (item.note.SellFor == 4)
+                            {
+                                <td>Paid</td>
+                            }
+                            else
+                            {
+                                if (item.note.SellFor == 5)
+                                {
+                                    <td>Free</td>
+                                }
+
+                            }
+
+                            <th>&#36;@item.note.SellingPrice</th>
+                            <td>
+                                <div>
+                                    <img src="~/Content/images/eye.png">
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <!--
+                <tbody>
+                    <tr>
+                        <th scope="row">09-10-2020</th>
+                        <td>Data Science</td>
+                        <td>Science</td>
+                        <td>Paid</td>
+                        <th>&#36;575</th>
+                        <td>
+                            <div>
+                                <img src="img/Dashboard/eye.png">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">10-10-2020</th>
+                        <td>Account</td>
+                        <td>Commerce</td>
+                        <td>Free</td>
+                        <th>&#36;0/th>
+                        <td>
+                            <div>
+                                <img src="img/Dashboard/eye.png">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">11-10-2020</th>
+                        <td>Social Studies</td>
+                        <td>Social</td>
+                        <td>Free</td>
+                        <th>&#36;0</th>
+                        <td>
+                            <div>
+                                <img src="img/Dashboard/eye.png">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">11-10-2020</th>
+                        <td>Social Studies</td>
+                        <td>Social</td>
+                        <td>Paid</td>
+                        <th>&#36;3542</th>
+                        <td>
+                            <div>
+                                <img src="img/Dashboard/eye.png">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">11-10-2020</th>
+                        <td>Social Studies</td>
+                        <td>Social</td>
+                        <td>Free</td>
+                        <th>&#36;0</th>
+                        <td>
+                            <div>
+                                <img src="img/Dashboard/eye.png">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                -->
+            </table>
+        </div>
+        <div class="in-progress-nav">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link active" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <hr>
+    <!-- footer -->
+    <div class="card-footer row m-0">
+        <p id="copyright"> copyright &copy; TatvaSoft All rights reserverd</p>
+        <div>
+            <p>
+                <label class="footer-right">
+                    <i class="fa fa-facebook circle-icon"></i>
+                    <i class="fa fa-twitter circle-icon"></i>
+                    <i class="fa fa-linkedin circle-icon"></i>
+
+                </label>
+            </p>
+        </div>
+    </div>
+
+
+
+
+    <!-- JQuery -->
+    <script src="~/Script/js/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="~/Scripts/js/bootstrap/bootstrap.js"></script>
+</body>
+
+</html>
