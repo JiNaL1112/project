@@ -21,7 +21,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
-
+    <link rel="stylesheet" href="../admin/css/adminstyle.css">
 </head>
 
 <body>
@@ -42,7 +42,7 @@
                         <a class="nav-link" href="#">Sell Your Notes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Nuyar Requests </a>
+                        <a class="nav-link" href="#">Buyar Requests </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">FAQ </a>
@@ -50,11 +50,29 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact Us </a>
                     </li>
+                    
                     <li class="nav-item">
-                        <a class="nav-link" href="#">img </a>
+
+                        <div>
+                            <div class="adropdown">
+                                <button class="dropbtn">
+                                    <img id="admin-dashbord-user" src="img/reviewer-1.png">
+                                </button>
+
+                                <div class="adropdown-content">
+                                    <a href="#">My Profile</a>
+                                    <a href="#">My Downloads</a>
+                                    <a href="#">My Sold Notes</a>
+                                    <a href="#">My Rejected Notes</a>
+                                    <a href="#">Change Password</a>
+                                    <a href="#">Logout</a>
+                                </div>
+                            </div>
+                        </div>
                     </li>
+                    <li><button type="button" class="btn btn-primary" id="admin-dashboard-logout">Logout</button></li>
                 </ul>
-                <button type="button" class="btn btn-primary" id="user-profile-logout">Logout</button>
+                
             </div>
         </div>
 
