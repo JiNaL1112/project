@@ -128,6 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -193,6 +194,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\admincss\adminstyle.css" />
+    <Content Include="Content\admincss\bootstrap\bootstrap.css" />
+    <Content Include="Content\admincss\style.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -289,6 +293,7 @@
     <Content Include="Models\NoteMarketPlace.edmx.diagram">
       <DependentUpon>NoteMarketPlace.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\admincss\debug.log" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -334,12 +339,40 @@
     <Content Include="Views\Shared\_InPublishedDashboard.cshtml" />
     <Content Include="Views\Shared\_NonRegisteredUser.cshtml" />
     <Content Include="Views\Shared\_RegisteredUser.cshtml" />
+    <Content Include="Views\User\UserProfile.cshtml" />
+    <Content Include="Views\User\MyDonloads.cshtml" />
+    <Content Include="Views\User\soldNotes.cshtml" />
+    <Content Include="Views\User\MySoldNotes.cshtml" />
+    <Content Include="Views\User\ChangePassword.cshtml" />
+    <Content Include="Views\User\myrejectedNotes.cshtml" />
+    <Content Include="Views\Shared\_InfoNoteDetails.cshtml" />
+    <Content Include="Views\Shared\_infoNoteReview.cshtml" />
+    <Content Include="Views\Admin\AdminDashboard.cshtml" />
+    <Content Include="Views\Shared\_RegisteredAdmin.cshtml" />
+    <Content Include="Views\Admin\NotesUnderReview.cshtml" />
+    <Content Include="Views\Admin\PublishedNote.cshtml" />
+    <Content Include="Views\Admin\DonwloadedNotes.cshtml" />
+    <Content Include="Views\Admin\RejectedNotes.cshtml" />
+    <Content Include="Views\Admin\member.cshtml" />
+    <Content Include="Views\Admin\ManageSystemConfiguration.cshtml" />
+    <Content Include="Views\Admin\ManageAddministrator.cshtml" />
+    <Content Include="Views\Admin\AddAdministrator.cshtml" />
+    <Content Include="Views\Admin\ManageCategory.cshtml" />
+    <Content Include="Views\Admin\AddCategory.cshtml" />
+    <Content Include="Views\Admin\ManageTypes.cshtml" />
+    <Content Include="Views\Admin\AddTypes.cshtml" />
+    <Content Include="Views\Admin\ManageCountries.cshtml" />
+    <Content Include="Views\Admin\AddCountry.cshtml" />
+    <Content Include="Views\Admin\SpamReports.cshtml" />
+    <Content Include="Views\Admin\UpdateProfile.cshtml" />
+    <Content Include="Views\Admin\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Image\" />
     <Folder Include="PDFNotes\" />
     <Folder Include="PreviewOfNotes\" />
+    <Folder Include="UserProfile\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

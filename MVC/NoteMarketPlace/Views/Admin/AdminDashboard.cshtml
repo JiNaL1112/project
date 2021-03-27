@@ -1,0 +1,305 @@
+﻿@model IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>
+@{
+    int i = 0;
+
+    Layout = "~/Views/Shared/_RegisteredAdmin.cshtml";
+
+}
+@using NoteMarketPlace.Models;
+
+
+<div class="dashboard-title-wrapper">
+    <div class="container">
+        <div class="dashboard-title-section">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Dashboard</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="adashboard-block">
+                    <div class="anumber-detail  text-center">
+                        <p>20</p>
+                        <h4>Number of Notes in Review for Publish</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="adashboard-block">
+                    <div class="anumber-detail  text-center">
+                        <p>103</p>
+                        <h4>Number of New Notes Donloaded<br>(Last 7 days)</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="adashboard-block">
+                    <div class="anumber-detail  text-center">
+                        <p>223</p>
+                        <h4>Number of New Registration<br>(Last 7 days)</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="in-progress">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 id="progress-heading">Published Notes</h4>
+            </div>
+            <div class="col-md-6">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            @using (Html.BeginForm("AdminDashboard", "Admin", FormMethod.Post))
+                            {
+                                <div class="row">
+                                    <div class="col-md-6" id="search-box">
+                                        <img src="~/Content/images/search-icon.png" id="search-img">
+                                        <input type="search" class="form-control" id="book-search" placeholder="    Search" value="@ViewData["GetAdminDashboardData"]" name="searchstring">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="submit" class="btn btn-primary" id="search-tab-button">Search</button>
+                                    </div>
+                                </div>
+                            }
+                            <div class="col-md-4">
+                                @using (Html.BeginForm("AdminDashboard", "Admin", FormMethod.Get, new { @Id = "submitForm" }))
+                                {
+                                    <div class="form-group">
+                                        <div class="asearch-tab">
+                                            @Html.DropDownList("month", new SelectList(ViewBag.monthList), "Select Month",
+                                           new
+                                                {
+
+                                               @class = "form-control",
+                                               @name = "month",
+                                               @value = "@Request.QueryString['month']",
+                                               @id = "month",
+                                               @onchange = "submitForm()"
+                                           })
+
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="admin-dashboard">
+        <table class="table" id="admin-table">
+
+
+            <thead>
+                <tr>
+                    <th scope="col">SR NO.</th>
+                    <th scope="col">
+                        @Html.ActionLink("TITTLE", "AdminDashboard", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "TITTLE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("CATEGORY", "AdminDashboard", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "CATEGORY", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("ATTACHMENT SIZE", "AdminDashboard", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "BUYER", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("SELL TYPE", "AdminDashboard", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "SELL TYPE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("PRICE", "AdminDashboard", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "PRICE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("PUBLISHER", "AdminDashboard", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "PUBLISHER", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("PUBLISHED DATE", "AdminDashboard", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "PUBLISHED DATE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th colspan="2">
+                        @Html.ActionLink("NUMBER OF DOWNLOADS", "AdminDashboard", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "NUMBER OF DOWNLOADS", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+
+
+                </tr>
+            </thead>
+
+
+            <tbody>
+                @foreach (NoteMarketPlace.Models.NoteDetailsViewModel item in (IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>)Model)
+                {
+                    <tr>
+                        <th scope="row">@(i = i+ 1)</th>
+                        <td><a href="/User/NoteDetails?noteTitle=@item.note.Title">@item.note.Title</a></td>
+                        <td>@item.notecategory.Name</td>
+                        <td>@item.note.NoteSize</td>
+                        <td>@item.referenceData.Value</td>
+                        <td>&#36;@item.note.SellingPrice</td>
+                        <td>@item.user.FirstName</td>
+                        <td>@item.note.PublishedDate</td>
+                        @{
+                            NoteMarketEntities db = new NoteMarketEntities();
+
+                            var numberOfDownload = db.Downloads.Where(m => m.IsAttachmentDownloaded == true).Where(m => m.NoteID == item.note.NoteID).Count();
+
+                            //var month = item.note.PublishedDate.ToString();
+
+                            //string name = DateTime.ParseExact(month, "dd/MM/yyyy HH:mm:ss", null).ToString("MMMM");
+                        }
+                        <td>
+                            @numberOfDownload
+                        @*@name
+                        @month*@
+                    </td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+
+                                <div class="dropdown-content">
+                                    @*<a href="/Admin/AdminDashboard?bookid=@item.note.NoteID&DownloadID=@item.download.ID">Download Note</a>
+            <a href="/User/MyDonloads?bookid=@item.note.NoteID&DownloadID=@item.download.ID">Download Note</a>*@
+                                    <a href="/User/NoteDetails?noteTitle=@item.note.Title">View More Details</a>
+                                    
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" id="feedback-button">
+                                        Unpublish
+                                    </button>
+                                    <a href="/Admin/AdminDashboard?noteID=@item.note.NoteID">Dowmload Note</a>
+                                </div>
+                                <!-- Model-->
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        @using (Html.BeginForm("AdminDashboard", "Admin", FormMethod.Post, new { }))
+                                        {
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">@item.note.Title - @item.notecategory.Name</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="container">
+
+
+                                                        <input type="hidden" name="UnpublishNoteID" value="@item.note.NoteID" />
+                                                        <div class="row">
+                                                            <div class="col-md-12 col-sm-12">
+                                                                <div class="profile">
+                                                                    <label class="user-profile-lable">Remark*</label>
+                                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Write remarks" name="remarks"></textarea>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary" id="reject" name="submit">
+                                                        <a onclick="return confirm('Are you sure you want to Unpublish this note?')">Unpublis</a>
+                                                    </button>
+
+                                                    <button type="button" class="close btn btn-primary" data-dismiss="modal" aria-label="Close" id="inreview">
+                                                        Cancel
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+
+
+            </tbody>
+        </table>
+    </div>
+    <div class="in-progress-nav">
+        <nav aria-label="Page navigation example">
+            @{
+                Double totalPages = ViewBag.TotalPages;
+                <ul class="pagination justify-content-center">
+                    @if (ViewBag.PageNumber == 1)
+                    {
+                        <li class="page-item ">
+                            @Html.ActionLink("<", "AdminDashboard", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink("<", "AdminDashboard", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber - 1 }, new { @class = "page-link" })
+
+                        </li>
+                    }
+
+                    @for (int j = 1; j <= totalPages; j++)
+                    {
+
+                        if (j == ViewBag.PageNumber)
+                        {
+                            <li class="active page-item">
+                                @Html.ActionLink(j.ToString(), "AdminDashboard", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = j }, new { @class = "page-link" })
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(j.ToString(), "AdminDashboard", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = j }, new { @class = "page-link" })
+                            </li>
+                        }
+
+
+
+
+                    }
+                    @if (ViewBag.PageNumber == totalPages)
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(">", "AdminDashboard", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(">", "AdminDashboard", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber + 1 }, new { @class = "page-link" })
+
+                        </li>
+                    }
+
+                </ul>
+            }
+        </nav>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+        function submitForm() {
+            //document.getElementById('submitForm').submit();
+            $('form').submit();
+        }
+
+
+
+</script>

@@ -1,0 +1,155 @@
+﻿@model IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>
+@{
+    Layout = null;
+    int i = 0;
+
+    Layout = "~/Views/Shared/_RegisteredUser.cshtml";
+}
+
+
+<div class="container">
+    <div class="rejected-notes">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 id="rejected-heading">My Rejected Notes</h4>
+            </div>
+            <div class="col-md-6">
+                @using (Html.BeginForm("myrejectedNotes", "User", FormMethod.Post))
+                {
+                    <div class="row">
+                        <div class="col-md-6" id="search-box">
+                            <img src="~/Content/images/search-icon.png" id="search-img">
+                            <input type="search" class="form-control" id="book-search" placeholder="    Search" value="@ViewData["GetMySoldNote"]" name="searchstring">
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary" id="search-tab-button">Search</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <h4 id="buyer-req">
+                @{
+                    if (ViewBag.TotalRequest == 0)
+                    {
+                        <h4> id="buyer-req">No record found</h4>
+                    }
+                }
+
+            </h4>
+        </div>
+    </div>
+    <div class="my-sold-table">
+        <table class="table border">
+            
+
+            <thead>
+                <tr>
+                    <th scope="col">SR NO.</th>
+                    <th scope="col">
+                        @Html.ActionLink("NOTE TITTLE", "myrejectedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "NOTE TITTLE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("CATEGORY", "myrejectedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "CATEGORY", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">REMARK</th>
+                    <th scope="col">CLONE</th>
+                    <th scope="col"> </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (NoteMarketPlace.Models.NoteDetailsViewModel item in (IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>)Model)
+                {
+                    <tr>
+
+                        <th scope="row">@(i = i+ 1)</th>
+                        <td><a href="/User/NoteDetails?noteTitle=@item.note.Title">@item.note.Title</a></td>
+                        <td>@item.notecategory.Name</td>
+                        <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum labore</td>
+                        <td>Clone</td>
+                        <td>
+                            <div>
+                                <img src="~/Content/images/eye.png">
+                                <div class="dropdown">
+                                    <button class="dropbtn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                        </svg>
+                                    </button>
+
+                                    <div class="dropdown-content">
+                                        <a href="/User/myrejectedNotes?bookid=@item.note.NoteID">Download Note</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+
+
+        </table>
+    </div>
+    <div class="in-progress-nav">
+        <nav aria-label="Page navigation example">
+            @{
+                Double totalPages = ViewBag.TotalPages;
+                <ul class="pagination justify-content-center">
+                    @if (ViewBag.PageNumber == 1)
+                    {
+                        <li class="page-item ">
+                            @Html.ActionLink("<", "myrejectedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink("<", "myrejectedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber - 1 }, new { @class = "page-link" })
+
+                        </li>
+                    }
+
+                    @for (int j = 1; j <= totalPages; j++)
+                    {
+
+                        if (j == ViewBag.PageNumber)
+                        {
+                            <li class="active page-item">
+                                @Html.ActionLink(j.ToString(), "myrejectedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = j }, new { @class = "page-link" })
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(j.ToString(), "myrejectedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = j }, new { @class = "page-link" })
+                            </li>
+                        }
+
+
+
+
+                    }
+                    @if (ViewBag.PageNumber == totalPages)
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(">", "myrejectedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(">", "myrejectedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber + 1 }, new { @class = "page-link" })
+
+                        </li>
+                    }
+
+                </ul>
+            }
+        </nav>
+    </div>
+</div>
+

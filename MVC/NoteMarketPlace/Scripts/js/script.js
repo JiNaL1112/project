@@ -20,14 +20,51 @@ jQuery(window).resize(function () {
 });
 
 
-//validation of addnotes
 
-function myFunction() {
-    var inpObj = document.getElementById("TName")
-    if (!inpObj.checkValidity()) {
-        document.getElementById()
-    }
-}
+$(document).ready(function () {
+
+    //$('#University').change(function () {
+    //    $('#noteshowDD')[0].submit();
+    //}
+
+    $('#University').change(function () {
+        // alert("test");
+        //   alert($("#University").val());
+        $('noteshowDD').attr('action', '/User/SearchNotes/' + $(this).val());
+         this.form.submit();
+      //  var University = $("#University").val();
+      //  $('#noteshowDD').attr('action', $(this).attr('href')).submit();
+       
+
+       
+     /*   var ajaxData =  $("#University").val();
+        
+         
+        jQuery.ajax({
+            type: "POST",
+            URL: "@Url.Action("/User/SearchNotes/")",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: ajaxData ,
+            success: function (data , text) {
+                alert(data);
+            },
+            failure: function (errMsg) {
+                alert(errMsg);
+            }
+        });*/
+       
+    });
+
+});
+
+
+
+
+
+
+
+
 
 
 

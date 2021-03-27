@@ -1,0 +1,183 @@
+﻿@model NoteMarketPlace.Models.NoteDetailsViewModel
+@{
+
+    Layout = "~/Views/Shared/_RegisteredUser.cshtml";
+}
+
+<!-- Heading -->
+
+<div id="User-Profile-Heading">
+    <img src="~/Content/images/user-profile-banner-with-overlay.jpg" alt="profile" style="width:100%;">
+    <div id="centered">User Profile</div>
+</div>
+
+<!-- Basic Profile Details -->
+
+    @using (Html.BeginForm("UserProfile", "User", FormMethod.Post, new { enctype = "multipart/form-data", @class = "user-profile" }))
+    {
+        <div class="container-fluid">
+            <div class="row">
+                <h1 id="heading">Basic Profile Details</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="contact-right">
+
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label class="user-profile-lable">First Name*</label>
+                                    
+                                    @Html.TextBoxFor(Model => Model.user.FirstName , new  {  @class="form-control", @id="Fname", @placeholder="Enter your first name"})
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label class="user-profile-lable">Last Name*</label>
+                                   
+                                    @Html.TextBoxFor(Model => Model.user.LastName, new { @class = "form-control", @id = "Lname", @placeholder = "Enter your Last name" })
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label class="user-profile-lable">Email*</label>
+                                  
+                                    @Html.TextBoxFor(Model => Model.user.EmailID, new { @class = "form-control", @id = "email", @type = "email", @placeholder = "Enter your first name", @Value = @ViewData["Usermail"] ,@disabled = "disabled" })
+                                    
+                                
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label class="user-profile-lable">Birth Date</label>
+                                    
+                                    @Html.TextBoxFor(Model => Model.profileUser.DOB, new { @class = "form-control", @id = "dob", @type = "date", @placeholder = "Enter your birth date" })
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label class="user-profile-lable">Gender</label>
+                                <!--    <select class="form-control">
+                                        <option>Select your gender</option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                        <option>Other</option>
+                                    </select>  -->
+                                     @Html.DropDownListFor(Model => Model.profileUser.Gender , ViewBag.genderList as SelectList, "Select Gender" , new { @class ="form-control"} )
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label class="user-profile-lable">Phone Number</label>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            
+                                            @Html.DropDownListFor( Model => Model.profileUser.PhoneNumberCountryCode , new SelectList(ViewBag.countrycodeList),"Select your country code",new {@class = "form-control" })
+                                        </div>
+                                        <div class="col-md-9">
+                                           
+                                            @Html.TextBoxFor(Model => Model.profileUser.PhoneNumber,  "Enter Number", new { @class = "form-control" , @placeholder = "Enter your phone number" , @id = "Pnumber" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="profile">
+                                    <label class="user-profile-lable">Profile Picture</label>
+                                    <input type="file" class="form-control" id="UserProfilePic" name="UserProfilePic" accept="image/*" />
+                                    
+                                    <img src="~/Content/images/upload-file.png">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h1 id="heading">Address Details</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="contact-right">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="user-profile-lable">Address line 1*</label>
+                                        @Html.TextBoxFor(Model => Model.profileUser.AddressLine1, new { @class = "form-control", @id = "ad1", @type = "text", @placeholder = "Enter your address" })
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="user-profile-lable">Address line 2*</label>
+                                        @Html.TextBoxFor(Model => Model.profileUser.AddressLine2, new { @class = "form-control", @id = "ad2", @type = "text", @placeholder = "Enter your address" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="user-profile-lable">City*</label>
+                                        @Html.TextBoxFor(Model => Model.profileUser.City, new { @class = "form-control", @id = "city", @type = "text", @placeholder = "Enter your city" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="user-profile-lable">State *</label>
+                                        @Html.TextBoxFor(Model => Model.profileUser.State , new { @class = "form-control", @id = "state", @type = "text", @placeholder = "Enter your State" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="user-profile-lable">ZipCode *</label>
+                                        @Html.TextBoxFor(Model => Model.profileUser.ZipCode , new { @class = "form-control", @id = "zipcode", @type = "text", @placeholder = "Enter your Zipcode" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="user-profile-lable">Country *</label>
+                                        @Html.DropDownListFor(Model => Model.profileUser.Country, new SelectList(ViewBag.countryUserList), "Select your country", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h1 id="heading">University and College Information</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="contact-right">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="user-profile-lable">University</label>
+                                        @Html.TextBoxFor(Model => Model.profileUser.University , new { @class = "form-control", @id = "university", @type = "text", @placeholder = "Enter your University" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="user-profile-lable">College</label>
+                                        @Html.TextBoxFor(Model => Model.profileUser.College, new { @class = "form-control", @id = "College", @type = "text", @placeholder = "Enter your College" })
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary" id="user-profile-submit">Submit</button>
+            </div>
+        </div>
+
+
+    }
+ 
+
+
+

@@ -1,155 +1,111 @@
 ﻿
 @{
-    Layout = null;
+
+    Layout = "~/Views/Shared/_RegisteredUser.cshtml";
 
 }
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- title -->
-    <title>Dashboard</title>
+@using NoteMarketPlace.Models;
 
 
-    <!-- bootstrap CSS -->
-    <link rel="stylesheet" href="~/Content/css/bootstrap/bootstrap.css">
+<!-- dashboard Heading -->
+@{
+    NoteMarketEntities db = new NoteMarketEntities();
+    int id = Convert.ToInt32(Session["UserID"]);
 
-    <!-- FONT CSS -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans
-             :wght@300;400;600;700&display=swap" rel="stylesheet">
+    int buyerRequest = db.Downloads.Where(m => m.SellerID == id).Count();
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    int myDownload = db.Downloads.Where(m => m.BuyerID == id).Count();
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="~/Content/css/style.css">
+    int mySoldNotes= db.Downloads.Where(m => m.SellerID == id).Count();
 
-</head>
 
-<body>
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-expand-md navbar-light ">
 
-        <div class="container">
-            <a class="navbar-brand" href="#"><img src="~/Content/images/logo.png"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/User/SearchNotes">Search Notes </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sell Your Notes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/User/BuyerRequest">Buyar Requests </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/User/FAQ">FAQ </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/User/ContectUs">Contact Us </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><img src="~/Content/images/user-img.png"> </a>
-                    </li>
-                </ul>
-                <button type="button" class="btn btn-primary" id="user-profile-logout"><a href="/User/Index">LOGOUT</a></button>
+}
+
+<div class="dashboard-title-wrapper">
+    <div class="container">
+        <div class="dashboard-title-section">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="col-md-6 text-right">
+                    <button type="button" class="btn btn-primary" id="add-note"><a href="/User/AddNotes">ADD NOTE</a></button>
+                </div>
             </div>
         </div>
 
-    </nav>
-
-
-    <!-- dashboard Heading -->
-
-    <div class="dashboard-title-wrapper">
-        <div class="container">
-            <div class="dashboard-title-section">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h1>Dashboard</h1>
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <button type="button" class="btn btn-primary" id="add-note"><a href="/User/AddNotes">ADD NOTE</a></button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-7">
-                    <div class="left">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="dashboard-block">
-                                    <div class="earning-detail text-center">
-                                        <div class="earning-img">
-                                            <img src="~/Content/images/earning-icon.svg">
-                                        </div>
-                                        <h4>
-                                            My Earning
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="dashboard-block">
-                                    <div class="number-detail  text-center">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="number-sold">
-                                                    <p>100</p>
-                                                    <h4>Number of Notes Sold</h4>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="money-earned">
-                                                    <p>&#36;10,00,000</p>
-                                                    <h4>Money Earned</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-5">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="left">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="dashboard-block">
-                                <div class="download-detail text-center">
-                                    <div class="number-downloads">
-                                        <p>38</p>
-                                        <h4>My Downloads</h4>
+                                <div class="earning-detail text-center">
+                                    <div class="earning-img">
+                                        <img src="~/Content/images/earning-icon.svg">
+                                    </div>
+                                    <h4>
+                                        My Earning
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="dashboard-block">
+                                <div class="number-detail  text-center">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="number-sold">
+                                                <p>@mySoldNotes</p>
+                                                <h4>Number of Notes Sold</h4>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="money-earned">
+                                                <p>&#36;10,00,000</p>
+                                                <h4>Money Earned</h4>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="dashboard-block">
-                                <div class="rejected-detail text-center">
-                                    <div class="number-rejected">
-                                        <p>12</p>
-                                        <h4>My Rejected Notes</h4>
-                                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="dashboard-block">
+                            <div class="download-detail text-center">
+                                <div class="number-downloads">
+                                    <p>@myDownload</p>
+                                    <h4>My Downloads</h4>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="dashboard-block">
-                                <div class="buyer-detail text-center">
-                                    <div class="number-buyer">
-                                        <p>102</p>
-                                        <h4>Buyer Request</h4>
-                                    </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="dashboard-block">
+                            <div class="rejected-detail text-center">
+                                <div class="number-rejected">
+                                    <p>12</p>
+                                    <h4>My Rejected Notes</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="dashboard-block">
+                            <div class="buyer-detail text-center">
+                                <div class="number-buyer">
+                                    <p>
+                                        
+                                        @buyerRequest
+                                    </p>
+                                    <h4>Buyer Request</h4>
                                 </div>
                             </div>
                         </div>
@@ -158,41 +114,15 @@
             </div>
         </div>
     </div>
-    <!-- in Progress-->
+</div>
+<!-- in Progress-->
 
-    @{
-    
-         Html.RenderAction("_InProgressDashboard", "User");
-    }
-    <!-- in published-->
-    @{ 
-        Html.RenderAction("_InPublishedDashboard", "User");
-    }
-    
-    <hr>
-    <!-- footer -->
-    <div class="card-footer row m-0">
-        <p id="copyright"> copyright &copy; TatvaSoft All rights reserverd</p>
-        <div>
-            <p>
-                <label class="footer-right">
-                    <i class="fa fa-facebook circle-icon"></i>
-                    <i class="fa fa-twitter circle-icon"></i>
-                    <i class="fa fa-linkedin circle-icon"></i>
+@{
 
-                </label>
-            </p>
-        </div>
-    </div>
+    Html.RenderAction("_InProgressDashboard", "User");
+}
+<!-- in published-->
+@{
+    Html.RenderAction("_InPublishedDashboard", "User");
+}
 
-
-
-
-    <!-- JQuery -->
-    <script src="~/Script/js/jquery.min.js"></script>
-
-    <!-- Bootstrap -->
-    <script src="~/Scripts/js/bootstrap/bootstrap.js"></script>
-</body>
-
-</html>

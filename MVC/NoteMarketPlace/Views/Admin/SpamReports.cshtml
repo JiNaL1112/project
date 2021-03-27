@@ -1,0 +1,282 @@
+﻿@model IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>
+@{
+    int i = 0;
+
+    Layout = "~/Views/Shared/_RegisteredAdmin.cshtml";
+
+}
+<div class="container">
+    <div class="buyer-request-container">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 id="buyer-req">Spam Reports</h4>
+            </div>
+            <div class="col-md-6">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="search-tab">
+                                            <img src="img/search-icon.svg">
+                                            <input type="search" class="form-control" id="book-search" placeholder="      Search">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 ">
+                                    <div class="form-group">
+                                        <div class="search-tab">
+                                            <button type="button" class="btn btn-primary" id="search-tab-button">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="in-progress-table">
+        <table class="table " id="spam-report-table">
+            <thead>
+                <tr>
+                    <th scope="col">SR NO.</th>
+                    <th scope="col">REPORTED BY</th>
+                    <th scope="col">NOTE TITLE</th>
+                    <th scope="col">CATEGORY</th>
+                    <th scope="col">DATE EDITED</th>
+                    <th scope="col">REMARK</th>
+                    <th scope="col">ACTION</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Khyati Patel</td>
+                    <td>Software Devlopment</td>
+                    <td>IT</td>
+                    <td>09-10-2020,10:10</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
+                    <td><img src="img/delete.png"></td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+
+                                <div class="dropdown-content">
+                                    <a href="#">Download Notes</a>
+                                    <a href="#">View More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Khyati Patel</td>
+                    <td>Software Devlopment</td>
+                    <td>IT</td>
+                    <td>09-10-2020,10:10</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
+                    <td><img src="img/delete.png"></td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">Download Notes</a>
+                                    <a href="#">View More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Khyati Patel</td>
+                    <td>Software Devlopment</td>
+                    <td>IT</td>
+                    <td>09-10-2020,10:10</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
+                    <td><img src="img/delete.png"></td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+
+                                <div class="dropdown-content">
+                                    <a href="#">Download Notes</a>
+                                    <a href="#">View More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Khyati Patel</td>
+                    <td>Software Devlopment</td>
+                    <td>IT</td>
+                    <td>09-10-2020,10:10</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
+                    <td><img src="img/delete.png"></td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+
+                                <div class="dropdown-content">
+                                    <a href="#">Download Notes</a>
+                                    <a href="#">View More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Khyati Patel</td>
+                    <td>Software Devlopment</td>
+                    <td>IT</td>
+                    <td>09-10-2020,10:10</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
+                    <td><img src="img/delete.png"></td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">Download Notes</a>
+                                    <a href="#">View More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Khyati Patel</td>
+                    <td>Software Devlopment</td>
+                    <td>IT</td>
+                    <td>09-10-2020,10:10</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
+                    <td><img src="img/delete.png"></td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+
+                                <div class="dropdown-content">
+                                    <a href="#">Download Notes</a>
+                                    <a href="#">View More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Khyati Patel</td>
+                    <td>Software Devlopment</td>
+                    <td>IT</td>
+                    <td>09-10-2020,10:10</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
+                    <td><img src="img/delete.png"></td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">Download Notes</a>
+                                    <a href="#">View More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Khyati Patel</td>
+                    <td>Software Devlopment</td>
+                    <td>IT</td>
+                    <td>09-10-2020,10:10</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
+                    <td><img src="img/delete.png"></td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">Download Notes</a>
+                                    <a href="#">View More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+
+            </tbody>
+        </table>
+    </div>
+    <div class="in-progress-nav">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link active" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<hr>

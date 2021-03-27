@@ -1,0 +1,167 @@
+﻿@model IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>
+@{
+    int i = 0;
+    Layout = "~/Views/Shared/_RegisteredUser.cshtml";
+
+}
+
+
+<div class="container">
+    <div class="sold-notes">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 id="sold-heading">My Sold Notes</h4>
+            </div>
+            <div class="col-md-6">
+                @using (Html.BeginForm("MySoldNotes", "User", FormMethod.Post))
+                {
+                    <div class="row">
+                        <div class="col-md-6" id="search-box">
+                            <img src="~/Content/images/search-icon.png" id="search-img">
+                            <input type="search" class="form-control" id="book-search" placeholder="    Search" value="@ViewData["GetMySoldNote"]" name="searchstring">
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary" id="search-tab-button">Search</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <h4 id="buyer-req">
+                @{
+                    if (ViewBag.TotalRequest == 0)
+                    {
+                        <h4> id="buyer-req">No record found</h4>
+                    }
+                }
+
+            </h4>
+        </div>
+    </div>
+    <div class="my-sold-table">
+        <table class="table ">
+            <thead>
+                <tr>
+                    <th scope="col">SR NO.</th>
+                    <th scope="col">
+                        @Html.ActionLink("NOTE TITTLE", "MySoldNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "NOTE TITTLE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("CATEGORY", "MySoldNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "CATEGORY", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("BUYER", "MySoldNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "BUYER", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+
+                    </th>
+
+                    <th scope="col">
+                        @Html.ActionLink("SELL TYPE", "MySoldNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "SELL TYPE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("PRICE", "MySoldNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "PRICE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">DOWNLOAD DATE/TIME</th>
+                    <th scope="col">
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (NoteMarketPlace.Models.NoteDetailsViewModel item in (IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>)Model)
+                {
+                    <tr>
+
+                        <th scope="row"> @(i = i+ 1)</th>
+                        <td><a href="/User/NoteDetails?noteTitle=@item.note.Title">@item.note.Title</a></td>
+                        <td>@item.notecategory.Name</td>
+                        <td>@item.user.EmailID</td>
+                        <td>@item.referenceData.Value</td>
+                        <td>&#36;@item.note.SellingPrice</td>
+                        <td>27 Nov 2020,11:24:34</td>
+                        <td>
+                            <div>
+                                <img src="~/Content/images/eye.png">
+                                <div class="dropdown">
+                                    <button class="dropbtn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                        </svg>
+                                    </button>
+
+                                    <div class="dropdown-content">
+                                        <a href="/User/MyDonloads?bookid=@item.note.NoteID">Download Note</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="in-progress-nav">
+        <nav aria-label="Page navigation example">
+            @{
+                Double totalPages = ViewBag.TotalPages;
+                <ul class="pagination justify-content-center">
+                    @if (ViewBag.PageNumber == 1)
+                    {
+                        <li class="page-item ">
+                            @Html.ActionLink("<", "MySoldNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink("<", "MySoldNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber - 1 }, new { @class = "page-link" })
+
+                        </li>
+                    }
+
+                    @for (int j = 1; j <= totalPages; j++)
+                    {
+
+                        if (j == ViewBag.PageNumber)
+                        {
+                            <li class="active page-item">
+                                @Html.ActionLink(j.ToString(), "MySoldNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = j }, new { @class = "page-link" })
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(j.ToString(), "MySoldNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = j }, new { @class = "page-link" })
+                            </li>
+                        }
+
+
+
+
+                    }
+                    @if (ViewBag.PageNumber == totalPages)
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(">", "MySoldNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(">", "MySoldNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber + 1 }, new { @class = "page-link" })
+
+                        </li>
+                    }
+
+                </ul>
+            }
+        </nav>
+    </div>
+</div>
+
+

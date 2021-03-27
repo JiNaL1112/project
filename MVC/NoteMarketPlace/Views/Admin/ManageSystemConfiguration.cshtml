@@ -1,0 +1,81 @@
+﻿
+@model IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>
+@{
+    int i = 0;
+
+    Layout = "~/Views/Shared/_RegisteredAdmin.cshtml";
+
+}
+
+
+<form class="user-profile">
+    <div class="container">
+        <div class="row">
+            <h1 id="heading">Manage System Configuration</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                    <label class="user-profile-lable">Support email address*</label>
+                    <input type="text" class="form-control" id="semail" placeholder="Enter your email">
+                </div>
+            </div>
+            <div class="col-md-6"></div>
+            <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                    <label class="user-profile-lable">Support phone number*</label>
+                    <input type="text" class="form-control" id="sphone" placeholder="Enter phone number">
+                </div>
+            </div>
+            <div class="col-md-6"></div>
+            <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                    <label class="user-profile-lable">Email Address(es)(for various events system will send notification to these users)*</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email address">
+                </div>
+            </div>
+            <div class="col-md-6"></div>
+            <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                    <label class="user-profile-lable">Facebook URL</label>
+                    <input type="text" class="form-control" id="fURL" placeholder="Enter facebook url">
+                </div>
+            </div>
+            <div class="col-md-6"></div>
+            <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                    <label class="user-profile-lable">Twitter URL</label>
+                    <input type="text" class="form-control" id="tURL" placeholder="Enter twitter url">
+                </div>
+            </div>
+            <div class="col-md-6"></div>
+            <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                    <label class="user-profile-lable">Linkedin URL</label>
+                    <input type="text" class="form-control" id="lURL" placeholder="Enter linkedin url">
+                </div>
+            </div>
+            <div class="col-md-6"></div>
+            <div class="col-md-6 col-sm-6">
+                <div class="profile">
+                    <label class="user-profile-lable">Default image for notes(if seller do not upload)</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Upload a picture" rows="4"></textarea>
+                    <img src="img/User-Profile/upload.png">
+                </div>
+            </div>
+            <div class="col-md-6"></div>
+            <div class="col-md-6 col-sm-6">
+                <div class="profile">
+                    <label class="user-profile-lable">Default profile picture(if seller do not upload)</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Upload a picture" rows="4"></textarea>
+                    <img src="img/User-Profile/upload.png">
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <button type="button" class="btn btn-primary" id="my-profile-submit">Submit</button>
+        </div>
+    </div>
+</form>
+

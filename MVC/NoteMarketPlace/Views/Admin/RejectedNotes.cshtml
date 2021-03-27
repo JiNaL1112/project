@@ -1,0 +1,379 @@
+﻿
+@model IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>
+@{
+    int i = 0;
+
+    Layout = "~/Views/Shared/_RegisteredAdmin.cshtml";
+
+}
+@using NoteMarketPlace.Models;
+
+<div class="addministrator-title-wrapper">
+    <div class="container">
+        <div class="dashboard-title-section">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Rejected Notes</h1>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p>Seller</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+
+                    <div class="form-group">
+                        <select class="form-control">
+
+                            <option>Rehul Shah</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group ">
+                        <div class="manage-search-tab ">
+                            <input type="search" class="form-control" id="rejected-search" placeholder="      Search">
+                            <img id="rejected-search-icon" src="img/search-icon.svg">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="manage-search-tab">
+                        <button type="button" class="btn btn-primary float-right" id="rejected-search-tab-button">SEARCH</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="admin-dashboard">
+        <table class="table" id="notes-table">
+            <thead>
+                <tr>
+                    <th scope="col">SR NO.</th>
+                    <th scope="col">NOTE TITLE</th>
+                    <th scope="col">CATEGORY</th>
+                    <th scope="col">SELLER</th>
+                    <td scope="col">DATE ADDED</td>
+                    <th scope="col">REJECTED BY</th>
+                    <th colspan="2">REMARK</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>
+                        Software Engineer
+
+                    </td>
+
+                    <td>IT</td>
+                    <td>
+                        Khyati Patel
+                        <img src="img/eye.png" id="notes-eyes">
+                    </td>
+                    <td>27-10-2020,11:24</td>
+                    <td>Raj Sheth</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur </td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">Approve</a>
+                                    <a href="#">Download Notes</a>
+                                    <a href="#">View More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Software Engineer</td>
+                    <td>IT</td>
+                    <td>
+                        Khyati Patel
+                        <img src="img/eye.png" id="notes-eyes">
+                    </td>
+                    <td>27-10-2020,11:24</td>
+                    <td>Raj Sheth</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur </td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">Approve</a>
+                                    <a href="#">Download Notes</a>
+                                    <a href="#">View More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Software Engineer</td>
+                    <td>IT</td>
+                    <td>
+                        Khyati Patel
+                        <img src="img/eye.png" id="notes-eyes">
+                    </td>
+                    <td>27-10-2020,11:24</td>
+                    <td>Raj Sheth</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur </td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">Approve</a>
+                                    <a href="#">Download Notes</a>
+                                    <a href="#">View More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Software Engineer</td>
+                    <td>IT</td>
+                    <td>
+                        Khyati Patel
+                        <img src="img/eye.png" id="notes-eyes">
+                    </td>
+                    <td>27-10-2020,11:24</td>
+                    <td>Raj Sheth</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur </td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">Approve</a>
+                                    <a href="#">Download Notes</a>
+                                    <a href="#">View More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Software Engineer</td>
+                    <td>IT</td>
+                    <td>
+                        Khyati Patel
+                        <img src="img/eye.png" id="notes-eyes">
+                    </td>
+                    <td>27-10-2020,11:24</td>
+                    <td>Raj Sheth</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur </td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">Approve</a>
+                                    <a href="#">Download Notes</a>
+                                    <a href="#">View More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Software Engineer</td>
+                    <td>IT</td>
+                    <td>
+                        Khyati Patel
+                        <img src="img/eye.png" id="notes-eyes">
+                    </td>
+                    <td>27-10-2020,11:24</td>
+                    <td>Raj Sheth</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur </td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">Approve</a>
+                                    <a href="#">Download Notes</a>
+                                    <a href="#">View More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Software Engineer</td>
+                    <td>IT</td>
+                    <td>
+                        Khyati Patel
+                        <img src="img/eye.png" id="notes-eyes">
+                    </td>
+                    <td>27-10-2020,11:24</td>
+                    <td>Raj Sheth</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur </td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">Approve</a>
+                                    <a href="#">Download Notes</a>
+                                    <a href="#">View More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Software Engineer</td>
+                    <td>IT</td>
+                    <td>
+                        Khyati Patel
+                        <img src="img/eye.png" id="notes-eyes">
+                    </td>
+                    <td>27-10-2020,11:24</td>
+                    <td>Raj Sheth</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur </td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">Approve</a>
+                                    <a href="#">Download Notes</a>
+                                    <a href="#">View More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Software Engineer</td>
+                    <td>IT</td>
+                    <td>
+                        Khyati Patel
+                        <img src="img/eye.png" id="notes-eyes">
+                    </td>
+                    <td>27-10-2020,11:24</td>
+                    <td>Raj Sheth</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur </td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">Approve</a>
+                                    <a href="#">Download Notes</a>
+                                    <a href="#">View More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Software Engineer</td>
+                    <td>IT</td>
+                    <td>
+                        Khyati Patel
+                        <img src="img/eye.png" id="notes-eyes">
+                    </td>
+                    <td>27-10-2020,11:24</td>
+                    <td>Raj Sheth</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur </td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">Approve</a>
+                                    <a href="#">Download Notes</a>
+                                    <a href="#">View More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="in-progress-nav">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link active" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+

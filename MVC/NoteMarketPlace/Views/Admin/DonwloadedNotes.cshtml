@@ -1,0 +1,268 @@
+﻿
+@model IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>
+@{
+    int i = 0;
+
+    Layout = "~/Views/Shared/_RegisteredAdmin.cshtml";
+
+}
+@using NoteMarketPlace.Models;
+
+<div class="addministrator-title-wrapper">
+    <div class="container">
+        <div class="dashboard-title-section">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Downloaded Notes</h1>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p>Note</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>Seller</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>Buyer</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                @using (Html.BeginForm("DonwloadedNotes", "Admin", FormMethod.Get, new { @Id = "submitForm" }))
+                {
+                    <div class="col-md-2">
+
+                        <div class="form-group">
+                            @Html.DropDownList("NoteName", ViewBag.NoteList as SelectList, "Note Name",
+                                        new
+                                        {
+                                            @class = "form-control",
+                                            @name = "NoteName",
+                                            @value = "@Request.QueryString['NoteName']",
+                                            @id = "NoteName",
+                                            @onchange = "submitForm()"
+                                        })
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-2">
+
+                        <div class="form-group">
+                            @Html.DropDownList("SellerName", ViewBag.sellerList as SelectList, "Seller Name",
+                                new
+                                {
+                                    @class = "form-control",
+                                    @name = "SellerName",
+                                    @value = "@Request.QueryString['SellerName']",
+                                    @id = "SellerName",
+                                    @onchange = "submitForm()"
+                                })
+                        </div>
+
+                    </div>
+                    <div class="col-md-2">
+
+                        <div class="form-group">
+                            @Html.DropDownList("BuyerName", ViewBag.sellerList as SelectList, "Buyer Name",
+                                new
+                                {
+                                    @class = "form-control",
+                                    @name = "BuyerName",
+                                    @value = "@Request.QueryString['BuyerName']",
+                                    @id = "BuyerName",
+                                    @onchange = "submitForm()"
+                                })
+                        </div>
+
+                    </div>
+                }
+                @using (Html.BeginForm("DonwloadedNotes", "Admin", FormMethod.Post))
+                {
+                    <div class="row">
+                        <div class="col-md-6" id="search-box">
+                            <img src="~/Content/images/search-icon.png" id="search-img">
+                            <input type="search" class="form-control" id="book-search" placeholder="    Search" value="@ViewData["GetPublishedNoteData"]" name="searchstring">
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary" id="search-tab-button">Search</button>
+                        </div>
+                    </div>
+                }
+                
+                </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="admin-dashboard">
+        <table class="table" id="notes-table">
+            @*<thead>
+                <tr>
+                    <th scope="col">SR NO.</th>
+                    <th scope="col">NOTE TITLE</th>
+                    <th scope="col">CATEGORY</th>
+                    <th scope="col">BUYER</th>
+                    <th scope="col">SELLER</th>
+                    <th scope="col">SELL TYPE</th>
+                    <th scope="col">PRICE</th>
+                    <th colspan="2">DOWNLOADED DATE/TIME</th>
+                </tr>
+            </thead>*@
+
+            <thead>
+                <tr>
+                    <th scope="col">SR NO.</th>
+                    <th scope="col">
+                        @Html.ActionLink("NOTE TITLE", "DonwloadedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "NOTE TITLE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("CATEGORY", "DonwloadedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "CATEGORY", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("BUYER", "DonwloadedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "BUYER", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("SELLER", "DonwloadedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "SELLER", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("SELL TYPE", "DonwloadedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "SELL TYPE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("PRICE", "DonwloadedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "PRICE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                   
+                    <th colspan="2">
+                        @Html.ActionLink("DOWNLOADED DATE/TIME", "DonwloadedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "DOWNLOADED DATE/TIME", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    
+
+
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (NoteMarketPlace.Models.NoteDetailsViewModel item in (IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>)Model)
+                {
+                    <tr>
+                        <th scope="row">@(i = i+ 1)</th>
+                        <td><a href="/User/NoteDetails?noteTitle=@item.note.Title">@item.note.Title</a></td>
+
+                        <td>@item.notecategory.Name</td>
+                        <td>
+                            @{
+                                NoteMarketEntities db = new NoteMarketEntities();
+
+
+                                var buyersName = db.Users.FirstOrDefault(m => m.ID == item.download.BuyerID);
+
+
+                            }
+
+                            @buyersName.FirstName
+                            <img src="img/eye.png" id="notes-eyes">
+                        </td>
+                        <td>
+                            @item.user.FirstName
+                            <img src="img/eye.png" id="notes-eyes">
+                        </td>
+                        <td>@item.referenceData.Value</td>
+                        <td>&#36;@item.note.SellingPrice</td>
+                        <td>@item.download.AttachmentDownloadedDate</td>
+                        <td>
+                            <div>
+                                <div class="dropdown">
+                                    <button class="dropbtn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                        </svg>
+                                    </button>
+                                    <div class="dropdown-content">
+                                        <a href="/Admin/DonwloadedNotes?noteID=@item.note.NoteID">Dowmload Note</a>
+                                        <a href="/User/NoteDetails?noteTitle=@item.note.Title">View More Details</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+
+
+
+        </table>
+    </div>
+    <div class="in-progress-nav">
+        <nav aria-label="Page navigation example">
+            @{
+                Double totalPages = ViewBag.TotalPages;
+                <ul class="pagination justify-content-center">
+                    @if (ViewBag.PageNumber == 1)
+                    {
+                        <li class="page-item ">
+                            @Html.ActionLink("<", "DonwloadedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink("<", "DonwloadedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber - 1 }, new { @class = "page-link" })
+
+                        </li>
+                    }
+
+                    @for (int j = 1; j <= totalPages; j++)
+                    {
+
+                        if (j == ViewBag.PageNumber)
+                        {
+                            <li class="active page-item">
+                                @Html.ActionLink(j.ToString(), "DonwloadedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = j }, new { @class = "page-link" })
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(j.ToString(), "DonwloadedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = j }, new { @class = "page-link" })
+                            </li>
+                        }
+
+
+
+
+                    }
+                    @if (ViewBag.PageNumber == totalPages)
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(">", "DonwloadedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(">", "DonwloadedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber + 1 }, new { @class = "page-link" })
+
+                        </li>
+                    }
+
+                </ul>
+            }
+        </nav>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function submitForm() {
+        document.getElementById('submitForm').submit();
+        // $('form').submit();
+    }
+
+
+
+</script>

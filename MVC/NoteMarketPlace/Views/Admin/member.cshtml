@@ -1,0 +1,247 @@
+﻿
+@model IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>
+@{
+    int i = 0;
+
+    Layout = "~/Views/Shared/_RegisteredAdmin.cshtml";
+
+}
+@using NoteMarketPlace.Models;
+
+<div class="member-title-wrapper">
+    <div class="container">
+        <div class="dashboard-title-section">
+            <div class="row">
+                <div class="col-md-5">
+                    <h1>Members</h1>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group ">
+                        <div class="manage-search-tab ">
+                            <input type="search" class="form-control" id="manage-search" placeholder="   Search">
+                            <img src="img/search-icon.svg">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="manage-search-tab">
+                        <button type="button" class="btn btn-primary float-right" id="manage-search-tab-button">SEARCH</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="admin-dashboard">
+        <table class="table" id="member-table">
+            <thead>
+                <tr>
+                    <th scope="col">SR NO,</th>
+                    <th scope="col">FIRST NAME</th>
+                    <th scope="col">LAST NAME</th>
+                    <th scope="col">EMAIL</th>
+                    <th scope="col">JOINING DATE</th>
+                    <th scope="col">UNDER REVIEW NOTES</th>
+                    <th scope="col">PUBLISHED NOTES</th>
+                    <th scope="col">DOWNLOADED NOTES</th>
+                    <th scope="col">TOTAL EXPENSES</th>
+                    <th colspan="2">TOTAL EARNING</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Khyati</td>
+                    <td>Parmar</td>
+                    <td>khyatiparmar@gmail.com</td>
+                    <td>27-10-2020,11:24</td>
+                    <td>19</td>
+                    <td>10</td>
+                    <td>22</td>
+                    <td>&#36;220</td>
+                    <td>&#36;177</td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+
+                                <div class="dropdown-content">
+                                    <a href="#">View More Details</a>
+                                    <a href="#">Deactivate</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Khyati</td>
+                    <td>Parmar</td>
+                    <td>khyatiparmar@gmail.com</td>
+                    <td>27-10-2020,11:24</td>
+                    <td>19</td>
+                    <td>10</td>
+                    <td>22</td>
+                    <td>&#36;220</td>
+                    <td>&#36;177</td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+
+                                <div class="dropdown-content">
+                                    <a href="#">View More Details</a>
+                                    <a href="#">Deactivate</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Khyati</td>
+                    <td>Parmar</td>
+                    <td>khyatiparmar@gmail.com</td>
+                    <td>27-10-2020,11:24</td>
+                    <td>19</td>
+                    <td>10</td>
+                    <td>22</td>
+                    <td>&#36;220</td>
+                    <td>&#36;177</td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+
+                                <div class="dropdown-content">
+                                    <a href="#">View More Details</a>
+                                    <a href="#">Deactivate</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Khyati</td>
+                    <td>Parmar</td>
+                    <td>khyatiparmar@gmail.com</td>
+                    <td>27-10-2020,11:24</td>
+                    <td>19</td>
+                    <td>10</td>
+                    <td>22</td>
+                    <td>&#36;220</td>
+                    <td>&#36;177</td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+
+                                <div class="dropdown-content">
+                                    <a href="#">View More Details</a>
+                                    <a href="#">Deactivate</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Khyati</td>
+                    <td>Parmar</td>
+                    <td>khyatiparmar@gmail.com</td>
+                    <td>27-10-2020,11:24</td>
+                    <td>19</td>
+                    <td>10</td>
+                    <td>22</td>
+                    <td>&#36;220</td>
+                    <td>&#36;177</td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+
+                                <div class="dropdown-content">
+                                    <a href="#">View More Details</a>
+                                    <a href="#">Deactivate</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Khyati</td>
+                    <td>Parmar</td>
+                    <td>khyatiparmar@gmail.com</td>
+                    <td>27-10-2020,11:24</td>
+                    <td>19</td>
+                    <td>10</td>
+                    <td>22</td>
+                    <td>&#36;220</td>
+                    <td>&#36;177</td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+
+                                <div class="dropdown-content">
+                                    <a href="#">View More Details</a>
+                                    <a href="#">Deactivate</a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="in-progress-nav">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link active" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+

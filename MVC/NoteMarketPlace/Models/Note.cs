@@ -37,11 +37,11 @@ namespace NoteMarketPlace.Models
         public int Category { get; set; }
         public string DisplayPic { get; set; }
 
-        [Required(ErrorMessage = "Upload Your Note")]
+   //     [Required(ErrorMessage = "Upload Your Note")]
         public string NotesAttachment { get; set; }
         public Nullable<decimal> NoteSize { get; set; }
 
-        [Required(ErrorMessage = "Select Note Type")]
+       [Required(ErrorMessage = "Select Note Type")]
         public int NoteType { get; set; }
         public Nullable<int> NumberOfPage { get; set; }
 

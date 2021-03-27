@@ -1,0 +1,152 @@
+﻿@model NoteMarketPlace.Models.NoteDetailsViewModel
+@using NoteMarketPlace.Models;
+<div class="container">
+    <div class="note-detailse-book">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <h4>Notes Details</h4>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="@Url.Content(Model.note.DisplayPic)" alt="note-details" class="img-responsive" style="width:100%; height: 100%">
+                    </div>
+                    <div class="col-md-8">
+                        <h3>
+                            @Model.note.NoteID
+                            @Model.country.Name
+                            @Session["NoteID"]
+                            @ViewBag.noteID
+                            @Model.user.FirstName
+                        </h3>
+
+                        <h3>@Model.note.Title</h3>
+
+                        <h5>@Model.note.Course</h5>
+                        <p>@Model.note.Description</p>
+
+
+
+                        @using (Html.BeginForm("DownloadNoteFollow", "User", FormMethod.Post, new { }))
+                        {
+                            if (@Model.note.SellFor == 5)
+                            {
+                                <button type="submit" id="notes-downloaded">
+                                    <a href="/User/DownloadNoteFollow?sellerEmail=@Model.user.EmailID&bookid=@Model.note.NoteID">Download</a>
+                                </button>
+                            }
+                            else
+                            {
+                                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" id="notes-downloaded" onclick="return confirm('Are you Sure You Want to Buy this Note ?')">
+
+                                    <a href="/User/DownloadNoteFollow?sellerEmail=@Model.user.EmailID&bookid=@Model.note.NoteID">Download/@Model.note.SellingPrice</a>
+                                </button>
+                            }
+                        }
+
+                        @ViewBag.paidbookmessage
+                        <!-- Button trigger modal -->
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <img src="img/Notes%2520Details/SUCCESS.png">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Thank you for purchasing!</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container">
+                                            <form>
+                                                <div class="row">
+
+                                                    <h4>@ViewBag.BuyerName </h4>
+                                                    <p>As this is paid notes-you need to pay to seller Rahil Shah offline. We will send him an email that you want to download this note . He may contact you further for payment process completion</p>
+                                                    <p>In case,you have urgency,<br />Please contact us on +9195377345959.<br />Once he receives the payment and acknowledge us -selected notes you can see over my downloads tab for download.<br /><br />Have a good day</p>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row nd02">
+                    <div class="col-md-12">
+                        <ul class="nd03">
+                            <li><span>Institution:</span><span class="text-right nd05">@Model.note.University</span></li>
+                            <li><span>Country:</span><span class="text-right nd05">@Model.country.Name</span></li>
+                            <li><span>Course Name:</span><span class="text-right nd05">@Model.note.Course</span></li>
+                            <li><span>Course Code:</span><span class="text-right nd05">@Model.note.CourseCode</span></li>
+                            <li><span>Professor:</span><span class="text-right nd05">@Model.note.Professor</span></li>
+                            <li><span>Number of Pages:</span><span class="text-right nd05">@Model.note.NumberOfPage</span></li>
+                            <li><span>Approved Date:</span><span class="text-right nd05">@Model.note.ApprovedDate</span></li>
+                            <li>
+                                @{
+                                    NoteMarketEntities db = new NoteMarketEntities();
+
+                                    var totalinappropriate = db.NotesReviews.Where(m => m.NoteID == Model.note.NoteID);
+                                    int totalReview = db.NotesReviews.Where(m => m.NoteID == Model.note.NoteID && m.Ratings != 0).Count();
+
+                                    int num = 0;
+                                    int totalRating = 0;
+
+                                    if (totalinappropriate != null)
+                                    {
+                                        num = totalinappropriate.Where(m => m.Inappopriate == true).Count();
+
+                                        var x = totalinappropriate.Count();
+                                        if (x != 0)
+                                        {
+                                            foreach (var p in totalinappropriate)
+                                            {
+                                                totalRating = totalRating + Convert.ToInt32(p.Ratings);
+                                            }
+                                            totalRating = totalRating / x;
+                                        }
+
+                                    }
+                                }
+                               
+                               
+                                
+                                <span>Rating:</span><span class="text-right nd05">
+                                                        <div class="rate">
+
+                                                            @{
+                                                                var j = totalRating;
+                                                                for (var z = 5; z >= 1; z--)
+                                                                {
+                                                                    if (z > j)
+                                                                    {
+                                                                        @*<input type="radio" id="star1" name="rate" value="@z" checked />*@
+                                                                        <label for="star1" title="text">@z stars </label>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        @*<input type="radio" id="star1" name="rate" value="@z" disabled />*@
+                                                                        <label for="star1" title="text" style="color:#ffc700">@z stars </label>
+                                                                    }
+                                                                }
+                                                            }
+
+                                                        </div>@totalReview reviews
+                                </span>
+
+                            </li>
+                            <li><span style="color: red" class="nd04">5 Users marked this note as inappropriate</span> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

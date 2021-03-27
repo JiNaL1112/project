@@ -51,10 +51,11 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                @Html.HiddenFor(m => m.ID)
+                                @*@Html.HiddenFor(m => m.ID)*@
+                                @*<input type="hidden" name="dID" value="@Model.RoleID" />*@
 
                                 <label for="exampleInputEmail1" class="form-lable">Email</label>
-                                
+
                                 <!--<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">-->
                                 @Html.TextBoxFor(m => m.EmailID, new { @class = "form-control", @id = "UserEmail", @placeholder = "Enter email", @Value = ViewBag.email })
                                 @Html.ValidationMessageFor(m => m.EmailID)

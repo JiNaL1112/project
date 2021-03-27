@@ -19,7 +19,11 @@ namespace NoteMarketPlace.Models
 
         public NotesReview ratingDetails { get; set; }
 
-        
 
+
+        public Profile profile1 { get; set; }
+
+        
+        
     }
 }

@@ -1239,8 +1239,14 @@ FAQ
 }
 
 /* =================
-
+ notes details
 =============================*/
+.ndimg .rate{
+    margin-bottom: 0;
+}
+.ndimg .rate label{
+    margin-bottom: 0;
+}
 #notes-downloaded{
     background-color:#6255a5;
     width:50%;
@@ -1354,6 +1360,7 @@ ul.nd03 li {
     color: #333333;
     margin-bottom: 30px;
     margin-top: 20px;
+    padding-top: 30px;
 }
 
 /*

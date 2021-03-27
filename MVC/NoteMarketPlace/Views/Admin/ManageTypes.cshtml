@@ -1,0 +1,139 @@
+﻿@model IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>
+@{
+    int i = 0;
+
+    Layout = "~/Views/Shared/_RegisteredAdmin.cshtml";
+
+}
+<div class="addministrator-title-wrapper">
+    <div class="container">
+        <div class="dashboard-title-section">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Manage Type</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="manage-search-tab">
+                        <button type="button" class="btn btn-primary" id="manage-search-tab-button">ADD TYPE</button>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group ">
+                        <div class="manage-search-tab ">
+                            <input type="search" class="form-control" id="manage-search" placeholder="   Search">
+                            <img src="img/search-icon.svg">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="manage-search-tab">
+                        <button type="button" class="btn btn-primary float-right" id="manage-search-tab-button">SEARCH</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="admin-dashboard">
+        <table class="table" id="admin-table">
+            <thead>
+                <tr>
+                    <th scope="col">SR NO.</th>
+                    <th scope="col">TYPE</th>
+                    <th scope="col">DESCRIPTION</th>
+                    <th scope="col">DATE ADDED</th>
+                    <th scope="col">ADDED BY</th>
+                    <th scope="col">ACTIVE</th>
+                    <th scope="col">ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>val 1</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing</td>
+                    <td>27-10-2020,11:24</td>
+                    <td>Khyati Patel</td>
+                    <td>Yes</td>
+                    <td>
+                        <img src="img/edit.png">
+                        <img src="img/delete.png">
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>val 1</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing</td>
+                    <td>27-10-2020,11:24</td>
+                    <td>Khyati Patel</td>
+                    <td>Yes</td>
+                    <td>
+                        <img src="img/edit.png">
+                        <img src="img/delete.png">
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>val 1</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing</td>
+                    <td>27-10-2020,11:24</td>
+                    <td>Khyati Patel</td>
+                    <td>Yes</td>
+                    <td>
+                        <img src="img/edit.png">
+                        <img src="img/delete.png">
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>val 1</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing</td>
+                    <td>27-10-2020,11:24</td>
+                    <td>Khyati Patel</td>
+                    <td>Yes</td>
+                    <td>
+                        <img src="img/edit.png">
+                        <img src="img/delete.png">
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>val 1</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing</td>
+                    <td>27-10-2020,11:24</td>
+                    <td>Khyati Patel</td>
+                    <td>Yes</td>
+                    <td>
+                        <img src="img/edit.png">
+                        <img src="img/delete.png">
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="in-progress-nav">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link active" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

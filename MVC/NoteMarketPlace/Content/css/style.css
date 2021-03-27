@@ -210,14 +210,14 @@ forgot password
 change password
 ===============================*/
 #changepassword {
-   background-image: url("../img/banner-with-overlay.jpg");
+  /*  background-image: url("~/Content/images/banner-with-overlay.jpg"); */
+    background-image: url("../images/banner-with-overlay.jpg");
     /* Full height */
-  height: 100%; 
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover
 }
 
 .changepsw-logo {
@@ -1267,8 +1267,21 @@ FAQ
 }
 
 /* =================
-
+    note details
 =============================*/
+
+.ndimg .rate {
+    margin-bottom: 0;
+}
+
+    .ndimg .rate label {
+        margin-bottom: 0;
+    }
+
+    div.ndimg img {
+        height : 50%;
+        width : 60%;
+    }
 #notes-downloaded{
     background-color:#6255a5;
     width:50%;
@@ -1278,6 +1291,7 @@ FAQ
     font-size: 18px;
     font-style:"Open Sans";
     line-height: 22px;
+
 }
 .note-detailse-book h4{
     color : #6255a5;
@@ -1381,7 +1395,7 @@ ul.nd03 li {
     line-height: 22px;
     color: #333333;
     margin-bottom: 30px;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 /*
