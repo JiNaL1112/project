@@ -23,30 +23,40 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-2">
+                @using (Html.BeginForm("RejectedNotes", "Admin", FormMethod.Get, new { @Id = "submitForm" }))
+                {
+                <div class="row">
+                    <div class="col-md-2">
 
-                    <div class="form-group">
-                        <select class="form-control">
+                        <div class="form-group">
+                            @Html.DropDownList("SellerName", ViewBag.sellerList as SelectList, "Seller Name",
+                                new
+                                {
+                                    @class = "form-control",
+                                    @name = "SellerName",
+                                    @value = "@Request.QueryString['SellerName']",
+                                    @id = "SellerName",
+                                    @onchange = "submitForm()"
+                                })
+                        </div>
 
-                            <option>Rehul Shah</option>
-                            <option>...</option>
-                        </select>
                     </div>
-
                 </div>
-                <div class="col-md-4">
-                    <div class="form-group ">
-                        <div class="manage-search-tab ">
-                            <input type="search" class="form-control" id="rejected-search" placeholder="      Search">
-                            <img id="rejected-search-icon" src="img/search-icon.svg">
+                    
+                }
+                @using (Html.BeginForm("RejectedNotes", "Admin", FormMethod.Post))
+                {
+                    <div class="row">
+                        <div class="col-md-6" id="search-box">
+                            <img src="~/Content/images/search-icon.png" id="search-img">
+                            <input type="search" class="form-control" id="book-search" placeholder="    Search" value="@ViewData["GetPublishedNoteData"]" name="searchstring">
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary" id="search-tab-button">Search</button>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="manage-search-tab">
-                        <button type="button" class="btn btn-primary float-right" id="rejected-search-tab-button">SEARCH</button>
-                    </div>
-                </div>
+                }
+
             </div>
         </div>
     </div>
@@ -54,326 +64,161 @@
 <div class="container">
     <div class="admin-dashboard">
         <table class="table" id="notes-table">
+            
+
             <thead>
                 <tr>
                     <th scope="col">SR NO.</th>
-                    <th scope="col">NOTE TITLE</th>
-                    <th scope="col">CATEGORY</th>
-                    <th scope="col">SELLER</th>
-                    <td scope="col">DATE ADDED</td>
-                    <th scope="col">REJECTED BY</th>
-                    <th colspan="2">REMARK</th>
+                    <th scope="col">
+                        @Html.ActionLink("NOTE TITLE", "RejectedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "NOTE TITLE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("CATEGORY", "RejectedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "CATEGORY", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th colspan="2">
+                        @Html.ActionLink("SELLER", "RejectedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "SELLER", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("DATE ADDED", "RejectedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "DATE ADDED", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("REJECTED BY", "RejectedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "REJECTED BY", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+
+                    <th colspan="2">
+                        @Html.ActionLink("REMARK", "RejectedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "REMARK", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+
+
+
                 </tr>
             </thead>
+            
             <tbody>
+                @foreach (NoteMarketPlace.Models.NoteDetailsViewModel item in (IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>)Model)
+                {
                 <tr>
-                    <th scope="row">1</th>
+                    <th scope="row">@(i = i+ 1)</th>
+                    <td><a href="/User/NoteDetails?noteTitle=@item.note.Title">@item.note.Title</a></td>
+                    <td>@item.notecategory.Name</td>
                     <td>
-                        Software Engineer
+                        @item.user.FirstName
+                        
+                    </td>
+                    <td>
+                        <a href="/Admin/memberDetails?userID=@item.user.ID"><img src="~/Content/images/eye.png" id="notes-eyes"></a>
 
                     </td>
+                    <td>@item.note.PublishedDate</td>
+                    <td>
+                        @{
+                            NoteMarketEntities db = new NoteMarketEntities();
 
-                    <td>IT</td>
-                    <td>
-                        Khyati Patel
-                        <img src="img/eye.png" id="notes-eyes">
-                    </td>
-                    <td>27-10-2020,11:24</td>
-                    <td>Raj Sheth</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur </td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
-                                <div class="dropdown-content">
-                                    <a href="#">Approve</a>
-                                    <a href="#">Download Notes</a>
-                                    <a href="#">View More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Software Engineer</td>
-                    <td>IT</td>
-                    <td>
-                        Khyati Patel
-                        <img src="img/eye.png" id="notes-eyes">
-                    </td>
-                    <td>27-10-2020,11:24</td>
-                    <td>Raj Sheth</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur </td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
-                                <div class="dropdown-content">
-                                    <a href="#">Approve</a>
-                                    <a href="#">Download Notes</a>
-                                    <a href="#">View More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Software Engineer</td>
-                    <td>IT</td>
-                    <td>
-                        Khyati Patel
-                        <img src="img/eye.png" id="notes-eyes">
-                    </td>
-                    <td>27-10-2020,11:24</td>
-                    <td>Raj Sheth</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur </td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
-                                <div class="dropdown-content">
-                                    <a href="#">Approve</a>
-                                    <a href="#">Download Notes</a>
-                                    <a href="#">View More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Software Engineer</td>
-                    <td>IT</td>
-                    <td>
-                        Khyati Patel
-                        <img src="img/eye.png" id="notes-eyes">
-                    </td>
-                    <td>27-10-2020,11:24</td>
-                    <td>Raj Sheth</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur </td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
-                                <div class="dropdown-content">
-                                    <a href="#">Approve</a>
-                                    <a href="#">Download Notes</a>
-                                    <a href="#">View More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Software Engineer</td>
-                    <td>IT</td>
-                    <td>
-                        Khyati Patel
-                        <img src="img/eye.png" id="notes-eyes">
-                    </td>
-                    <td>27-10-2020,11:24</td>
-                    <td>Raj Sheth</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur </td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
-                                <div class="dropdown-content">
-                                    <a href="#">Approve</a>
-                                    <a href="#">Download Notes</a>
-                                    <a href="#">View More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Software Engineer</td>
-                    <td>IT</td>
-                    <td>
-                        Khyati Patel
-                        <img src="img/eye.png" id="notes-eyes">
-                    </td>
-                    <td>27-10-2020,11:24</td>
-                    <td>Raj Sheth</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur </td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
-                                <div class="dropdown-content">
-                                    <a href="#">Approve</a>
-                                    <a href="#">Download Notes</a>
-                                    <a href="#">View More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Software Engineer</td>
-                    <td>IT</td>
-                    <td>
-                        Khyati Patel
-                        <img src="img/eye.png" id="notes-eyes">
-                    </td>
-                    <td>27-10-2020,11:24</td>
-                    <td>Raj Sheth</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur </td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
-                                <div class="dropdown-content">
-                                    <a href="#">Approve</a>
-                                    <a href="#">Download Notes</a>
-                                    <a href="#">View More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Software Engineer</td>
-                    <td>IT</td>
-                    <td>
-                        Khyati Patel
-                        <img src="img/eye.png" id="notes-eyes">
-                    </td>
-                    <td>27-10-2020,11:24</td>
-                    <td>Raj Sheth</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur </td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
-                                <div class="dropdown-content">
-                                    <a href="#">Approve</a>
-                                    <a href="#">Download Notes</a>
-                                    <a href="#">View More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Software Engineer</td>
-                    <td>IT</td>
-                    <td>
-                        Khyati Patel
-                        <img src="img/eye.png" id="notes-eyes">
-                    </td>
-                    <td>27-10-2020,11:24</td>
-                    <td>Raj Sheth</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur </td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
-                                <div class="dropdown-content">
-                                    <a href="#">Approve</a>
-                                    <a href="#">Download Notes</a>
-                                    <a href="#">View More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Software Engineer</td>
-                    <td>IT</td>
-                    <td>
-                        Khyati Patel
-                        <img src="img/eye.png" id="notes-eyes">
-                    </td>
-                    <td>27-10-2020,11:24</td>
-                    <td>Raj Sheth</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur </td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
-                                <div class="dropdown-content">
-                                    <a href="#">Approve</a>
-                                    <a href="#">Download Notes</a>
-                                    <a href="#">View More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
 
-            </tbody>
+                            var rejectedBy = db.Users.FirstOrDefault(m => m.ID == item.note.ActionBy);
+
+
+                        }
+
+                        @rejectedBy.FirstName
+
+
+                    </td>
+                    <td>@item.note.AdminRemarks </td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+                                <div class="dropdown-content">
+
+                                    <a href="/Admin/RejectedNotes?noteID=@item.note.NoteID">Dowmload Note</a>
+                                    <a href="/User/NoteDetails?noteTitle=@item.note.Title">View More Details</a>
+                                    <a href="/Admin/RejectedNotes?ApprovenoteID=@item.note.NoteID"
+                                       onclick="return confirm('“If you approve the notes – System will publish the notes over portal. Please press yes tocontinue.')">
+                                        Approve
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                }
+
+                </tbody>
         </table>
     </div>
     <div class="in-progress-nav">
         <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link active" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </li>
-            </ul>
+            @{
+                Double totalPages = ViewBag.TotalPages;
+                <ul class="pagination justify-content-center">
+                    @if (ViewBag.PageNumber == 1)
+                    {
+                        <li class="page-item ">
+                            @Html.ActionLink("<", "RejectedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink("<", "RejectedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber - 1 }, new { @class = "page-link" })
+
+                        </li>
+                    }
+
+                    @for (int j = 1; j <= totalPages; j++)
+                    {
+
+                        if (j == ViewBag.PageNumber)
+                        {
+                            <li class="active page-item">
+                                @Html.ActionLink(j.ToString(), "RejectedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = j }, new { @class = "page-link" })
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(j.ToString(), "RejectedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = j }, new { @class = "page-link" })
+                            </li>
+                        }
+
+
+
+
+                    }
+                    @if (ViewBag.PageNumber == totalPages)
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(">", "RejectedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(">", "RejectedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber + 1 }, new { @class = "page-link" })
+
+                        </li>
+                    }
+
+                </ul>
+            }
         </nav>
     </div>
 </div>
 
+<script type="text/javascript">
+
+    function submitForm() {
+        document.getElementById('submitForm').submit();
+        // $('form').submit();
+    }
+
+
+
+</script>

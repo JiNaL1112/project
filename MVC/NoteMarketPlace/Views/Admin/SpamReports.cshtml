@@ -12,244 +12,84 @@
                 <h4 id="buyer-req">Spam Reports</h4>
             </div>
             <div class="col-md-6">
-                <form>
+                @using (Html.BeginForm("SpamReports", "Admin", FormMethod.Post))
+                {
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <div class="search-tab">
-                                            <img src="img/search-icon.svg">
-                                            <input type="search" class="form-control" id="book-search" placeholder="      Search">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 ">
-                                    <div class="form-group">
-                                        <div class="search-tab">
-                                            <button type="button" class="btn btn-primary" id="search-tab-button">Search</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-md-6" id="search-box">
+                            <img src="~/Content/images/search-icon.png" id="search-img">
+                            <input type="search" class="form-control" id="book-search" placeholder="    Search" value="@ViewData["GetAdminDashboardData"]" name="searchstring">
                         </div>
-                        <div class="col-md-6"></div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary" id="search-tab-button">Search</button>
+                        </div>
                     </div>
-                </form>
+                }
+
             </div>
         </div>
     </div>
     <div class="in-progress-table">
         <table class="table " id="spam-report-table">
+            
             <thead>
                 <tr>
                     <th scope="col">SR NO.</th>
-                    <th scope="col">REPORTED BY</th>
-                    <th scope="col">NOTE TITLE</th>
-                    <th scope="col">CATEGORY</th>
-                    <th scope="col">DATE EDITED</th>
-                    <th scope="col">REMARK</th>
+                    <th scope="col">
+                        @Html.ActionLink("REPORTED BY", "SpamReports", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "REPORTED BY", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("NOTE TITLE", "SpamReports", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "NOTE TITLE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("CATEGORY", "SpamReports", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "CATEGORY", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("DATE EDITED", "SpamReports", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "DATE EDITED", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("REMARK", "SpamReports", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "REMARK", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
                     <th scope="col">ACTION</th>
                     <th scope="col"></th>
+
+
                 </tr>
             </thead>
+
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Khyati Patel</td>
-                    <td>Software Devlopment</td>
-                    <td>IT</td>
-                    <td>09-10-2020,10:10</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-                    <td><img src="img/delete.png"></td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
+                @foreach (NoteMarketPlace.Models.NoteDetailsViewModel item in (IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>)Model)
+                {
+                    <tr>
+                        <th scope="row">@(i = i+ 1)</th>
+                        <td>@item.user.FirstName</td>
+                        <td><a href="/User/NoteDetails?noteTitle=@item.note.Title">@item.note.Title</a></td>
+                        <td>@item.notecategory.Name</td>
+                        <td>@item.notesReview.CreatedDate</td>
+                        <td>@item.notesReview.FeedBack</td>
+                        <td>
+                            <a href="/Admin/SpamReports?spamNoteReviewID=@item.notesReview.ID" onclick="return confirm('Are you sure you want to delete reported issue?')">
+                              <img src="~/Content/images/delete.png">
+                            </a>
+                        </td>
+                        <td>
+                            <div>
+                                <div class="dropdown">
+                                    <button class="dropbtn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                        </svg>
+                                    </button>
 
-                                <div class="dropdown-content">
-                                    <a href="#">Download Notes</a>
-                                    <a href="#">View More Details</a>
+                                    <div class="dropdown-content">
+                                        <a href="#">Download Notes</a>
+                                        <a href="/Admin/SpamReports?noteID=@item.note.NoteID">Dowmload Note</a>
+                                        <a href="/User/NoteDetails?noteTitle=@item.note.Title">View More Details</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Khyati Patel</td>
-                    <td>Software Devlopment</td>
-                    <td>IT</td>
-                    <td>09-10-2020,10:10</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-                    <td><img src="img/delete.png"></td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
-                                <div class="dropdown-content">
-                                    <a href="#">Download Notes</a>
-                                    <a href="#">View More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Khyati Patel</td>
-                    <td>Software Devlopment</td>
-                    <td>IT</td>
-                    <td>09-10-2020,10:10</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-                    <td><img src="img/delete.png"></td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
-
-                                <div class="dropdown-content">
-                                    <a href="#">Download Notes</a>
-                                    <a href="#">View More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Khyati Patel</td>
-                    <td>Software Devlopment</td>
-                    <td>IT</td>
-                    <td>09-10-2020,10:10</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-                    <td><img src="img/delete.png"></td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
-
-                                <div class="dropdown-content">
-                                    <a href="#">Download Notes</a>
-                                    <a href="#">View More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Khyati Patel</td>
-                    <td>Software Devlopment</td>
-                    <td>IT</td>
-                    <td>09-10-2020,10:10</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-                    <td><img src="img/delete.png"></td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
-                                <div class="dropdown-content">
-                                    <a href="#">Download Notes</a>
-                                    <a href="#">View More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Khyati Patel</td>
-                    <td>Software Devlopment</td>
-                    <td>IT</td>
-                    <td>09-10-2020,10:10</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-                    <td><img src="img/delete.png"></td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
-
-                                <div class="dropdown-content">
-                                    <a href="#">Download Notes</a>
-                                    <a href="#">View More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Khyati Patel</td>
-                    <td>Software Devlopment</td>
-                    <td>IT</td>
-                    <td>09-10-2020,10:10</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-                    <td><img src="img/delete.png"></td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
-                                <div class="dropdown-content">
-                                    <a href="#">Download Notes</a>
-                                    <a href="#">View More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Khyati Patel</td>
-                    <td>Software Devlopment</td>
-                    <td>IT</td>
-                    <td>09-10-2020,10:10</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-                    <td><img src="img/delete.png"></td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
-                                <div class="dropdown-content">
-                                    <a href="#">Download Notes</a>
-                                    <a href="#">View More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
+                }
 
 
 
@@ -258,23 +98,61 @@
     </div>
     <div class="in-progress-nav">
         <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link active" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </li>
-            </ul>
+            @{
+                Double totalPages = ViewBag.TotalPages;
+                <ul class="pagination justify-content-center">
+                    @if (ViewBag.PageNumber == 1)
+                    {
+                        <li class="page-item ">
+                            @Html.ActionLink("<", "SpamReports", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "DATE EDITED" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink("<", "SpamReports", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "DATE EDITED" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber - 1 }, new { @class = "page-link" })
+
+                        </li>
+                    }
+
+                    @for (int j = 1; j <= totalPages; j++)
+                    {
+
+                        if (j == ViewBag.PageNumber)
+                        {
+                            <li class="active page-item">
+                                @Html.ActionLink(j.ToString(), "SpamReports", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "DATE EDITED" : ViewBag.SortBy, PageNumber = j }, new { @class = "page-link" })
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(j.ToString(), "SpamReports", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "DATE EDITED" : ViewBag.SortBy, PageNumber = j }, new { @class = "page-link" })
+                            </li>
+                        }
+
+
+
+
+                    }
+                    @if (ViewBag.PageNumber == totalPages)
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(">", "SpamReports", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "DATE EDITED" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(">", "SpamReports", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "DATE EDITED" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber + 1 }, new { @class = "page-link" })
+
+                        </li>
+                    }
+
+                </ul>
+            }
         </nav>
     </div>
 </div>

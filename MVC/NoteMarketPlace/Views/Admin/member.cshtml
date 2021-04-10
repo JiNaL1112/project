@@ -15,19 +15,20 @@
                 <div class="col-md-5">
                     <h1>Members</h1>
                 </div>
-                <div class="col-md-5">
-                    <div class="form-group ">
-                        <div class="manage-search-tab ">
-                            <input type="search" class="form-control" id="manage-search" placeholder="   Search">
-                            <img src="img/search-icon.svg">
+                @using (Html.BeginForm("member", "Admin", FormMethod.Post))
+                {
+                    <div class="row">
+                        <div class="col-md-6" id="search-box">
+                            <img src="~/Content/images/search-icon.png" id="search-img">
+                            <input type="search" class="form-control" id="book-search" placeholder="    Search" value="@ViewData["GetAdminDashboardData"]" name="searchstring">
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary" id="search-tab-button">Search</button>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="manage-search-tab">
-                        <button type="button" class="btn btn-primary float-right" id="manage-search-tab-button">SEARCH</button>
-                    </div>
-                </div>
+                }
+
+               
             </div>
         </div>
     </div>
@@ -35,212 +36,197 @@
 <div class="container">
     <div class="admin-dashboard">
         <table class="table" id="member-table">
+            
             <thead>
                 <tr>
-                    <th scope="col">SR NO,</th>
-                    <th scope="col">FIRST NAME</th>
-                    <th scope="col">LAST NAME</th>
-                    <th scope="col">EMAIL</th>
-                    <th scope="col">JOINING DATE</th>
-                    <th scope="col">UNDER REVIEW NOTES</th>
-                    <th scope="col">PUBLISHED NOTES</th>
-                    <th scope="col">DOWNLOADED NOTES</th>
-                    <th scope="col">TOTAL EXPENSES</th>
-                    <th colspan="2">TOTAL EARNING</th>
+                    <th scope="col">SR NO.</th>
+                    <th scope="col">
+                        @Html.ActionLink("FIRST NAME", "member", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "FIRST NAME", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("LAST NAME", "member", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "LAST NAME", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("EMAIL", "member", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "EMAIL", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("JOINING DATE", "member", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "JOINING DATE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        <a href="/Admin/NotesUnderReview">
+                            UNDER REVIEW NOTES
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a href="/Admin/PublishedNote">
+                            PUBLISHED NOTES
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a href="/Admin/DonwloadedNotes">
+                            DOWNLOADED NOTES
+                        </a>
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("TOTAL EXPENSES", "member", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "TOTAL EXPENSES", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th colspan="2">
+                        @Html.ActionLink("TOTAL EARNING", "member", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "TOTAL EARNING", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+
 
                 </tr>
             </thead>
+
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Khyati</td>
-                    <td>Parmar</td>
-                    <td>khyatiparmar@gmail.com</td>
-                    <td>27-10-2020,11:24</td>
-                    <td>19</td>
-                    <td>10</td>
-                    <td>22</td>
-                    <td>&#36;220</td>
-                    <td>&#36;177</td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
+                @foreach (NoteMarketPlace.Models.NoteDetailsViewModel item in (IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>)Model)
+                {
+                    <tr>
+                        <th scope="row">@(i = i+ 1)</th>
+                        <td>@item.user.FirstName</td>
+                        <td>@item.user.LastName</td>
+                        <td>@item.user.EmailID</td>
+                        <td>@item.user.CreatedDate</td>
+                        @{
+                            NoteMarketEntities db = new NoteMarketEntities();
 
-                                <div class="dropdown-content">
-                                    <a href="#">View More Details</a>
-                                    <a href="#">Deactivate</a>
+                            var underReviewNotes = db.Notes.Where(m => m.Status == 8 || m.Status == 9).Where(m => m.SellerID == item.user.ID).Count();
+
+                            var publishedNotes = db.Notes.Where(m => m.Status == 10).Where(m => m.SellerID == item.user.ID).Count();
+
+                            var downloadNotes = db.Downloads.Where(m => m.IsAttachmentDownloaded == true).Where(m => m.BuyerID == item.user.ID).Count();
+
+                            var totaldownloadNotes = db.Downloads.Where(m => m.IsAttachmentDownloaded == true && m.BuyerID == item.user.ID);
+
+                            int totalExpenss = 0;
+
+                            if (totaldownloadNotes != null)
+                            {
+                                var x = totaldownloadNotes.Count();
+                                if (x != 0)
+                                {
+                                    foreach (var p in totaldownloadNotes)
+                                    {
+                                        totalExpenss = totalExpenss + Convert.ToInt32(p.PurchasedPrice);
+                                    }
+
+
+                                }
+                            }
+                            var totalsoldNotes = db.Downloads.Where(m => m.IsAttachmentDownloaded == true && m.SellerID == item.user.ID);
+
+                            int totalEarning = 0;
+
+                            if (totalsoldNotes != null)
+                            {
+                                var x = totalsoldNotes.Count();
+                                if (x != 0)
+                                {
+                                    foreach (var p in totalsoldNotes)
+                                    {
+                                        totalEarning = totalEarning + Convert.ToInt32(p.PurchasedPrice);
+                                    }
+
+
+                                }
+                            }
+                        }
+
+
+
+                        <td>@underReviewNotes</td>
+                        <td>@publishedNotes</td>
+                        <td>@downloadNotes</td>
+                        <td>
+                            &#36;
+                            @totalExpenss
+                        </td>
+                        <td>
+                            &#36;
+                            @totalEarning
+                        </td>
+                        <td>
+                            <div>
+                                <div class="dropdown">
+                                    <button class="dropbtn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                        </svg>
+                                    </button>
+
+                                    <div class="dropdown-content">
+                                        <a href="/Admin/memberDetails?userID=@item.user.ID">View More Details</a>
+
+                                        <a href="/Admin/member?userDeactivateID=@item.user.ID"
+                                           onclick="return confirm('Are you sure you want to make this member inactive?')">
+                                            Deactivate
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Khyati</td>
-                    <td>Parmar</td>
-                    <td>khyatiparmar@gmail.com</td>
-                    <td>27-10-2020,11:24</td>
-                    <td>19</td>
-                    <td>10</td>
-                    <td>22</td>
-                    <td>&#36;220</td>
-                    <td>&#36;177</td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
-
-                                <div class="dropdown-content">
-                                    <a href="#">View More Details</a>
-                                    <a href="#">Deactivate</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Khyati</td>
-                    <td>Parmar</td>
-                    <td>khyatiparmar@gmail.com</td>
-                    <td>27-10-2020,11:24</td>
-                    <td>19</td>
-                    <td>10</td>
-                    <td>22</td>
-                    <td>&#36;220</td>
-                    <td>&#36;177</td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
-
-                                <div class="dropdown-content">
-                                    <a href="#">View More Details</a>
-                                    <a href="#">Deactivate</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Khyati</td>
-                    <td>Parmar</td>
-                    <td>khyatiparmar@gmail.com</td>
-                    <td>27-10-2020,11:24</td>
-                    <td>19</td>
-                    <td>10</td>
-                    <td>22</td>
-                    <td>&#36;220</td>
-                    <td>&#36;177</td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
-
-                                <div class="dropdown-content">
-                                    <a href="#">View More Details</a>
-                                    <a href="#">Deactivate</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Khyati</td>
-                    <td>Parmar</td>
-                    <td>khyatiparmar@gmail.com</td>
-                    <td>27-10-2020,11:24</td>
-                    <td>19</td>
-                    <td>10</td>
-                    <td>22</td>
-                    <td>&#36;220</td>
-                    <td>&#36;177</td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
-
-                                <div class="dropdown-content">
-                                    <a href="#">View More Details</a>
-                                    <a href="#">Deactivate</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Khyati</td>
-                    <td>Parmar</td>
-                    <td>khyatiparmar@gmail.com</td>
-                    <td>27-10-2020,11:24</td>
-                    <td>19</td>
-                    <td>10</td>
-                    <td>22</td>
-                    <td>&#36;220</td>
-                    <td>&#36;177</td>
-                    <td>
-                        <div>
-                            <div class="dropdown">
-                                <button class="dropbtn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                    </svg>
-                                </button>
-
-                                <div class="dropdown-content">
-                                    <a href="#">View More Details</a>
-                                    <a href="#">Deactivate</a>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
     <div class="in-progress-nav">
         <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link active" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </li>
-            </ul>
+            @{
+                Double totalPages = ViewBag.TotalPages;
+                <ul class="pagination justify-content-center">
+                    @if (ViewBag.PageNumber == 1)
+                    {
+                        <li class="page-item ">
+                            @Html.ActionLink("<", "member", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "FIRST NAME" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink("<", "member", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "FIRST NAME" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber - 1 }, new { @class = "page-link" })
+
+                        </li>
+                    }
+
+                    @for (int j = 1; j <= totalPages; j++)
+                    {
+
+                        if (j == ViewBag.PageNumber)
+                        {
+                            <li class="active page-item">
+                                @Html.ActionLink(j.ToString(), "member", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "FIRST NAME" : ViewBag.SortBy, PageNumber = j }, new { @class = "page-link" })
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(j.ToString(), "member", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "FIRST NAME" : ViewBag.SortBy, PageNumber = j }, new { @class = "page-link" })
+                            </li>
+                        }
+
+
+
+
+                    }
+                    @if (ViewBag.PageNumber == totalPages)
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(">", "member", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "FIRST NAME" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(">", "member", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "FIRST NAME" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber + 1 }, new { @class = "page-link" })
+
+                        </li>
+                    }
+
+                </ul>
+            }
         </nav>
     </div>
 </div>

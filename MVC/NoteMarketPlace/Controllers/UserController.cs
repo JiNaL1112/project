@@ -45,11 +45,13 @@ namespace NoteMarketPlace.Controllers
 
 
 
-            var userDetails = db.Users.Where(m => m.EmailID.Equals(u2.EmailID) && m.Password.Equals(u2.Password)).FirstOrDefault();
+            var userDetails = db.Users.Where(m => m.EmailID.Equals(u2.EmailID) && m.Password.Equals(u2.Password) && m.IsActive.Equals(true)).FirstOrDefault();
             if (userDetails == null)
             {
-                u2.LoginErrorMessage = "wrong username or password";
-                return View("Index", u2);
+                
+                    u2.LoginErrorMessage = "wrong username or password or Deactive ";
+                    return View("Index", u2);
+             
             }
             else
             {
@@ -83,13 +85,23 @@ namespace NoteMarketPlace.Controllers
                     HttpContext.Response.Cookies.Add(cookie);
                 }
 
-                if (v.RoleID == 1)
+                if (v.RoleID == 3 || v.RoleID == 2)
                 {
-                    return RedirectToAction("SearchNotes", "User");
+                    
+                    return RedirectToAction("AdminDashboard", "Admin");
                 }
                 else
                 {
-                    return RedirectToAction("AdminDashboard", "Admin");
+                    var q = db.Profiles.FirstOrDefault(m => m.SellerID == v.ID);
+                    if( q == null)
+                    {
+                        return RedirectToAction("UserProfile", "User");
+                    }
+                    else
+                    {
+                        return RedirectToAction("SearchNotes", "User");
+                    }
+                   
                 }
             }
             //return RedirectToAction("SearchNotes", "User");
@@ -275,23 +287,24 @@ namespace NoteMarketPlace.Controllers
 
 
 
-            List<Note> NoteValues = db.Notes.ToList();
+            List<Note> NoteValues = db.Notes.Where(m => m.Status == 10).ToList();
             List<Country> CountryValues = db.Countries.ToList();
             List<NoteCategory> NoteCategoryValues = db.NoteCategories.ToList();
             List<NoteType> NoteTypeValues = db.NoteTypes.ToList();
             List<NotesReview> NoteReviewValues = db.NotesReviews.ToList();
-
+            List<User> UsersValues = db.Users.Where(m => m.IsActive == true).ToList();
             var NoteJoinCountry = from n in NoteValues
                                   join i in CountryValues on n.Country equals i.ID
                                   join cg in NoteCategoryValues on n.Category equals cg.ID
                                   join nt in NoteTypeValues on n.NoteType equals nt.ID
-                                                          
+                                  join u in UsersValues on n.SellerID equals u.ID                        
                                   select new NoteDetailsViewModel
                                   {
                                       noteDetails = n,
                                       countryDetails = i,
                                       categoryDetails = cg,
-                                      notetypeDetails = nt
+                                      notetypeDetails = nt ,
+                                      user = u
                                   };
 
 
@@ -586,7 +599,7 @@ namespace NoteMarketPlace.Controllers
                 //};
 
                 List<Note> NoteValues = db.Notes.Where(m => m.NoteID == testNote.NoteID).ToList();
-                List<User> UserValues = db.Users.ToList();
+                List<User> UserValues = db.Users.Where(m => m.IsActive == true).ToList();
                 List<Profile> ProfileValues = db.Profiles.ToList();
                 List<NotesReview> NoteReviewValues = db.NotesReviews.ToList();
 
@@ -666,6 +679,7 @@ namespace NoteMarketPlace.Controllers
                 filedisplayPic = filedisplayPic + DateTime.Now.ToString("yymmssfff") + extensionImg;
 
                 n1.DisplayPic = "~/Image/" + filedisplayPic;
+                
 
                 filedisplayPic = Path.Combine(Server.MapPath("~/Image/"), filedisplayPic);
 
@@ -764,7 +778,7 @@ namespace NoteMarketPlace.Controllers
 
                 List<Note> NoteValues = db.Notes.ToList();
                 
-                List<User> UserValues = db.Users.ToList();
+                List<User> UserValues = db.Users.Where(m => m.IsActive == true).ToList();
                 List<Download> downloadsValues = db.Downloads.ToList();
                 List<ReferenceData> referenceDatasValues = db.ReferenceDatas.ToList();
                 List<NoteCategory> notecategoriesValues = db.NoteCategories.ToList();
@@ -826,7 +840,7 @@ namespace NoteMarketPlace.Controllers
 
             List < Note > NoteValues = db.Notes.ToList();
             
-            List<User> UserValues = db.Users.ToList();
+            List<User> UserValues = db.Users.Where(m => m.IsActive == true).ToList();
             List<Download> downloadsValues = db.Downloads.ToList();
             List<ReferenceData> referenceDatasValues = db.ReferenceDatas.ToList();
             List<NoteCategory> notecategoriesValues = db.NoteCategories.ToList();
@@ -1181,7 +1195,7 @@ namespace NoteMarketPlace.Controllers
             var countryUserList = new List<string>() { "India", "USA", "UK" };
             ViewBag.countryUserList = countryUserList;
             ViewBag.usermail = Session["UserMailID"];
-            ViewData["Usermail"]= Session["UserMailID"]; ;
+            ViewData["Usermail"]= Session["UserMailID"]; 
 
             return View();
         }
@@ -1371,7 +1385,7 @@ namespace NoteMarketPlace.Controllers
 
                 List<Note> NoteValues = db.Notes.ToList();
 
-                List<User> UserValues = db.Users.ToList();
+                List<User> UserValues = db.Users.Where(m => m.IsActive == true).ToList();
                 // List<Download> downloadsValues = db.Downloads.ToList();
                 var downloadsValues = db.Downloads.Where(m => m.IsSellerHasAllowedDownload == true).ToList();
                 List<ReferenceData> referenceDatasValues = db.ReferenceDatas.ToList();
@@ -1436,7 +1450,7 @@ namespace NoteMarketPlace.Controllers
 
             List<Note> NoteValues = db.Notes.ToList();
 
-            List<User> UserValues = db.Users.ToList();
+            List<User> UserValues = db.Users.Where(m => m.IsActive == true).ToList();
             var downloadsValues = db.Downloads.Where( m => m.IsSellerHasAllowedDownload == true).ToList() ;
             List<ReferenceData> referenceDatasValues = db.ReferenceDatas.ToList();
             List<NoteCategory> notecategoriesValues = db.NoteCategories.ToList();
@@ -1512,7 +1526,7 @@ namespace NoteMarketPlace.Controllers
 
             List<Note> NoteValues = db.Notes.ToList();
 
-                List<User> UserValues = db.Users.ToList();
+                List<User> UserValues = db.Users.Where(m => m.IsActive == true).ToList();
                 // List<Download> downloadsValues = db.Downloads.ToList();
                 List<Download> downloadsValues = db.Downloads.Where(m => m.IsSellerHasAllowedDownload == true).ToList();
                 List<ReferenceData> referenceDatasValues = db.ReferenceDatas.ToList();
@@ -1560,7 +1574,7 @@ namespace NoteMarketPlace.Controllers
 
             List<Note> NoteValues = db.Notes.ToList();
 
-            List<User> UserValues = db.Users.ToList();
+            List<User> UserValues = db.Users.Where(m => m.IsActive == true).ToList();
             // List<Download> downloadsValues = db.Downloads.ToList();
             List<Download> downloadsValues = db.Downloads.Where(m => m.IsSellerHasAllowedDownload == true).ToList();
             List<ReferenceData> referenceDatasValues = db.ReferenceDatas.ToList();
@@ -1642,7 +1656,7 @@ namespace NoteMarketPlace.Controllers
 
                 List<Note> NoteValues = db.Notes.ToList();
 
-                List<User> UserValues = db.Users.ToList();
+                List<User> UserValues = db.Users.Where(m => m.IsActive == true).ToList();
                 // List<Download> downloadsValues = db.Downloads.ToList();
                 var downloadsValues = db.Downloads.Where(m => m.IsSellerHasAllowedDownload == true).ToList();
                 List<ReferenceData> referenceDatasValues = db.ReferenceDatas.ToList();
@@ -1701,7 +1715,7 @@ namespace NoteMarketPlace.Controllers
 
             List<Note> NoteValues = db.Notes.ToList();
 
-            List<User> UserValues = db.Users.ToList();
+            List<User> UserValues = db.Users.Where(m => m.IsActive == true).ToList();
             var downloadsValues = db.Downloads.Where(m => m.IsSellerHasAllowedDownload == true).ToList();
             List<ReferenceData> referenceDatasValues = db.ReferenceDatas.ToList();
             List<NoteCategory> notecategoriesValues = db.NoteCategories.ToList();
@@ -1744,7 +1758,7 @@ namespace NoteMarketPlace.Controllers
 
                 List<Note> NoteValues = db.Notes.ToList();
 
-                List<User> UserValues = db.Users.ToList();
+                List<User> UserValues = db.Users.Where(m => m.IsActive == true).ToList();
                 // List<Download> downloadsValues = db.Downloads.ToList();
                 var downloadsValues = db.Downloads.Where(m => m.IsSellerHasAllowedDownload == true).ToList();
                 List<ReferenceData> referenceDatasValues = db.ReferenceDatas.ToList();
@@ -1803,7 +1817,7 @@ namespace NoteMarketPlace.Controllers
 
             List<Note> NoteValues = db.Notes.ToList();
 
-            List<User> UserValues = db.Users.ToList();
+            List<User> UserValues = db.Users.Where(m => m.IsActive == true).ToList();
             var downloadsValues = db.Downloads.Where(m => m.IsSellerHasAllowedDownload == true).ToList();
             List<ReferenceData> referenceDatasValues = db.ReferenceDatas.ToList();
             List<NoteCategory> notecategoriesValues = db.NoteCategories.ToList();

@@ -44,7 +44,7 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="SupportEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="otherEmail" Type="Binary" MaxLength="50" FixedLength="false" />
+    <Property Name="otherEmail" Type="String" ConcurrencyMode="None" annotation:StoreGeneratedPattern="None" FixedLength="false" MaxLength="Max" Unicode="false" />
     <Property Name="SupportPhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="FaceBookURL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="TwitterURL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />

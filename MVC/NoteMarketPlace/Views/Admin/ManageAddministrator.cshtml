@@ -18,22 +18,23 @@
             <div class="row">
                 <div class="col-md-5">
                     <div class="manage-search-tab">
-                        <button type="button" class="btn btn-primary" id="manage-search-tab-button">ADD ADDMINISTRATOR</button>
+                        
+                        <button type="button" class="btn btn-primary" id="manage-search-tab-button"><a href="/Admin/AddAdministrator?editAddministrator=Enter Email">ADD ADDMINISTRATOR</a></button>
                     </div>
                 </div>
-                <div class="col-md-5">
-                    <div class="form-group ">
-                        <div class="manage-search-tab ">
-                            <input type="search" class="form-control" id="manage-search" placeholder="   Search">
-                            <img src="img/search-icon.svg">
+                @using (Html.BeginForm("ManageAddministrator", "Admin", FormMethod.Post))
+                {
+                    <div class="row">
+                        <div class="col-md-6" id="search-box">
+                            <img src="~/Content/images/search-icon.png" id="search-img">
+                            <input type="search" class="form-control" id="book-search" placeholder="    Search" value="@ViewData["GetAdminDashboardData"]" name="searchstring">
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary" id="search-tab-button">Search</button>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="manage-search-tab">
-                        <button type="button" class="btn btn-primary float-right" id="manage-search-tab-button">SEARCH</button>
-                    </div>
-                </div>
+                }
+
             </div>
         </div>
     </div>
@@ -41,107 +42,118 @@
 <div class="container">
     <div class="admin-dashboard">
         <table class="table" id="admin-table">
+            
             <thead>
                 <tr>
                     <th scope="col">SR NO.</th>
-                    <th scope="col">FIRST NAME</th>
-                    <th scope="col">LAST NAME</th>
-                    <th scope="col">EMAIL</th>
-                    <th scope="col">PHONE NO.</th>
-                    <th scope="col">DATE ADDED</th>
-                    <th scope="col">ACTIVE</th>
+
+                    <th scope="col">
+                        @Html.ActionLink("FIRST NAME", "ManageAddministrator", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "FIRST NAME", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("LAST NAME", "ManageAddministrator", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "LAST NAME", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("EMAIL", "ManageAddministrator", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "EMAIL", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("DATE ADDED", "ManageAddministrator", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "DATE ADDED", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("ACTIVE", "ManageAddministrator", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "ACTIVE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
                     <th scope="col">ACTION</th>
+                    <th></th>
+
                 </tr>
             </thead>
+
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Khyati</td>
-                    <td>Patel</td>
-                    <td>khyatipate@gmail.com</td>
-                    <td>8160964882</td>
-                    <td>27-10-2020,11:24</td>
-                    <td>Yes</td>
-                    <td>
-                        <img src="img/edit.png">
-                        <img src="img/delete.png">
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Khyati</td>
-                    <td>Patel</td>
-                    <td>khyatipate@gmail.com</td>
-                    <td>8160964882</td>
-                    <td>27-10-2020,11:24</td>
-                    <td>Yes</td>
-                    <td>
-                        <img src="img/edit.png">
-                        <img src="img/delete.png">
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Khyati</td>
-                    <td>Patel</td>
-                    <td>khyatipate@gmail.com</td>
-                    <td>8160964882</td>
-                    <td>27-10-2020,11:24</td>
-                    <td>Yes</td>
-                    <td>
-                        <img src="img/edit.png">
-                        <img src="img/delete.png">
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Khyati</td>
-                    <td>Patel</td>
-                    <td>khyatipate@gmail.com</td>
-                    <td>8160964882</td>
-                    <td>27-10-2020,11:24</td>
-                    <td>Yes</td>
-                    <td>
-                        <img src="img/edit.png">
-                        <img src="img/delete.png">
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Khyati</td>
-                    <td>Patel</td>
-                    <td>khyatipate@gmail.com</td>
-                    <td>8160964882</td>
-                    <td>27-10-2020,11:24</td>
-                    <td>Yes</td>
-                    <td>
-                        <img src="img/edit.png">
-                        <img src="img/delete.png">
-                    </td>
-                </tr>
+                @foreach (NoteMarketPlace.Models.NoteDetailsViewModel item in (IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>)Model)
+                {
+                    <tr>
+                        <th scope="row">@(i = i +1)</th>
+                        <td>@item.user.FirstName</td>
+                        <td>@item.user.LastName</td>
+                        <td>@item.user.EmailID</td>
+                        <td>@item.profileUser.PhoneNumber</td>
+                        <td>@item.user.CreatedDate</td>
+                        <td>@item.user.IsActive</td>
+                        <td>
+                            <a href="/Admin/ManageAddministrator?userDeactivateID=@item.user.ID"
+                               onclick="return confirm('Are you sure you want to make this administrator inactive?')">
+                                <img src="~/Content/images/delete.png">
+                            </a>
+                            <a href="/Admin/AddAdministrator?editAddministrator=@item.user.EmailID">
+                                <img src="~/Content/images/edit.png">
+                            </a>
+                            
+
+                        </td>
+                    </tr>
+                }
+
 
             </tbody>
         </table>
     </div>
     <div class="in-progress-nav">
         <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link active" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </li>
-            </ul>
+            @{
+                Double totalPages = ViewBag.TotalPages;
+                <ul class="pagination justify-content-center">
+                    @if (ViewBag.PageNumber == 1)
+                    {
+                        <li class="page-item ">
+                            @Html.ActionLink("<", "ManageAddministrator", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "FIRST NAME" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink("<", "ManageAddministrator", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "FIRST NAME" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber - 1 }, new { @class = "page-link" })
+
+                        </li>
+                    }
+
+                    @for (int j = 1; j <= totalPages; j++)
+                    {
+
+                        if (j == ViewBag.PageNumber)
+                        {
+                            <li class="active page-item">
+                                @Html.ActionLink(j.ToString(), "ManageAddministrator", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "FIRST NAME" : ViewBag.SortBy, PageNumber = j }, new { @class = "page-link" })
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(j.ToString(), "ManageAddministrator", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "FIRST NAME" : ViewBag.SortBy, PageNumber = j }, new { @class = "page-link" })
+                            </li>
+                        }
+
+
+
+
+                    }
+                    @if (ViewBag.PageNumber == totalPages)
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(">", "ManageAddministrator", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "FIRST NAME" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(">", "ManageAddministrator", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "FIRST NAME" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber + 1 }, new { @class = "page-link" })
+
+                        </li>
+                    }
+
+                </ul>
+            }
         </nav>
     </div>
 </div>

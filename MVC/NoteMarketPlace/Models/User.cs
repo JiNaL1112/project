@@ -29,7 +29,6 @@ namespace NoteMarketPlace.Models
     
         public int ID { get; set; }
         public int RoleID { get; set; }
-
         [Required(ErrorMessage = "Enter first name")]
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])[A-Za-z]{1,}", ErrorMessage = "Enter Valid first name")]
         public string FirstName { get; set; }
@@ -66,6 +65,7 @@ namespace NoteMarketPlace.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RejectedNote> RejectedNotes { get; set; }
         public virtual UserRole UserRole { get; set; }
+
 
         public string LoginErrorMessage { get; set; }
 

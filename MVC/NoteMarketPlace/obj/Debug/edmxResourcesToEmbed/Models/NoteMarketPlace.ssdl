@@ -40,7 +40,7 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SupportEmail" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="otherEmail" Type="varbinary" MaxLength="50" />
+    <Property Name="otherEmail" Type="varchar(max)" />
     <Property Name="SupportPhoneNo" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="FaceBookURL" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="TwitterURL" Type="varchar" MaxLength="50" Nullable="false" />

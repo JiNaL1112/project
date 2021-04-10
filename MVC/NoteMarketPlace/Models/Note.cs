@@ -29,7 +29,6 @@ namespace NoteMarketPlace.Models
         public Nullable<int> ActionBy { get; set; }
         public string AdminRemarks { get; set; }
         public Nullable<System.DateTime> PublishedDate { get; set; }
-
         [Required(ErrorMessage = "Enter Note Title")]
         public string Title { get; set; }
 
@@ -37,11 +36,11 @@ namespace NoteMarketPlace.Models
         public int Category { get; set; }
         public string DisplayPic { get; set; }
 
-   //     [Required(ErrorMessage = "Upload Your Note")]
+        //     [Required(ErrorMessage = "Upload Your Note")]
         public string NotesAttachment { get; set; }
         public Nullable<decimal> NoteSize { get; set; }
 
-       [Required(ErrorMessage = "Select Note Type")]
+        [Required(ErrorMessage = "Select Note Type")]
         public int NoteType { get; set; }
         public Nullable<int> NumberOfPage { get; set; }
 
@@ -73,6 +72,7 @@ namespace NoteMarketPlace.Models
         public virtual User User1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NotesReview> NotesReviews { get; set; }
+
 
 
         public HttpPostedFileBase displayPicture { get; set; }

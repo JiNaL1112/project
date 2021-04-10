@@ -366,9 +366,13 @@
     <Content Include="Views\Admin\SpamReports.cshtml" />
     <Content Include="Views\Admin\UpdateProfile.cshtml" />
     <Content Include="Views\Admin\ChangePassword.cshtml" />
+    <Content Include="Views\Admin\memberDetails.cshtml" />
+    <Content Include="Views\Shared\_MemberDetails.cshtml" />
+    <Content Include="Views\Shared\_MemberNotes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DefaultPic\" />
     <Folder Include="Image\" />
     <Folder Include="PDFNotes\" />
     <Folder Include="PreviewOfNotes\" />

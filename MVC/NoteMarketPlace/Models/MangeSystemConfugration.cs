@@ -11,12 +11,17 @@ namespace NoteMarketPlace.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.Web;
+    using System.Web.Mvc;
+
     public partial class MangeSystemConfugration
     {
         public int ID { get; set; }
+
+        [Required]
         public string SupportEmail { get; set; }
-        public byte[] otherEmail { get; set; }
+        public string otherEmail { get; set; }
         public string SupportPhoneNo { get; set; }
         public string FaceBookURL { get; set; }
         public string TwitterURL { get; set; }
@@ -28,5 +33,12 @@ namespace NoteMarketPlace.Models
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public Nullable<int> ModifiedBy { get; set; }
         public bool IsActive { get; set; }
+
+
+
+
+        public HttpPostedFileBase DefaultBookImage1 { get; set; }
+
+        public HttpPostedFileBase DefaultUserImage1 { get; set; }
     }
 }

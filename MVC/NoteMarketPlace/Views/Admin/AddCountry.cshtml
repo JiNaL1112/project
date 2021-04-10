@@ -1,12 +1,13 @@
-﻿@model IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>
+﻿@model NoteMarketPlace.Models.Country
 @{
     int i = 0;
 
     Layout = "~/Views/Shared/_RegisteredAdmin.cshtml";
 
 }
+@using (Html.BeginForm("AddCountry", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "user-profile" }))
+{
 
-<form class="user-profile">
     <div class="container">
         <div class="row">
             <h1 id="heading">Add Country</h1>
@@ -15,20 +16,26 @@
             <div class="col-md-6 col-sm-6">
                 <div class="form-group">
                     <label class="user-profile-lable">Country Name*</label>
-                    <input type="text" class="form-control" id="Fname" placeholder="Enter your first name">
+                    
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @id = "cname", @placeholder = "Enter Country Name" })
+
+                    @Html.ValidationMessageFor(m => m.Name)
                 </div>
             </div>
             <div class="col-md-6"></div>
             <div class="col-md-6 col-sm-6">
                 <div class="form-group">
                     <label class="user-profile-lable">Country Code*</label>
-                    <input type="text" class="form-control" id="cCode" placeholder="Enter country code">
+                    
+                    @Html.TextBoxFor(m => m.CountryCode, new { @class = "form-control", @id = "cCode", @placeholder = "Enter Country code" })
+
+                    @Html.ValidationMessageFor(m => m.Name)
                 </div>
             </div>
         </div>
 
         <div>
-            <button type="button" class="btn btn-primary" id="my-profile-submit">Submit</button>
+            <button type="submit" class="btn btn-primary" id="my-profile-submit">Submit</button>
         </div>
     </div>
-</form>
+}

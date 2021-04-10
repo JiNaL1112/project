@@ -16,22 +16,23 @@
             <div class="row">
                 <div class="col-md-5">
                     <div class="manage-search-tab">
-                        <button type="button" class="btn btn-primary" id="manage-search-tab-button">ADD TYPE</button>
+                        <button type="button" class="btn btn-primary" id="manage-search-tab-button"><a href="/Admin/AddTypes?editnotetypeDetails=Enter Types">ADD TYPE</a></button>
+                       
                     </div>
                 </div>
-                <div class="col-md-5">
-                    <div class="form-group ">
-                        <div class="manage-search-tab ">
-                            <input type="search" class="form-control" id="manage-search" placeholder="   Search">
-                            <img src="img/search-icon.svg">
+                @using (Html.BeginForm("ManageTypes", "Admin", FormMethod.Post))
+                {
+                    <div class="row">
+                        <div class="col-md-6" id="search-box">
+                            <img src="~/Content/images/search-icon.png" id="search-img">
+                            <input type="search" class="form-control" id="book-search" placeholder="    Search" value="@ViewData["GetAdminDashboardData"]" name="searchstring">
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary" id="search-tab-button">Search</button>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="manage-search-tab">
-                        <button type="button" class="btn btn-primary float-right" id="manage-search-tab-button">SEARCH</button>
-                    </div>
-                </div>
+                }
+
             </div>
         </div>
     </div>
@@ -39,101 +40,115 @@
 <div class="container">
     <div class="admin-dashboard">
         <table class="table" id="admin-table">
+
             <thead>
                 <tr>
                     <th scope="col">SR NO.</th>
-                    <th scope="col">TYPE</th>
-                    <th scope="col">DESCRIPTION</th>
-                    <th scope="col">DATE ADDED</th>
-                    <th scope="col">ADDED BY</th>
-                    <th scope="col">ACTIVE</th>
+
+                    <th scope="col">
+                        @Html.ActionLink("TYPE", "ManageTypes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "TYPE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("DESCRIPTION", "ManageTypes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "DESCRIPTION", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("DATE ADDED", "ManageTypes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "DATE ADDED", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("ADDED BY", "ManageTypes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "ADDED BY", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
+                    <th scope="col">
+                        @Html.ActionLink("ACTIVE", "ManageTypes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "ACTIVE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
                     <th scope="col">ACTION</th>
+
+
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>val 1</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing</td>
-                    <td>27-10-2020,11:24</td>
-                    <td>Khyati Patel</td>
-                    <td>Yes</td>
-                    <td>
-                        <img src="img/edit.png">
-                        <img src="img/delete.png">
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>val 1</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing</td>
-                    <td>27-10-2020,11:24</td>
-                    <td>Khyati Patel</td>
-                    <td>Yes</td>
-                    <td>
-                        <img src="img/edit.png">
-                        <img src="img/delete.png">
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>val 1</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing</td>
-                    <td>27-10-2020,11:24</td>
-                    <td>Khyati Patel</td>
-                    <td>Yes</td>
-                    <td>
-                        <img src="img/edit.png">
-                        <img src="img/delete.png">
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>val 1</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing</td>
-                    <td>27-10-2020,11:24</td>
-                    <td>Khyati Patel</td>
-                    <td>Yes</td>
-                    <td>
-                        <img src="img/edit.png">
-                        <img src="img/delete.png">
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>val 1</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing</td>
-                    <td>27-10-2020,11:24</td>
-                    <td>Khyati Patel</td>
-                    <td>Yes</td>
-                    <td>
-                        <img src="img/edit.png">
-                        <img src="img/delete.png">
-                    </td>
-                </tr>
 
+            <tbody>
+                @foreach (NoteMarketPlace.Models.NoteDetailsViewModel item in (IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>)Model)
+                {
+                    <tr>
+                        <th scope="row">@(i = i+ 1)</th>
+                        <td>@item.notetypeDetails.Name</td>
+                        <td>@item.notetypeDetails.Description</td>
+                        <td>@item.notetypeDetails.CreatedDate</td>
+                        <td>@item.user.FirstName</td>
+                        <td>@item.notetypeDetails.IsActive</td>
+                        <td>
+                            <a href="/Admin/ManageTypes?notetypeDetailsDeactivateID=@item.notetypeDetails.ID"
+                               onclick="return confirm('Are you sure you want to make this administrator inactive?')">
+                                <img src="~/Content/images/delete.png">
+                            </a>
+                            <a href="/Admin/AddTypes?editnotetypeDetails=@item.notetypeDetails.Name">
+                                <img src="~/Content/images/edit.png">
+                            </a>
+                        </td>
+                    </tr>
+                }
             </tbody>
+
         </table>
     </div>
     <div class="in-progress-nav">
         <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link active" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </li>
-            </ul>
+            @{
+                Double totalPages = ViewBag.TotalPages;
+                <ul class="pagination justify-content-center">
+                    @if (ViewBag.PageNumber == 1)
+                    {
+                        <li class="page-item ">
+                            @Html.ActionLink("<", "ManageTypes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink("<", "ManageTypes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber - 1 }, new { @class = "page-link" })
+
+                        </li>
+                    }
+
+                    @for (int j = 1; j <= totalPages; j++)
+                    {
+
+                        if (j == ViewBag.PageNumber)
+                        {
+                            <li class="active page-item">
+                                @Html.ActionLink(j.ToString(), "ManageTypes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = j }, new { @class = "page-link" })
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(j.ToString(), "ManageTypes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = j }, new { @class = "page-link" })
+                            </li>
+                        }
+
+
+
+
+                    }
+                    @if (ViewBag.PageNumber == totalPages)
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(">", "ManageTypes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            @Html.ActionLink(">", "ManageTypes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : ViewBag.SortOrder, SortBy = ViewBag.SortBy == null ? "NOTE TITTLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber + 1 }, new { @class = "page-link" })
+
+                        </li>
+                    }
+
+                </ul>
+            }
         </nav>
     </div>
+
 </div>

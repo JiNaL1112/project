@@ -1,34 +1,40 @@
-﻿@model IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>
+﻿@model NoteMarketPlace.Models.NoteType
 @{
     int i = 0;
 
     Layout = "~/Views/Shared/_RegisteredAdmin.cshtml";
 
 }
+@using (Html.BeginForm("AddTypes", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "user-profile" }))
+{
+    
+        <div class="container">
+            <div class="row">
+                <h1 id="heading">Add Type</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group">
+                        <label class="user-profile-lable">Type *</label>
+                        
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @id = "ntname", @placeholder = "Enter Note Type Name" })
 
-<form class="user-profile">
-    <div class="container">
-        <div class="row">
-            <h1 id="heading">Add Type</h1>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-sm-6">
-                <div class="form-group">
-                    <label class="user-profile-lable">Type *</label>
-                    <input type="text" class="form-control" id="Fname" placeholder="Enter your first name">
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="form-group">
+                        <label class="user-profile-lable">Description*</label>
+                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", @id = "ntDescription", @placeholder = "Enter  Type Description" })
+
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6"></div>
-            <div class="col-md-6 col-sm-6">
-                <div class="form-group">
-                    <label class="user-profile-lable">Description*</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Enter your description"></textarea>
-                </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary" id="my-profile-submit">Submit</button>
             </div>
         </div>
-
-        <div>
-            <button type="button" class="btn btn-primary" id="my-profile-submit">Submit</button>
-        </div>
-    </div>
-</form>
+  }

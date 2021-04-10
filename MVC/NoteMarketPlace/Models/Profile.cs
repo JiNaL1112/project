@@ -13,27 +13,24 @@ namespace NoteMarketPlace.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Web;
-    
+
     public partial class Profile
     {
         public int ID { get; set; }
         public Nullable<int> SellerID { get; set; }
         public Nullable<System.DateTime> DOB { get; set; }
-
-        
         public Nullable<int> Gender { get; set; }
         public string SecondaryEmailAddress { get; set; }
         public string PhoneNumberCountryCode { get; set; }
         public string PhoneNumber { get; set; }
         public string ProfilePic { get; set; }
-
-     //   [Required(ErrorMessage ="Enter the addres")]
+        //   [Required(ErrorMessage ="Enter the addres")]
         public string AddressLine1 { get; set; }
 
-    //    [Required(ErrorMessage = "Enter the addres")]
+        //    [Required(ErrorMessage = "Enter the addres")]
         public string AddressLine2 { get; set; }
 
-    //    [Required(ErrorMessage = "Enter the addres")]
+        //    [Required(ErrorMessage = "Enter the addres")]
         public string City { get; set; }
 
         [Required(ErrorMessage = "Enter the addres")]
@@ -55,7 +52,8 @@ namespace NoteMarketPlace.Models
         public virtual ReferenceData ReferenceData { get; set; }
         public virtual User User { get; set; }
 
-       
+
+
         public HttpPostedFileBase UserProfilePic { get; set; }
     }
 }

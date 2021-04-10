@@ -120,10 +120,10 @@
                     <th scope="col">
                         @Html.ActionLink("CATEGORY", "DonwloadedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "CATEGORY", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
                     </th>
-                    <th scope="col">
+                    <th colspan="2">
                         @Html.ActionLink("BUYER", "DonwloadedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "BUYER", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
                     </th>
-                    <th scope="col">
+                    <th colspan="2">
                         @Html.ActionLink("SELLER", "DonwloadedNotes", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "SELLER", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
                     </th>
                     <th scope="col">
@@ -145,48 +145,55 @@
             <tbody>
                 @foreach (NoteMarketPlace.Models.NoteDetailsViewModel item in (IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>)Model)
                 {
-                    <tr>
-                        <th scope="row">@(i = i+ 1)</th>
-                        <td><a href="/User/NoteDetails?noteTitle=@item.note.Title">@item.note.Title</a></td>
+                <tr>
+                    <th scope="row">@(i = i+ 1)</th>
+                    <td><a href="/User/NoteDetails?noteTitle=@item.note.Title">@item.note.Title</a></td>
 
-                        <td>@item.notecategory.Name</td>
-                        <td>
-                            @{
-                                NoteMarketEntities db = new NoteMarketEntities();
-
-
-                                var buyersName = db.Users.FirstOrDefault(m => m.ID == item.download.BuyerID);
+                    <td>@item.notecategory.Name</td>
+                    <td>
+                        @{
+                            NoteMarketEntities db = new NoteMarketEntities();
 
 
-                            }
+                            var buyersName = db.Users.FirstOrDefault(m => m.ID == item.download.BuyerID);
 
-                            @buyersName.FirstName
-                            <img src="img/eye.png" id="notes-eyes">
-                        </td>
-                        <td>
-                            @item.user.FirstName
-                            <img src="img/eye.png" id="notes-eyes">
-                        </td>
-                        <td>@item.referenceData.Value</td>
-                        <td>&#36;@item.note.SellingPrice</td>
-                        <td>@item.download.AttachmentDownloadedDate</td>
-                        <td>
-                            <div>
-                                <div class="dropdown">
-                                    <button class="dropbtn">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                                        </svg>
-                                    </button>
-                                    <div class="dropdown-content">
-                                        <a href="/Admin/DonwloadedNotes?noteID=@item.note.NoteID">Dowmload Note</a>
-                                        <a href="/User/NoteDetails?noteTitle=@item.note.Title">View More Details</a>
 
-                                    </div>
+                        }
+
+                        @buyersName.FirstName
+                    </td>
+                    <td>
+                        <a href="/Admin/memberDetails?userID=@buyersName.ID"><img src="~/Content/images/eye.png" id="notes-eyes"></a>
+
+                    </td>
+                    <td>
+                        @item.user.FirstName
+
+                    </td>
+                    <td>
+                        <a href="/Admin/memberDetails?userID=@item.user.ID"><img src="~/Content/images/eye.png" id="notes-eyes"></a>
+
+                    </td>
+                    <td>@item.referenceData.Value</td>
+                    <td>&#36;@item.note.SellingPrice</td>
+                    <td>@item.download.AttachmentDownloadedDate</td>
+                    <td>
+                        <div>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                    </svg>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="/Admin/DonwloadedNotes?noteID=@item.note.NoteID">Dowmload Note</a>
+                                    <a href="/User/NoteDetails?noteTitle=@item.note.Title">View More Details</a>
+
                                 </div>
                             </div>
-                        </td>
-                    </tr>
+                        </div>
+                    </td>
+                </tr>
                 }
 
             </tbody>

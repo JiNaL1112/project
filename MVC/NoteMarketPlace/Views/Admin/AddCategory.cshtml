@@ -1,12 +1,13 @@
-﻿@model IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>
+﻿@model NoteMarketPlace.Models.NoteCategory
 @{
     int i = 0;
 
     Layout = "~/Views/Shared/_RegisteredAdmin.cshtml";
 
 }
+@using (Html.BeginForm("AddCategory", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "user-profile" }))
+{
 
-<form class="user-profile">
     <div class="container">
         <div class="row">
             <h1 id="heading">Add Category</h1>
@@ -15,21 +16,28 @@
             <div class="col-md-6 col-sm-6">
                 <div class="form-group">
                     <label class="user-profile-lable">Category Name*</label>
-                    <input type="text" class="form-control" id="Fname" placeholder="Enter your first name">
+                    
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @id = "ncname", @placeholder = "Enter Category Name" , @Value = @ViewData["Usermail"] })
+
+                    @Html.ValidationMessageFor(m => m.Name)
                 </div>
             </div>
             <div class="col-md-6"></div>
             <div class="col-md-6 col-sm-6">
                 <div class="form-group">
                     <label class="user-profile-lable">Description*</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Enter your description"></textarea>
+                   
+                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control", @id = "ncdescription", @placeholder = "Enter your description" , @rows = "4" })
+
+                    @Html.ValidationMessageFor(m => m.Description)
                 </div>
             </div>
         </div>
 
         <div>
-            <button type="button" class="btn btn-primary" id="my-profile-submit">Submit</button>
+            <button type="submit" class="btn btn-primary" id="my-profile-submit">Submit</button>
         </div>
     </div>
-</form>
+
+}
 

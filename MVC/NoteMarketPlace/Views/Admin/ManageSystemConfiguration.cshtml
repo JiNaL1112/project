@@ -1,5 +1,4 @@
-﻿
-@model IEnumerable<NoteMarketPlace.Models.NoteDetailsViewModel>
+﻿@model NoteMarketPlace.Models.MangeSystemConfugration
 @{
     int i = 0;
 
@@ -7,8 +6,8 @@
 
 }
 
-
-<form class="user-profile">
+@using (Html.BeginForm("ManageSystemConfiguration", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "user-profile" }))
+{
     <div class="container">
         <div class="row">
             <h1 id="heading">Manage System Configuration</h1>
@@ -17,65 +16,84 @@
             <div class="col-md-6 col-sm-6">
                 <div class="form-group">
                     <label class="user-profile-lable">Support email address*</label>
-                    <input type="text" class="form-control" id="semail" placeholder="Enter your email">
+                   
+                    @Html.TextBoxFor(m => m.SupportEmail, new { @class = "form-control", @id = "semail", @placeholder = "Enter your email" })
+                   
+                    @Html.ValidationMessageFor(m => m.SupportEmail)
                 </div>
             </div>
             <div class="col-md-6"></div>
             <div class="col-md-6 col-sm-6">
                 <div class="form-group">
                     <label class="user-profile-lable">Support phone number*</label>
-                    <input type="text" class="form-control" id="sphone" placeholder="Enter phone number">
+                   
+                    @Html.TextBoxFor(m => m.SupportPhoneNo, new { @class = "form-control", @id = "sphone", @placeholder = "Enter your number" })
+
+                    @Html.ValidationMessageFor(m => m.SupportEmail)
                 </div>
             </div>
             <div class="col-md-6"></div>
             <div class="col-md-6 col-sm-6">
                 <div class="form-group">
                     <label class="user-profile-lable">Email Address(es)(for various events system will send notification to these users)*</label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter your email address">
+                 
+                    @Html.TextBoxFor(m => m.otherEmail, new { @class = "form-control", @id = "email", @placeholder = "Enter your email address" })
+
+                    @Html.ValidationMessageFor(m => m.SupportEmail)
                 </div>
             </div>
             <div class="col-md-6"></div>
             <div class="col-md-6 col-sm-6">
                 <div class="form-group">
                     <label class="user-profile-lable">Facebook URL</label>
-                    <input type="text" class="form-control" id="fURL" placeholder="Enter facebook url">
+                   
+                    @Html.TextBoxFor(m => m.FaceBookURL, new { @class = "form-control", @id = "fURL", @placeholder = "Enter facebook url" })
+
+                    @Html.ValidationMessageFor(m => m.SupportEmail)
                 </div>
             </div>
             <div class="col-md-6"></div>
             <div class="col-md-6 col-sm-6">
                 <div class="form-group">
                     <label class="user-profile-lable">Twitter URL</label>
-                    <input type="text" class="form-control" id="tURL" placeholder="Enter twitter url">
+                    
+                    @Html.TextBoxFor(m => m.TwitterURL, new { @class = "form-control", @id = "tURL", @placeholder = "Enter twitter url" })
+
+                    @Html.ValidationMessageFor(m => m.SupportEmail)
                 </div>
             </div>
             <div class="col-md-6"></div>
             <div class="col-md-6 col-sm-6">
                 <div class="form-group">
                     <label class="user-profile-lable">Linkedin URL</label>
-                    <input type="text" class="form-control" id="lURL" placeholder="Enter linkedin url">
+                    
+                    @Html.TextBoxFor(m => m.LinkedinURL, new { @class = "form-control", @id = "lURL", @placeholder = "Enter linkedin url" })
+
+                    @Html.ValidationMessageFor(m => m.SupportEmail)
                 </div>
             </div>
             <div class="col-md-6"></div>
             <div class="col-md-6 col-sm-6">
                 <div class="profile">
                     <label class="user-profile-lable">Default image for notes(if seller do not upload)</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Upload a picture" rows="4"></textarea>
-                    <img src="img/User-Profile/upload.png">
+                    <input type="file" class="form-control" id="DefaultBookImage1" name="DefaultBookImage1" />
+                    <img src="~/Content/images/upload.svg">
+                    
                 </div>
             </div>
             <div class="col-md-6"></div>
             <div class="col-md-6 col-sm-6">
                 <div class="profile">
                     <label class="user-profile-lable">Default profile picture(if seller do not upload)</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Upload a picture" rows="4"></textarea>
-                    <img src="img/User-Profile/upload.png">
+                    <input type="file" class="form-control" id="DefaultUserImage1" name="DefaultUserImage1" />
+                    <img src="~/Content/images/upload.svg">
                 </div>
             </div>
         </div>
 
         <div>
-            <button type="button" class="btn btn-primary" id="my-profile-submit">Submit</button>
+            <button type="submit" class="btn btn-primary" id="my-profile-submit">Submit</button>
         </div>
     </div>
-</form>
+}
 

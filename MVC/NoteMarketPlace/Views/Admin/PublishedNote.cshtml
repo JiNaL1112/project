@@ -22,6 +22,7 @@
             <div class="row">
                 @using (Html.BeginForm("PublishedNote", "Admin", FormMethod.Get, new { @Id = "submitForm" }))
                 {
+                <div class="row">
                     <div class="col-md-3">
 
                         <div class="form-group">
@@ -37,6 +38,7 @@
                         </div>
 
                     </div>
+                </div>
                 }
 
                 @using (Html.BeginForm("PublishedNote", "Admin", FormMethod.Post))
@@ -75,6 +77,9 @@
                     <th scope="col">
                         @Html.ActionLink("PRICE", "PublishedNote", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "PRICE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
                     </th>
+                    <th colspan="2">
+                        @Html.ActionLink("SELLER", "PublishedNote", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "SELLER", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
+                    </th>
                     <th scope="col">
                         @Html.ActionLink("PUBLISHED DATE", "PublishedNote", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "PUBLISHED DATE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
                     </th>
@@ -98,12 +103,14 @@
                     <td>@item.notecategory.Name</td>
                     <td>@item.referenceData.Value</td>
                     <td>&#36;@item.note.SellingPrice</td>
-                    <td>
+                    
                     <td>@item.user.FirstName</td>
-                    <img src="img/eye.png" id="notes-eyes">
+                    <td>
+                        <a href="/Admin/memberDetails?userID=@item.user.ID"><img src="~/Content/images/eye.png" id="notes-eyes"></a>
+
                     </td>
                     <td>@item.note.PublishedDate</td>
-                    <td>Raj Sheth</td>
+                    <td>@item.note.ApprovedBy</td>
                     @{
                         NoteMarketEntities db = new NoteMarketEntities();
 

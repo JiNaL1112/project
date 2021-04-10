@@ -42,6 +42,8 @@ namespace NoteMarketPlace.Models
 
         public Profile profile1 { get; set; }
 
+        public MangeSystemConfugration MangeSystemConfugration { get; set; }
+
 
 
     }

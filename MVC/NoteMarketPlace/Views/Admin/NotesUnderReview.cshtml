@@ -69,7 +69,7 @@
                     <th scope="col">
                         @Html.ActionLink("CATEGORY", "NotesUnderReview", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "CATEGORY", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
                     </th>
-                    <th scope="col">
+                    <th colspan="2">
                         @Html.ActionLink("SELLER", "NotesUnderReview", new { SortOrder = ViewBag.SortOrder == null ? "Asc" : (ViewBag.SortOrder == "Asc" ? "Desc" : "Asc"), SortBy = "SELLER", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber })
                     </th>
                     <th scope="col">
@@ -95,8 +95,10 @@
 
                         <td>
                             @item.user.FirstName
-                        <img src="img/eye.png" id="notes-eyes">
-                    </td>
+                        </td>
+                        <td>
+                            <a href="/Admin/memberDetails?userID=@item.user.ID"><img src="~/Content/images/eye.png" id="notes-eyes"></a>
+                        </td>
                     <td>@item.note.PublishedDate</td>
                     <td>@item.referenceData.Value</td>
                     <td>
